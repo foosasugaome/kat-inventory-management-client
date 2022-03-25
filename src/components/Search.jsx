@@ -1,10 +1,4 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
-
 export default function Search ({search, setSearch}) {
-
-   
-
   
     return(
         <div className="main">
