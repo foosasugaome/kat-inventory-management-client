@@ -51,7 +51,7 @@ ___
 
 _
 ## ERDs
-![ERD image]()
+![ERD image](/KAT%20Rx.drawio.png)
 
 
 ## Wireframes
