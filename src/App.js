@@ -1,7 +1,7 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import About from './components/pages/About'
-// import InventoryList from ".components/pages/InventoryList"
+import DrugList from "./components/pages/DrugList"
 import Navigation from './components/layout/Navigation'
 import Register from './components/pages/Register';
 import Login from './components/pages/Login';
@@ -11,7 +11,8 @@ import Layout from './components/layout/Layout'
 import Home from './components/pages/Home'
 import DashboardOverview from './components/pages/DashboardOverview';
 import DashboardUsers from './components/pages/DashboardUsers';
-import DrugList from './components/pages/DrugList';
+import AddMedicine from './components/pages/AddMedicine'
+
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
       <Layout>
       <Routes>        
         <Route path='/' element={<Home />} />
+        <Route path='/add-medicine' element={<AddMedicine />} />
         <Route path="/search" element={<DrugList />} />
         <Route path='/about' element={<About />} />
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
