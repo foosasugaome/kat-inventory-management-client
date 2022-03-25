@@ -36,6 +36,7 @@ function App() {
       <Layout>
       <Routes>        
         <Route path='/' element={<Home />} />
+        <Route path="/search" element={<DrugList />} />
         <Route path='/about' element={<About />} />
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
