@@ -2,20 +2,48 @@ import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
-export default function Register() {
+export default function Register({ currentUser, setCurrentUser }) {
     const [form, setForm] = useState({
         username: '',
         email: '',
         password: '',
-        manager: true
+        // manager: false
     })
 
     const [msg, setMsg] = useState('')
 
+    const handleSubmit = async e => {
+        e.preventDefault()
+        try {
+            if (form.password === form.passwordConfirmation) {
+                // remove unneeded data in the form pre-request
+                delete form.passwordConfirmation
+                // do the axios since the passwords match
+                const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, form)
+                // get the token from the response
+                const { token } = response.data
+                // set the token in local storage
+                localStorage.setItem('jwt', token)
+                // decode the token
+                const decoded = jwt_decode(token)
+                // log the user in 
+                setCurrentUser(decoded)
+            } else {
+                setMsg('the two passwords you entered do not match 🥴')
+            }
+        } catch (err) {
+            if (err.response.status === 409) {
+                setMsg(err.response.data.msg)
+            } else {
+                console.log(err)
+            }
+        }
+    }
+
     return (
         <>
             <div>
-                <h3>Become a User @ User App!</h3>
+                <h3>Register An Account</h3>
 
                 <p>{msg}</p>
 
@@ -46,22 +74,13 @@ export default function Register() {
                     // placeholder='enter your password...'
                     />
 
-                    <label htmlFor="manager">Manager:</label>
+                    {/* <label htmlFor="manager">Manager:</label>
                     <input 
                     type="radio"
                     id="manager"
-                    // value={form.manager}
-                    value={true}
+                    value={form.manager}
                     onChange={e => setForm({ ...form, manager: e.target.value })}
-                    />
-                    <label htmlFor="employee">Employee:</label>
-                    <input 
-                    type="radio"
-                    id="employee"
-                    // value={form.manager}
-                    value={false}
-                    onChange={e => setForm({ ...form, manager: e.target.value })}
-                    />
+                    /> */}
 
                     <input type="submit" />
                 </form>
