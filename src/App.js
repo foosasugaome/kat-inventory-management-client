@@ -11,6 +11,7 @@ import Layout from './components/layout/Layout'
 import Home from './components/pages/Home'
 import DashboardOverview from './components/pages/DashboardOverview';
 import DashboardUsers from './components/pages/DashboardUsers';
+import DrugList from './components/pages/DrugList';
 
 
 function App() {
@@ -41,7 +42,8 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-        <Route path="/dashboard/overview" element={<DashboardOverview currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="/dashboard/overview" element={<DashboardOverview handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="/dashboard/users" element={<DashboardUsers currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
       </Routes>      
       </Layout>
     </BrowserRouter>
