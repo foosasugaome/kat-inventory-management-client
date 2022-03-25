@@ -34,7 +34,7 @@ export default function Login({ currentUser, setCurrentUser }) {
     }
 
     return (
-        <div>
+        <div className="main">
             <h3>Login</h3>
             {/* <p>{msg ? `the server has a message for you: ${msg}` : ''}</p> */}
             <form onSubmit={handleFormSubmit}>

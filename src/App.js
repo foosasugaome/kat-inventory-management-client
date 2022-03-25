@@ -6,6 +6,7 @@ import About from './components/pages/About'
 import Navibar from "./components/layout/Navibar"
 import Footer from "./components/layout/Footer"
 import Register from './components/pages/Register';
+import Login from './components/pages/Login';
 import { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode'
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/about" element={<About />} />
         {/* <Route path="" element={<InventoryList />} /> */}
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
       </Routes>
     </div>
   );
