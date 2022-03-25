@@ -4,7 +4,7 @@ export default function Header () {
       <>
         <div className='flex-container'>
           <div>
-            <img src='logo_01.jpg' alt='logo' />
+            Logo GOES HERE
           </div>        
         </div>
       </>
