@@ -1,18 +1,25 @@
-# kat-inventory-management-client
+# KAT Software Solutions: Inventory Management Systems
 
 ## Deployed Link
 
 ___
 ## About
-
-
-___
-
-## The Story Behind The App
+Inventory management software for pharmacies, utilizing the FDA open drug API. Pharmacies can monitor the current inventory to help make decisions on placing additional orders to minimize over / under stocking and ultimately
+lower costs.
 
 
 ___
 ## Installation Instructions
+#### Client-side
+- Fork and clone this repository.
+- Run `npm i` to install the dependencies.
+- Go to [FDA Open Drug API](https://open.fda.gov/apis/) and sign up to get an API key.
+- Create a .env.local and store the `JWT_SECRET`,  `API_KEY` and the server url, `REACT_APP_SERVER_URL`.
+
+#### Server-side
+- Fork and clone this repo [Server Side Repo](https://github.com/foosasugaome/kat-inventory-management-server)
+- Run `npm i` to install the dependencies.
+- Create a .env and store the `JWT_SECRET`, and a `PORT` number
 
 
 ___
@@ -29,11 +36,23 @@ ___
 ## Routing Chart
 | Method | Path | Purpose |
 | ------ | ---- | ------- |
-| GET | / | Login/Register page
-___
+| GET | / | Home page
+| GET | /dashboard/overview | Summary of inventory updates.(Recent transactions, etc.)
+| GET | /dashboard/users | manage users page
+| PUT | /dashboard/users/:id | manage user's permission/ account type
+| GET | /inventory | Query database for medicine list.
+| GET | /inventory/:id | Show page for medicine. 
+| DELETE | /inventory/:id | Delete medicine from the database. 
+| GET | /inventory/add | Query the API and add to the inventory. 
+| PUT | /inventory/edit/:id | Query the DB for the medicine to edit.
+| POST | /inventory/transaction | Form to add transactions.
+| POST | /register | Register page
+| GET | /logout | logout
+
+_
 ## ERDs
 ![ERD image]()
-___
+
 
 ## Wireframes
 #### Login
@@ -69,19 +88,22 @@ ___
 ___
 
 ## MVP Checklist
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] Register & Login for users. 
+- [ ] Change user permissions.
+- [ ] Query and display medicines from the API.
+- [ ] Show page for each medicine.
+- [ ] Query by brand name and generic name.
+- [ ] Track the transaction history for the inventory and display total inventory (PATCH)
+- [ ] Transaction history only visible to admins/managers.
+- [ ] CRUD for medicine inventory.
+- [ ] CRUD for transaction history.
 ___
 
 ## Stetch Goals
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] Scan items to input in the database.
+- [ ] Sends notification if inventory is below a certain quantity.
+- [ ] Download + print inventory reports.
+- [ ] Order form send to email.
 ___
 
 ## Code Highlights
@@ -89,5 +111,5 @@ ___
 ___
 
 ## Resources
-- 
+- !
 - 
