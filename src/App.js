@@ -1,24 +1,49 @@
-import { useState, useEffect } from "react"
-import './App.css';
-import { Routes, Route, Link } from "react-router-dom"
+import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import About from './components/pages/About'
-import DrugList from "./components/pages/DrugList"
-import Navibar from "./components/layout/Navibar"
-import Footer from "./components/layout/Footer"
-import axios from "axios"
+// import InventoryList from ".components/pages/InventoryList"
+import Navigation from './components/layout/Navigation'
+import Register from './components/pages/Register';
+import Login from './components/pages/Login';
+import { useState, useEffect } from 'react';
+import jwt_decode from 'jwt-decode'
+import Layout from './components/layout/Layout'
+import Home from './components/pages/Home'
+
 
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null)
+  useEffect(() => { 
+    const token = localStorage.getItem('jwt')
+    if (token) {
+      setCurrentUser(jwt_decode(token))
+    } else {
+      setCurrentUser(null)
+    }
+  }, [])
+
+  const handleLogout = () => {
+    if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
+    setCurrentUser(null)
+  }
+
 
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/about" element={<About />} />
+    <>
+    <BrowserRouter>
+    <Navigation />
+      <Layout>
+      <Routes>        
+        <Route path='/' element={<Home />} />
         <Route path="/search" element={<DrugList />} />
-        {/* <Route path="/search" element={</> */}
-      </Routes>
-    </div>
+        <Route path='/about' element={<About />} />
+        <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+      </Routes>      
+      </Layout>
+    </BrowserRouter>
+    </>
   );
 }
-
-export default App;
+export default App
