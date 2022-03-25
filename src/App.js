@@ -10,7 +10,8 @@ import jwt_decode from 'jwt-decode'
 import Layout from './components/layout/Layout'
 import Home from './components/pages/Home'
 import DashboardOverview from './components/pages/DashboardOverview';
-import DashboardUsers from './components/pages/DashboardUsers';
+// import DashboardUsers from './components/pages/DashboardUsers';
+import DrugList from './components/pages/DrugList.jsx'
 
 
 function App() {
