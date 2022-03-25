@@ -42,7 +42,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 
     return (
         <>
-            <div>
+            <div className='main'>
                 <h3>Register An Account</h3>
 
                 <p>{msg}</p>
