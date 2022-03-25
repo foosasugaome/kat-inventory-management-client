@@ -33,6 +33,8 @@ export default function Login({ currentUser, setCurrentUser }) {
         }
     }
 
+    if (currentUser) return <Navigate to="/dashboard/overview" />
+
     return (
         <div className="main">
             <h3>Login</h3>

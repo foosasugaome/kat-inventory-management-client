@@ -14,6 +14,7 @@ import DashboardUsers from './components/pages/DashboardUsers';
 import AddMedicine from './components/pages/AddMedicine'
 
 
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   useEffect(() => { 
@@ -43,7 +44,8 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-        <Route path="/dashboard/overview" element={<DashboardOverview currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="/dashboard/overview" element={<DashboardOverview handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="/dashboard/users" element={<DashboardUsers currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
       </Routes>      
       </Layout>
     </BrowserRouter>
