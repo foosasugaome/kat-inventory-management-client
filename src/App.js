@@ -12,6 +12,7 @@ import Home from './components/pages/Home'
 import DashboardOverview from './components/pages/DashboardOverview';
 import DashboardUsers from './components/pages/DashboardUsers';
 import AddMedicine from './components/pages/AddMedicine'
+import EditMedicine from './components/pages/EditMedicine'
 
 
 function App() {
@@ -38,7 +39,9 @@ function App() {
       <Layout>
       <Routes>        
         <Route path='/' element={<Home />} />
-        <Route path='/add-medicine' element={<AddMedicine />} />
+        <Route path='/medicine/add' element={<AddMedicine />} />
+        {/* just input a random number to reach the edit page. Need access to medicine list in backend to get actual id. */}
+        <Route path='/medicine/:id/edit' element={<EditMedicine />} />
         <Route path="/search" element={<DrugList />} />
         <Route path='/about' element={<About />} />
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
