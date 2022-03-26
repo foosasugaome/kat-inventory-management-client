@@ -6,7 +6,7 @@ export default function Navigation() {
         <Link to='/'>Dashboard</Link>
         <Link to='/'>Inventory</Link>
         <Link to='/'>Reports</Link>
-        <Link to='/'>About</Link>
+        <Link to='/about'>About</Link>
         <Link to='/logout'>Logout</Link>
         </div>
         </>
