@@ -61,8 +61,8 @@
   height: 100%;
   width: 180px;
   position: fixed;
-  z-index: 1;
-  top: 80px;
+  z-index: 0;
+  top: 60px;
   left: 0;
   background-color: rgb(255, 255, 255);
   overflow-x: hidden;
@@ -71,6 +71,8 @@
   font-weight: 400;
   font-size: 16px;
   color: #818181;
+  border-right: .05rem solid gray;
+  
 }
 .sidenav a {
   /* padding: 6px 8px 6px 16px; */
@@ -80,14 +82,27 @@
   display: block;
   font-weight: 400;
   font-size: 16px;
+  padding: 5px;
+  font-weight:500;
 }
 .sidenav a:hover {
   color: #3da5e0;
+  border: .05rem solid gray;
+  background-color: #3da5e0;
+  border-radius: 5px;
+  color: rgb(240, 248, 255);
+  font-weight:600;
+  border-left: 10px solid rgb(248, 137, 33);
+  
 }
 .main {  
-  margin-left: 180px; 
-  font-size: 28px; 
-  padding: 0px 10px;  
+  margin-left: 190px; 
+  font-size: 16px; 
+  padding: 0px 10px;
+  position: relative;  
+  top: 100px;
+  z-index: 0;
+  left: 20px
 }
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -108,6 +123,7 @@ header{
   display: flex;
   align-items: center;  
   object-fit: fill;
+  z-index: 1;
 }
 
 
@@ -122,4 +138,14 @@ footer{
   justify-content: center;
   display: flex;
   padding: 10px;
+}
+img {
+  height: 100%;
+}
+.card-profile {
+  width: 200px;
+  border: .05rem solid rgb(70, 69, 69)
+}
+.card-img-holder {
+  width:100%;
 }
