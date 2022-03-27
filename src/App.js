@@ -48,7 +48,7 @@ function App() {
     <Navigation handleLogout={handleLogout} isLogged={(currentUser)} />
       <Layout>
       <Routes>        
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<About />} />
         <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/inventory' element={<Inventory />}/>
 

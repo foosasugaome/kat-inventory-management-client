@@ -75,7 +75,7 @@ export default function Login ({ currentUser, setCurrentUser }) {
           </p>
           <button type='submit'>Submit</button>
         </form>        
-        <p>{message ? `the server has a message for you: ${message}` : ''}</p>
+        <p>{message ? `${message}` : ''}</p>
         </div>
       </div>
     </>
