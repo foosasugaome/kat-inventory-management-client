@@ -45,7 +45,7 @@ export default function Login ({ currentUser, setCurrentUser }) {
   }
 
 
-  if (currentUser) return <Navigate to='/' />
+  if (currentUser) return <Navigate to='/dashboard' />
 
   return (
     <>
