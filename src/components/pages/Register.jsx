@@ -6,8 +6,8 @@ import { Navigate } from 'react-router-dom'
 export default function Register({ currentUser, setCurrentUser, setUsers }) {
     const [form, setForm] = useState({
         username: '',
-        firstName: '',
-        lastName: '',
+        firstname: '',
+        lastname: '',
         email: '',
         password: '',
         // manager: false
@@ -17,6 +17,7 @@ export default function Register({ currentUser, setCurrentUser, setUsers }) {
 
     const handleSubmit = async e => {
         e.preventDefault()
+        console.log(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, form)
         try {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, form)
             // get the token from the response
@@ -91,7 +92,7 @@ export default function Register({ currentUser, setCurrentUser, setUsers }) {
                     // placeholder='enter your password...'
                     />
 
-                    <input type="submit" />
+                    <button type="submit" >Submit</button>
                 </form>
             
         </>

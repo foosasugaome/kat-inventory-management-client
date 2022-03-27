@@ -1,7 +1,9 @@
 export default function Home() {
-    return(
+    return(        
         <>
-        Home
+        <div className="flex-container">
+            <h3>Home</h3>
+        </div>        
         </>
     )
 }
