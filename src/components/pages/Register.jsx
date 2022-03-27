@@ -42,7 +42,7 @@ export default function Register({ currentUser, setCurrentUser, setUsers }) {
 
     return (
         <>
-            <div className='main'>
+           
                 <h3>Register An Account</h3>
 
                 <p>{msg}</p>
@@ -93,7 +93,7 @@ export default function Register({ currentUser, setCurrentUser, setUsers }) {
 
                     <input type="submit" />
                 </form>
-            </div>
+            
         </>
     )
 }

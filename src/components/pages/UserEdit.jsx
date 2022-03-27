@@ -34,7 +34,7 @@ export default function UserEdit({ users, setUsers }) {
     }, [manager])
 
     return (
-        <div className='main'>
+        <>
             <h1>User Info</h1> 
             {/* {userInfo} */}
             {foundUser ? 
@@ -49,6 +49,6 @@ export default function UserEdit({ users, setUsers }) {
             <h4>
                 Manager Privileges <input type="checkbox" id="manager" name="manager" checked={manager} onChange={handleManager}></input>
             </h4>
-        </div>
+            </>
     )
 }

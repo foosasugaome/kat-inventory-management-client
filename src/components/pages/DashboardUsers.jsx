@@ -24,11 +24,11 @@ export default function DashboardUsers({ currentUser, users, setUsers }) {
     })
 
     return (
-        <div className="main">
+        <>
             <h2>Dashboard</h2>
             <h4><Link to={`/dashboard/overview`}>Overview</Link> - Users</h4>
 
             {user}
-        </div>
+        </>
     )
 }

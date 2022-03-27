@@ -78,10 +78,10 @@ export default function DrugList () {
         )
     })
     return(
-        <div className="main">
+        <>
             <h1>Druglist</h1>
             {allDrugs}
             <Search search={search} setSearch={setSearch} />
-        </div>
+        </>
     )
 }

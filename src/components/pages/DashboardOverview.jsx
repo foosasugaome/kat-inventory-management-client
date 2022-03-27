@@ -32,11 +32,12 @@ export default function DashboardOverview({ currentUser, handleLogout }) {
     if (!currentUser) return <Navigate to="/login" />
 
     return (
-        <div className="main">
+        <>
             <h2>Dashboard</h2>
             <h4>Overview - <Link to={`/dashboard/users`}>Users</Link></h4>
-
             {inventory}
         </div>
+        </>
+
     )
 }
