@@ -40,7 +40,7 @@ export default function EditMedicine () {
         // axios.put(`url here`, form)
     }
     return(
-        <div className="main">
+        <>
             <h1>Add New Medicine</h1>
 
             <form onSubmit={submitForm}>
@@ -67,6 +67,6 @@ export default function EditMedicine () {
                 
                 <input type="submit" value="Submit" />
             </form>
-        </div>
+        </>
     )
 }

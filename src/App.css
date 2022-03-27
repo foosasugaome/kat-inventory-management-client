@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;  
+}
 .App {
   text-align: center;
 }
@@ -61,8 +66,8 @@
   height: 100%;
   width: 180px;
   position: fixed;
-  z-index: 1;
-  top: 80px;
+  z-index: 0;
+  top: 75px;
   left: 0;
   background-color: rgb(255, 255, 255);
   overflow-x: hidden;
@@ -71,6 +76,8 @@
   font-weight: 400;
   font-size: 16px;
   color: #818181;
+  border-right: .05rem solid gray;
+  
 }
 .sidenav a {
   /* padding: 6px 8px 6px 16px; */
@@ -80,14 +87,28 @@
   display: block;
   font-weight: 400;
   font-size: 16px;
+  padding: 5px;
+  font-weight:500;
+  width: 150px;
 }
 .sidenav a:hover {
   color: #3da5e0;
+  border: .05rem solid gray;
+  background-color: rgb(47,173,148);
+  border-radius: 5px;
+  color: rgb(240, 248, 255);
+  font-weight:600;
+  border-left: 10px solid rgb(248, 137, 33);
+  
 }
-.main {  
-  margin-left: 180px; 
-  font-size: 28px; 
-  padding: 0px 10px;  
+main {  
+  margin-left: 190px; 
+  font-size: 16px; 
+  padding: 0px 10px;
+  position: relative;  
+  top: 80px;
+  z-index: 0;
+  left: 20px
 }
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -102,12 +123,13 @@ header{
   padding: 0;
   color: #fff;
   top: 0;
-  height: 60px;  
+  height: 75px;  
   /* box-shadow: 0px 15px 10px -15px #111;  */
   border-bottom: .05rem solid gray;
   display: flex;
   align-items: center;  
   object-fit: fill;
+  z-index: 1;
 }
 
 
@@ -122,4 +144,30 @@ footer{
   justify-content: center;
   display: flex;
   padding: 10px;
+  z-index: 0;
 }
+.logo{
+  height: 100%;
+}
+.profile-container {
+  display: flex;  
+  justify-content: space-around; 
+  align-items:flex-start;
+  /* flex-flow: row nowrap; */ 
+  flex-direction: row; 
+  flex-wrap: nowrap;   
+  height: 100%;
+  padding: 15px;
+  gap: 5px;
+}
+.img-profile {
+  height: 100%;
+  width: 100%; 
+  border-radius: 5px;
+}
+.card-profile {  
+  width: 200px;
+  border: .05rem solid rgb(163, 159, 159);
+  border-radius: 5px;
+}
+

@@ -68,7 +68,7 @@ export default function DrugList () {
 
     const allDrugs = inventoryList.map((item, idx) => {
         return (
-            <div className="App-header">
+            <div className="main">
                 <h5>{item.drugName}</h5>
                 <p>{item.nameType}</p>
                 <p>{item.brandName}</p>
@@ -82,10 +82,10 @@ export default function DrugList () {
         )
     })
     return(
-        <div className="home">
+        <>
             <h1>Druglist</h1>
             {allDrugs}
             <Search search={search} setSearch={setSearch} />
-        </div>
+        </>
     )
 }

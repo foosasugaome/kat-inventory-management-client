@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
+import { Navigate } from 'react-router-dom'
 
-export default function Register({ currentUser, setCurrentUser }) {
+export default function Register({ currentUser, setCurrentUser, setUsers }) {
     const [form, setForm] = useState({
         username: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
         // manager: false
@@ -15,22 +18,17 @@ export default function Register({ currentUser, setCurrentUser }) {
     const handleSubmit = async e => {
         e.preventDefault()
         try {
-            if (form.password === form.passwordConfirmation) {
-                // remove unneeded data in the form pre-request
-                delete form.passwordConfirmation
-                // do the axios since the passwords match
-                const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, form)
-                // get the token from the response
-                const { token } = response.data
-                // set the token in local storage
-                localStorage.setItem('jwt', token)
-                // decode the token
-                const decoded = jwt_decode(token)
-                // log the user in 
-                setCurrentUser(decoded)
-            } else {
-                setMsg('the two passwords you entered do not match 🥴')
-            }
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, form)
+            // get the token from the response
+            const { token } = response.data
+            // set the token in local storage
+            localStorage.setItem('jwt', token)
+            // decode the token
+            const decoded = jwt_decode(token)
+            // log the user in 
+            setCurrentUser(decoded)
+            return axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
+            .then(response => setUsers(response.data))
         } catch (err) {
             if (err.response.status === 409) {
                 setMsg(err.response.data.msg)
@@ -40,9 +38,11 @@ export default function Register({ currentUser, setCurrentUser }) {
         }
     }
 
+    if (currentUser) return <Navigate to="/dashboard/overview" />
+
     return (
         <>
-            <div className='main'>
+           
                 <h3>Register An Account</h3>
 
                 <p>{msg}</p>
@@ -54,8 +54,25 @@ export default function Register({ currentUser, setCurrentUser }) {
                     id="username"
                     value={form.username}
                     onChange={e => setForm({ ...form, username: e.target.value })}
-                    // placeholder='enter your username...'
                     />
+
+                    <label htmlFor="firstname">First Name:</label>
+                    <input 
+                    type="text"
+                    id="firstname"
+                    value={form.firstname}
+                    onChange={e => setForm({ ...form, firstname: e.target.value })}
+                    />
+
+
+                    <label htmlFor="lastname">Last Name:</label>
+                    <input 
+                    type="text"
+                    id="lastname"
+                    value={form.lastname}
+                    onChange={e => setForm({ ...form, lastname: e.target.value })}
+                    />
+
                     <label htmlFor="email">Email:</label>
                     <input 
                     type="email"
@@ -74,17 +91,9 @@ export default function Register({ currentUser, setCurrentUser }) {
                     // placeholder='enter your password...'
                     />
 
-                    {/* <label htmlFor="manager">Manager:</label>
-                    <input 
-                    type="radio"
-                    id="manager"
-                    value={form.manager}
-                    onChange={e => setForm({ ...form, manager: e.target.value })}
-                    /> */}
-
                     <input type="submit" />
                 </form>
-            </div>
+            
         </>
     )
 }

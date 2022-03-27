@@ -13,10 +13,16 @@ import DashboardOverview from './components/pages/DashboardOverview';
 import DashboardUsers from './components/pages/DashboardUsers';
 import AddMedicine from './components/pages/AddMedicine'
 import EditMedicine from './components/pages/EditMedicine'
+import UserEdit from './components/pages/UserEdit'
+import axios from 'axios'
+
 
 
 function App() {
+
   const [currentUser, setCurrentUser] = useState(null)
+  const [users, setUsers] = useState([])
+
   useEffect(() => { 
     const token = localStorage.getItem('jwt')
     if (token) {
@@ -24,6 +30,11 @@ function App() {
     } else {
       setCurrentUser(null)
     }
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
+    .then(response => {
+        setUsers(response.data)
+    })
+    .catch(console.log)
   }, [])
 
   const handleLogout = () => {
@@ -31,11 +42,21 @@ function App() {
     setCurrentUser(null)
   }
 
+  // lifted state and combined the useEffects into 1
+  // const [users, setUsers] = useState([])
+  // useEffect(() => {
+  //     axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
+  //         .then(response => {
+  //             setUsers(response.data)
+  //         })
+  //         .catch(console.log)
+  // }, [])
+
 
   return (
     <>
     <BrowserRouter>
-    <Navigation />
+    <Navigation handleLogout={handleLogout}/>
       <Layout>
       <Routes>        
         <Route path='/' element={<Home />} />
@@ -44,9 +65,11 @@ function App() {
         <Route path='/medicine/:id/edit' element={<EditMedicine />} />
         <Route path="/search" element={<DrugList />} />
         <Route path='/about' element={<About />} />
-        <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path="/dashboard/overview" element={<DashboardOverview currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="/dashboard/users" element={<DashboardUsers currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
+        <Route path="/dashboard/users/:id" element={<UserEdit currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUser={setUsers} />} />
       </Routes>      
       </Layout>
     </BrowserRouter>
