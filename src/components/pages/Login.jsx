@@ -10,34 +10,42 @@ export default function Login ({ currentUser, setCurrentUser }) {
   })
 
   const [message, setMessage] = useState('')
+//   console.log(form.email)
 
   const handleFormSubmit = async e => {
     e.preventDefault()
     try {
       
-      // post to the backend with the form data to login
-      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`,form)
-      console.log(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`)
-      console.log(response.data)
-      // decode the token that is sent to use
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`,
+        form)
+        
+    
+      // decode the token that is sent to me
       const { token } = response.data
       const decoded = jwt_decode(token)
-      // save the token in localstorage
+    //   console.log(decoded)
+
+      // save the token in localStorage
       localStorage.setItem('jwt', token)
-      // set the app state to the logged in user
+
+      // sets the app state to the logged in user
       setCurrentUser(decoded)
-      console.log(response.data)
+
     } catch (err) {
-      // handle errors suchs as wrong credentials
-      if (err.response.status === 409) {
-        console.log(err.response.data)
-        setMessage(err.response.data.msg)
-      }
       console.log(err)
+      if(err.response.status === 409 || err.response.status === 406) {
+            // console.log(err.response.data)
+            setMessage('Invalid login credentials.')
+            // console.log(err.response.data.message)
+        }
+      
+    //   console.log(message)
     }
   }
 
-  if (currentUser) return <Navigate to='/dashboard/overview' />
+
+  if (currentUser) return <Navigate to='/' />
 
   return (
     <>

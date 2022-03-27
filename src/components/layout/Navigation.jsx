@@ -11,7 +11,10 @@ export default function Navigation({ handleLogout, isLogged }) {
                 <Link to="/"><span onClick={handleLogout}>Logout</span></Link>
                 </div>
             :
-                <></>
+                <div className="sidenav">
+                    <Link to='/register'>Register</Link>
+                    <Link to='/login'>Login</Link>
+                </div>
             )
         }        
         </>
