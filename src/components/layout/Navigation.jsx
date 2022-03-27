@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom"
-export default function Navigation({ handleLogout }) {
+export default function Navigation({ handleLogout, isLogged }) {
     return(
         <>
-        <div className="sidenav" >
-        <Link to='/dashboard/overview'>Dashboard</Link>
-        <Link to='/'>Inventory</Link>
-        <Link to='/'>Reports</Link>
-        <Link to='/about'>About</Link>
-        <Link to="/">
-            <span onClick={handleLogout}>Logout</span>
-        </Link>
-        </div>
+        {
+            (isLogged ? 
+                <div className="sidenav" >
+                <Link to='/dashboard'>Dashboard</Link>
+                <Link to='/'>Inventory</Link>
+                <Link to='/'>Reports</Link>        
+                <Link to="/"><span onClick={handleLogout}>Logout</span></Link>
+                </div>
+            :
+                <></>
+            )
+        }        
         </>
     )
 }
