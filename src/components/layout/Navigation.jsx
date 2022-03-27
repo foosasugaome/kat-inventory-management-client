@@ -6,8 +6,8 @@ export default function Navigation({ handleLogout, isLogged }) {
             (isLogged ? 
                 <div className="sidenav" >
                 <Link to='/dashboard'>Dashboard</Link>
-                <Link to='/'>Inventory</Link>
-                <Link to='/'>Reports</Link>        
+                <Link to='/inventory'>Inventory</Link>
+                <Link to='/reports'>Reports</Link>        
                 <Link to="/"><span onClick={handleLogout}>Logout</span></Link>
                 </div>
             :

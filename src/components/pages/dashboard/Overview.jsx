@@ -16,7 +16,7 @@ export default function Overview({ currentUser }) {
 
     const inventory = inventories.map((inventory, index) => {
         return (
-            <div className="flex-container" key={`id-${index}`}>
+            <div key={`id-${index}`}>
                 <h2>Brand: {inventory.brandName}</h2>
                 <h4>Stock: </h4>
                 <h4>{inventory.genericName}</h4> 
