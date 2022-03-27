@@ -221,32 +221,35 @@ input:focus {
 }
 .button-nav {
   border: 0.05rem solid gray;
-  background-color: rgb(190, 190, 189);
+  background-color: rgb(243, 243, 240);
   font-weight: 400;
   padding: 5px;
   width: 150px;
   color: #818181;
-  border-bottom: 0px;
+  border-radius: 5px;  
+  margin: 2px;
 }
 .button-nav-selected {
   color: #3da5e0;
   border: 0.05rem solid gray;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(47, 173, 148);
   border-radius: 0px;
-  color: rgb(0, 0, 0);
+  color: rgb(240, 248, 255);  
   font-weight: 400;
   padding: 5px;
-  width: 150px;
-  border-bottom: 0px;
+  width: 150px;  
   z-index: 1;
+  border-radius: 5px;  
+  margin: 2px;
 }
 .button-nav:hover {
   color: #3da5e0;
   border: 0.05rem solid gray;
   background-color: rgb(47, 173, 148);
   border-radius: 0px;
-  color: rgb(240, 248, 255);
-  border-bottom: 0px;
+  color: rgb(240, 248, 255);  
+  border-radius: 5px;  
+  margin: 2px;
 }
 .grid-container {
   display: grid;
@@ -270,6 +273,8 @@ input:focus {
   margin-left: 0px;
   margin-right: 0;
   border: 0.05rem solid gray;
+  border-radius: 5px;
+  margin-top: 3px;
 }
 table {
   border: 0.05rem solid gray;
