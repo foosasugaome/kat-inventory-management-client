@@ -63,7 +63,7 @@ export default function EditMedicine () {
                 <input type="text" name="usedFor" id="usedFor" value={medicineToEdit.genericName} onChange={(e) => {setForm({...form, usedFor: e.target.value})}}/>
 
                 <label htmlFor="unitCount">Unit Count: </label>
-                <input type="number" name="unitCount" id="unitCount" value={medicineToEdit.genericName} onChange={(e) => {setForm({...form, unitCount: e.target.value})}}/>
+                <input type="number" name="unitCount" id="unitCount" value={medicineToEdit.unitCount} onChange={(e) => {setForm({...form, unitCount: e.target.value})}}/>
                 
                 <input type="submit" value="Submit" />
             </form>
