@@ -20,7 +20,7 @@ export default function DashboardOverview({ currentUser, handleLogout }) {
     if (!currentUser) return <Navigate to="/login" />
 
     return (
-        <div className="main">
+        <>
             <h2>Dashboard</h2>
             <h3>Overview</h3>
             <h4><Link to={`/dashboard/users`}>Users</Link></h4>
@@ -30,6 +30,6 @@ export default function DashboardOverview({ currentUser, handleLogout }) {
                     <span onClick={handleLogout}>Logout</span>
                 </Link>
             </h4>
-        </div>
+        </>
     )
 }

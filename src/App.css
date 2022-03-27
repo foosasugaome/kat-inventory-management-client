@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;  
+}
 .App {
   text-align: center;
 }
@@ -96,12 +101,12 @@
   border-left: 10px solid rgb(248, 137, 33);
   
 }
-.main {  
+main {  
   margin-left: 190px; 
   font-size: 16px; 
   padding: 0px 10px;
   position: relative;  
-  top: 100px;
+  top: 60px;
   z-index: 0;
   left: 20px
 }
@@ -141,14 +146,28 @@ footer{
   padding: 10px;
   z-index: 0;
 }
-img {
+.logo{
   height: 100%;
-  width: 100%;
 }
-.card-profile {
+.profile-container {
+  display: flex;  
+  justify-content: space-around; 
+  align-items:flex-start;
+  /* flex-flow: row nowrap; */ 
+  flex-direction: row; 
+  flex-wrap: nowrap;   
+  height: 100%;
+  padding: 15px;
+  gap: 5px;
+}
+.img-profile {
+  height: 100%;
+  width: 100%; 
+  border-radius: 5px;
+}
+.card-profile {  
   width: 200px;
-  border: .05rem solid rgb(70, 69, 69)
+  border: .05rem solid rgb(163, 159, 159);
+  border-radius: 5px;
 }
-.card-img-holder {
-  width:100%;
-}
+

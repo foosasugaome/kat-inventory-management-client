@@ -36,7 +36,7 @@ export default function Login({ currentUser, setCurrentUser }) {
     if (currentUser) return <Navigate to="/dashboard/overview" />
 
     return (
-        <div className="main">
+        <>
             <h3>Login</h3>
             {/* <p>{msg ? `the server has a message for you: ${msg}` : ''}</p> */}
             <form onSubmit={handleFormSubmit}>
@@ -58,6 +58,6 @@ export default function Login({ currentUser, setCurrentUser }) {
     
             <input type="submit" />
             </form>
-        </div>
+        </>
     )
 }
