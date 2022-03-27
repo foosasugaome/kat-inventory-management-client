@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import About from './components/pages/About'
 import DrugList from "./components/pages/DrugList"
 import Navigation from './components/layout/Navigation'
