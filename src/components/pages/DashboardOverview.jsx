@@ -1,20 +1,23 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect} from 'react'
 import axios from "axios"
+import { Navigate } from "react-router-dom"
 
-export default function DashboardOverview({ handleLogout }) {
+export default function DashboardOverview({ currentUser, handleLogout }) {
 
     const [inventory, setInventory] = useState([])
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/overview`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)
             .then(response => {
                 setInventory(response.data)
-                // return axios.get(process.env.REACT_APP_SERVER_URL + '/blog')
             })
-            // .then(response => setBlogs(response.data)) // this is changing the parent state, which causes the re-render
             .catch(console.log)
     }, [])
+
+    // const singleInventory = inventory.map()
+
+    if (!currentUser) return <Navigate to="/login" />
 
     return (
         <div className="main">
@@ -24,7 +27,7 @@ export default function DashboardOverview({ handleLogout }) {
             <h4>
                 <Link to="/">
                     {/* todo: app function to logout */}
-                    <span onClick={handleLogout}>log out</span>
+                    <span onClick={handleLogout}>Logout</span>
                 </Link>
             </h4>
         </div>
