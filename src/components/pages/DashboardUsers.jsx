@@ -5,18 +5,16 @@ import { Navigate } from "react-router-dom"
 
 export default function DashboardUsers({ currentUser, users, setUsers }) {
 
-    // lifted state
-    // const [users, setUsers] = useState([])
-
-    let input = ''
-
     const user = users.map((user, index) => {
+        // don't display admin as a user so that manager privileges cannot be changed
+        if (user.username === 'admin') {
+            return
+        }
         return (
             <div key={`user-key${index}`}>
                 <h5>
                     {user.username} - {user.email}
-
-                    {currentUser.username === 'admin' ? 
+                    {currentUser.manager === true ? 
                         <button><Link to={`/dashboard/users/${user._id}`}>Edit User</Link></button> :
                         null
                     }
@@ -28,8 +26,7 @@ export default function DashboardUsers({ currentUser, users, setUsers }) {
     return (
         <>
             <h2>Dashboard</h2>
-            <h3>Users</h3>
-            <h4><Link to={`/dashboard/overview`}>Overview</Link></h4>
+            <h4><Link to={`/dashboard/overview`}>Overview</Link> - Users</h4>
 
             {user}
         </>

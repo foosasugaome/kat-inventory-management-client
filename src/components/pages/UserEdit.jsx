@@ -6,9 +6,13 @@ export default function UserEdit({ users, setUsers }) {
 
     const { id } = useParams()
 
+    const foundUser = users.find(user => {
+        return user._id === id
+    })
+
     const [manager, setManager] = useState(false);
 
-    console.log(manager)
+    // console.log(manager)
 
     const handleManager = () => {
         setManager(!manager)
@@ -28,22 +32,6 @@ export default function UserEdit({ users, setUsers }) {
             console.log(response.data)
         })
     }, [manager])
-    
-    const foundUser = users.find(user => {
-        return user._id === id
-    })
-
-    // let userInfo = <></>
-    // // to let the foundUser information load first
-    // if (foundUser) {
-    //     userInfo = (
-    //         <>
-    //             <h4>Username: {foundUser.username}</h4>
-    //             <h4>Name: {foundUser.lastname}, {foundUser.firstname}</h4>
-    //             <h4>Email: {foundUser.email}</h4>
-    //         </>
-    //     )
-    // }
 
     return (
         <>
