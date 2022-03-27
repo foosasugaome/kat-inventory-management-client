@@ -5,31 +5,38 @@ import { Navigate } from "react-router-dom"
 
 export default function DashboardOverview({ currentUser, handleLogout }) {
 
-    const [inventory, setInventory] = useState([])
+    const [inventories, setInventories] = useState([])
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)
             .then(response => {
-                setInventory(response.data)
+                setInventories(response.data)
             })
             .catch(console.log)
     }, [])
 
-    // const singleInventory = inventory.map()
+    const inventory = inventories.map((inventory, index) => {
+        return (
+            <div>
+                <h2>Brand: {inventory.brandName}</h2>
+                <h4>Stock: </h4>
+                {/* <h4>{inventory.genericName}</h4> */}
+                {/* <h4>Manufacturer: {inventory.manufacturerName}</h4>
+                <h4>Product Type: {inventory.productType}</h4>
+                <h4>Route: {inventory.route}</h4> */}
+                {/* <h4>{inventory.transactions}</h4> */}
+            </div>
+        )
+    })
 
     if (!currentUser) return <Navigate to="/login" />
 
     return (
         <div className="main">
             <h2>Dashboard</h2>
-            <h3>Overview</h3>
-            <h4><Link to={`/dashboard/users`}>Users</Link></h4>
-            <h4>
-                <Link to="/">
-                    {/* todo: app function to logout */}
-                    <span onClick={handleLogout}>Logout</span>
-                </Link>
-            </h4>
+            <h4>Overview - <Link to={`/dashboard/users`}>Users</Link></h4>
+
+            {inventory}
         </div>
     )
 }
