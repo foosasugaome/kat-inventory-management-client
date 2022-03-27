@@ -1,28 +1,26 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect} from 'react'
 import axios from "axios"
+import { Navigate } from "react-router-dom"
 
-export default function DashboardUsers() {
+export default function DashboardUsers({ currentUser, users, setUsers }) {
 
-    const [users, setUsers] = useState([])
-    const [showUsers, setShowUsers] = useState([])
+    // lifted state
+    // const [users, setUsers] = useState([])
 
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
-            .then(response => {
-                setUsers(response.data)
-            })
-            .catch(console.log)
-    }, [])
+    let input = ''
 
     const user = users.map((user, index) => {
         return (
             <div key={`user-key${index}`}>
                 <h5>
                     {user.username} - {user.email}
-                    <button>Assign Role</button>
+
+                    {currentUser.username === 'admin' ? 
+                        <button><Link to={`/dashboard/users/${user._id}`}>Edit User</Link></button> :
+                        null
+                    }
                 </h5>
-                
             </div>
         )
     })

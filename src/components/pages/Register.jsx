@@ -3,7 +3,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import { Navigate } from 'react-router-dom'
 
-export default function Register({ currentUser, setCurrentUser }) {
+export default function Register({ currentUser, setCurrentUser, setUsers }) {
     const [form, setForm] = useState({
         username: '',
         firstName: '',
@@ -27,6 +27,8 @@ export default function Register({ currentUser, setCurrentUser }) {
             const decoded = jwt_decode(token)
             // log the user in 
             setCurrentUser(decoded)
+            return axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
+            .then(response => setUsers(response.data))
         } catch (err) {
             if (err.response.status === 409) {
                 setMsg(err.response.data.msg)
