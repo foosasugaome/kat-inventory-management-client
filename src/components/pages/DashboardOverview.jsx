@@ -33,6 +33,7 @@ export default function DashboardOverview({ currentUser, handleLogout }) {
 
     return (
         <>
+        <div className="flex-container">
             <h2>Dashboard</h2>
             <h4>Overview - <Link to={`/dashboard/users`}>Users</Link></h4>
             {inventory}
