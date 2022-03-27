@@ -1,4 +1,5 @@
 import Search from "../Search";
+import InventoryList from "./inventory/InventoryList";
 
 export default function Inventory() {
     return(
@@ -8,6 +9,7 @@ export default function Inventory() {
         </div>
         <div className="flex-container">
             <Search />
+            <InventoryList />
         </div>
         </>
     )
