@@ -11,6 +11,7 @@ import Layout from './components/layout/Layout'
 import Home from './components/pages/Home'
 import DashboardOverview from './components/pages/dashboard/DashboardOverview';
 import DashboardUsers from './components/pages/DashboardUsers';
+import Dashboard from './components/pages/dashboard/Dashboard'
 import AddMedicine from './components/pages/AddMedicine'
 import EditMedicine from './components/pages/EditMedicine'
 import UserEdit from './components/pages/UserEdit'
