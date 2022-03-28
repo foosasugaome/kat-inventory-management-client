@@ -9,18 +9,9 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
         return user._id === id
     })
 
-    console.log("Found User", foundUser)
-
-    // const [manager, setManager] = useState(foundUser.manager);
     const [form, setForm] = useState({})
 
     const handleManager = () => {
-        // setManager(!manager)
-        // if (manager === true) {
-        //     console.log('manager')
-        // } else {
-        //     console.log('not manager')
-        // }
         const managerStatus = {
             manager: !foundUser.manager
         }
@@ -31,18 +22,8 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
         })
     };
 
-    // useEffect(() => {
-    //     const managerStatus = {
-    //         manager: manager
-    //     }
-    //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${id}`, managerStatus)
-    //     .then(response => {
-    //         console.log(response.data)
-    //     })
-    // }, [manager])
-
-    // console.log("CurrentUser", currentUser)
-    // console.log("Found User ", foundUser)
+    console.log("CurrentUser", currentUser)
+    console.log("Found User ", foundUser)
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -73,7 +54,22 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
                     <h4>Username: {foundUser.username}</h4>
                     <h4>Name: {foundUser.firstname} {foundUser.lastname}</h4>
                     <h4>Email: {foundUser.email}</h4>
-                    <h4>Manager Privileges: 
+                    {currentUser.manager === true ?
+                        <>
+                            <h4>Manager Privileges: 
+                                <input 
+                                    type="checkbox" 
+                                    id="manager" 
+                                    name="manager" 
+                                    checked={foundUser.manager} 
+                                    onChange={handleManager}>
+                                </input>
+                            </h4>
+                        </>
+                        :
+                        <></>
+                    }
+                    {/* <h4>Manager Privileges: 
                         <input 
                             type="checkbox" 
                             id="manager" 
@@ -81,7 +77,7 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
                             checked={foundUser.manager} 
                             onChange={handleManager}>
                         </input>
-                    </h4>
+                    </h4> */}
                 </>
                 :
                 <></>

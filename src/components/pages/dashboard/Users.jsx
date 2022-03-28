@@ -30,14 +30,16 @@ export default function Users({ currentUser }) {
                user.manager ? '✅': ' ' 
             }</td>
         <td className='centered-element'>
-            { currentUser.manager === true ?
+          {  user.username === 'admin' ? ' ' : <button><Link to={`/dashboard/${user._id}`}>Edit</Link></button>
+          }
+            {/* { currentUser.manager === true ?
               <>
                 {  user.username === 'admin' ? ' ' : <button><Link to={`/dashboard/${user._id}`}>Edit</Link></button>
                 }
               </>
               :
               <></>
-            }
+            } */}
         </td>
       </tr>
     )
