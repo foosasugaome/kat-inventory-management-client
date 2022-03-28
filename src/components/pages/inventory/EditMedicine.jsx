@@ -47,7 +47,7 @@ export default function EditMedicine () {
     }
     return(
         <>
-            <h1>Add New Medicine</h1>
+            <h1>Edit Medicine</h1>
 
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>

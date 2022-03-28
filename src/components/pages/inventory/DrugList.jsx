@@ -98,7 +98,7 @@ export default function DrugList () {
         <>
             <h1>Druglist</h1>
             {allDrugs}
-            <Search search={search} setSearch={setSearch} />
+            {/* <Search search={search} setSearch={setSearch} /> */}
         </>
     )
 }
