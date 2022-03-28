@@ -3,21 +3,21 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 
-export default function EditMedicine () {
+export default function EditMedicine ({medicineToEdit, setMedicineToEdit}) {
     
 
     //This is just placeholder medicine to edit. This is going to be replaced by the medicine specific to the id params.
-    const [medicineToEdit, setMedicineToEdit] = useState({
-        genericName: "",
-        brandName: "",
-        manufacturerName: "",
-        productType: "",
-        route: "",
-        usedFor: "",
-        unitCount: 0
-    }
+    // const [editForm, setMedicineToEdit] = useState({
+    //     genericName: "",
+    //     brandName: "",
+    //     manufacturerName: "",
+    //     productType: "",
+    //     route: "",
+    //     usedFor: "",
+    //     unitCount: 0
+    // }
         
-    )
+    // )
 
     const { id } = useParams()
 
@@ -47,7 +47,7 @@ export default function EditMedicine () {
     }
     return(
         <>
-            <h1>Add New Medicine</h1>
+            <h1>Edit Medicine</h1>
 
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>

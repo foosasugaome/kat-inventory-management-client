@@ -1,8 +1,28 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Search from '../Search'
+import axios from "axios"
+import AddMedicine from "./inventory/AddMedicine"
+import EditMedicine from "./inventory/EditMedicine"
+import DrugList from "./inventory/DrugList"
 
 export default function Inventory () {
     const [selectedComponent, setSelectedComponent] = useState('0')
+    const [searchResults, setSearchResults] = useState([])
+    const [search, setSearch] = useState("paracetamol")
+    const [inventoryList, setInventoryList] = useState([])
+
+    const [medicineToEdit, setMedicineToEdit] = useState({}) //this is where I'll store the medicine to edit including it's id.
+
+//I moved this useEffect from DrugList to Inventory.jsx so I can pass it down to it's children components.
+    useEffect(() => {
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)
+          .then(response => {
+              setInventoryList(response.data)
+              // console.log(response.data)
+          })
+  },[])
+
+    
   return (
     <>
       <div className='flex-container'>
@@ -20,8 +40,20 @@ export default function Inventory () {
         </div>
       </div>
       <div className='tab-container'>
-        <Search />
+      <Search />
 
+
+{/* Had to do multiple ternaries since ternaries only take 2 conditions (Justin) */}
+      {
+        selectedComponent == 0 ? <AddMedicine /> : null
+      }
+      {
+        selectedComponent == 1 ? <EditMedicine medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit}/> : null
+      }
+      {
+        selectedComponent == 2 ? <DrugList inventoryList={inventoryList} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
+      }
+   
       </div>
     </>
   )

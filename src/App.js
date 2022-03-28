@@ -46,6 +46,7 @@ function App() {
     <Navigation handleLogout={handleLogout} isLogged={(currentUser)} />
       <Layout>
       <Routes>       
+
        
         <Route path='/' element={<About />} />
         <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} currentUserId={currentUserId} setCurrentUserId={setCurrentUserId}/>} />
@@ -56,6 +57,7 @@ function App() {
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/searchapi' element={<SearchApi />} />
       
+
       </Routes>      
       </Layout>
     </BrowserRouter>
