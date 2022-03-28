@@ -9,12 +9,13 @@ import { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode'
 import Layout from './components/layout/Layout'
 import Home from './components/pages/Home'
-import DashboardOverview from './components/pages/DashboardOverview';
+import DashboardOverview from './components/pages/dashboard/DashboardOverview';
 import DashboardUsers from './components/pages/DashboardUsers';
 import AddMedicine from './components/pages/AddMedicine'
 import EditMedicine from './components/pages/EditMedicine'
 import UserEdit from './components/pages/UserEdit'
 import axios from 'axios'
+import Inventory from './components/pages/Inventory'
 
 
 
@@ -52,6 +53,13 @@ function App() {
   //         .catch(console.log)
   // }, [])
 
+//   useEffect(() => {
+//     axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)
+//         .then(response => {
+//             console.log(response.data)
+//         })
+// },[])
+
 
   return (
     <>
@@ -65,6 +73,8 @@ function App() {
         <Route path='/medicine/:id/edit' element={<EditMedicine />} />
         <Route path="/search" element={<DrugList />} />
         <Route path='/about' element={<About />} />
+        {/* adding route for inventory here */}
+        {/* <Route path='/inventory' element={<Inventory />} /> */}
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path="/dashboard/overview" element={<DashboardOverview currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
