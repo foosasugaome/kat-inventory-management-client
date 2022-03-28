@@ -4,6 +4,7 @@ import axios from "axios"
 import AddMedicine from "./inventory/AddMedicine"
 import EditMedicine from "./inventory/EditMedicine"
 import DrugList from "./inventory/DrugList"
+import SearchApi from '../SearchApi'
 
 export default function Inventory () {
     const [selectedComponent, setSelectedComponent] = useState('0')
@@ -40,18 +41,23 @@ export default function Inventory () {
         </div>
       </div>
       <div className='tab-container'>
-      <Search />
+      {/* <Search />g */}
 
 
 {/* Had to do multiple ternaries since ternaries only take 2 conditions (Justin) */}
       {
-        selectedComponent == 0 ? <AddMedicine /> : null
+        selectedComponent === '0' ? <SearchApi /> : null
+      }
+      
+      {
+        selectedComponent === '0' ? <AddMedicine /> : null
+      }
+      
+      {
+        selectedComponent === '1' ? <EditMedicine medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit}/> : null
       }
       {
-        selectedComponent == 1 ? <EditMedicine medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit}/> : null
-      }
-      {
-        selectedComponent == 2 ? <DrugList inventoryList={inventoryList} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
+        selectedComponent === '2' ? <DrugList inventoryList={inventoryList} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
       }
    
       </div>

@@ -193,11 +193,15 @@ label {
   padding: 0;
 }
 .form-container {
-  border: 0.05rem solid rgb(204, 201, 201);
+  /* border: 0.05rem solid rgb(204, 201, 201); */
   padding: 20px;
   width: fit-content;
-  border-top: 25px solid rgb(204, 201, 201);
-  width: 200px;
+  /* border-top: 25px solid rgb(204, 201, 201); */
+  width: 200px;  
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
 }
 h1,
 h2,
@@ -210,9 +214,19 @@ input {
   font-weight: 400;
   padding: 5px;
   border-radius: 2px;
+  margin: 3px;
+  min-width: 200px;
 }
 input:focus {
   border: 0.05rem solid rgb(47, 173, 148);
+}
+select {
+  border: 0.05rem solid rgb(204, 201, 201);
+  color: rgb(0, 0, 0);
+  font-weight: 400;
+  padding: 5px;  
+  margin: 3px;
+  min-width: 200px;
 }
 .flex-menu-container {
   width: 98%;
