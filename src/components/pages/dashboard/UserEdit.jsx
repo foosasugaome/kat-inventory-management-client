@@ -11,16 +11,16 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
 
     console.log("Found User", foundUser)
 
-    const [manager, setManager] = useState(foundUser.manager);
+    // const [manager, setManager] = useState(foundUser.manager);
     const [form, setForm] = useState({})
 
     const handleManager = () => {
-        setManager(!manager)
-        if (manager === true) {
-            console.log('manager')
-        } else {
-            console.log('not manager')
-        }
+        // setManager(!manager)
+        // if (manager === true) {
+        //     console.log('manager')
+        // } else {
+        //     console.log('not manager')
+        // }
         const managerStatus = {
             manager: !foundUser.manager
         }
@@ -65,7 +65,7 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
     }
 
     return (
-        <>
+        <div>
             <h2>User Info</h2> 
 
             {foundUser && currentUser ? 
@@ -131,6 +131,6 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
                 : 
                 <></>
             }
-        </>
+        </div>
     )
 }

@@ -16,25 +16,56 @@ export default function Overview({ currentUser }) {
 
     const inventory = inventories.map((inventory, index) => {
         return (
-            <div key={`id-${index}`}>
-                <h2>Brand: {inventory.brandName}</h2>
-                <h4>Stock: {inventory.unitCount}</h4>
-                <h4>Generic Name : {inventory.genericName}</h4> 
-                <h4>Manufacturer: {inventory.manufacturerName}</h4>
-                <h4>Product Type: {inventory.productType}</h4>
-                <h4>Route: {inventory.route}</h4>
-                <h4>{inventory.transactions}</h4>
-                <h4>Unit Count: {inventory.unitCount}</h4>
-            </div>
+            <tr key={`id-${index}`}>
+                <td>{inventory.brandName}</td>
+                <td>{inventory.unitCount}</td>
+            </tr>
         )
     })
+
+    const lowStock = inventories.map((inventory, index) => {
+        return (
+            <tr key={`id-${index}`}>
+                {inventory.unitCount < 11 ? 
+                    <>
+                        <td>{inventory.brandName}</td>
+                        <td>{inventory.unitCount}</td>
+                    </>
+                    :
+                    <></>
+                }
+            </tr>
+        )
+    })
+    
+    console.log(inventory)
 
     if (!currentUser) return <Navigate to="/login" />
 
     return (
-        <>
-            {inventory}
-        </>
+        <div>
+            <h3>Low Stock Inventory</h3>
+            <div className='flex-container'>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Stock</th>
+                    </tr>
+                    {lowStock}
+                </table>
+            </div>
+
+            <h3>All Inventory</h3>
+            <div className='flex-container'>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Stock</th>
+                    </tr>
+                    {inventory}
+                </table>
+            </div>
+        </div>
 
     )
 }
