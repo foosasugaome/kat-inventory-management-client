@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 
 
-export default function AddMedicine () {
+export default function AddMedicine ({inventoryList, setInventoryList}) {
     
     const [form, setForm] = useState({
         genericName: "",
@@ -18,7 +18,11 @@ export default function AddMedicine () {
     const submitForm = (e) => {
         e.preventDefault()
         console.log(form)
-        // axios.post(`url here`, form)
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`, form)
+            .then(response => {
+                console.log(inventoryList, response.data)
+                setInventoryList([...inventoryList, form])
+            })
     }
     return(
         <div className="main">
