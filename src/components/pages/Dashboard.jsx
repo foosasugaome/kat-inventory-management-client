@@ -7,7 +7,7 @@ export default function Dashboard ({ currentUser, setCurrentUser }) {
   return (
     <>
       <div className='flex-container'>          
-        <h3>Dashboard</h3>
+        <h2>Dashboard</h2>
       </div>
       <div className='flex-menu-container'>
         <div>

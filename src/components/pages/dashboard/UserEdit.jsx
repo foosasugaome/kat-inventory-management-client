@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function UserEdit({ currentUser, setCurrentUser, users }) {
+export default function UserEdit({ currentUser, setCurrentUser, users, setUsers }) {
 
     const { id } = useParams()
     const [manager, setManager] = useState(false);
-    const [form, setForm] = useState(currentUser)
+    const [form, setForm] = useState({})
 
     const foundUser = users.find(user => {
         return user._id === id
@@ -36,12 +36,19 @@ export default function UserEdit({ currentUser, setCurrentUser, users }) {
 
     const handleSubmit = async e => {
         e.preventDefault()
+        console.log('submit clicked')
         try {
-            await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/:id`, form)
+            await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${id}`, form)
             .then(response => {
                 console.log(response.data)
+                setForm({
+                    firstname: '',
+                    lastname: '',
+                    password: ''
+                })
                 return axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
             })
+            .then(response => setUsers(response.data))
         } catch (err) {
             console.log(err)
         }
@@ -49,8 +56,8 @@ export default function UserEdit({ currentUser, setCurrentUser, users }) {
 
     return (
         <>
-            <h1>User Info</h1> 
-            {/* {userInfo} */}
+            <h2>User Info</h2> 
+
             {foundUser && currentUser ? 
                 <>
                     <h4>Username: {foundUser.username}</h4>
@@ -70,7 +77,7 @@ export default function UserEdit({ currentUser, setCurrentUser, users }) {
                 <></>
             }
 
-            {currentUser && foundUser ? 
+            {foundUser && currentUser ? 
                 <>
                     {foundUser._id === currentUser.id ?
                         <>
