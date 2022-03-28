@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Search from '../Search'
-import About from './About'
+import axios from "axios"
 import AddMedicine from "./inventory/AddMedicine"
 import EditMedicine from "./inventory/EditMedicine"
 import DrugList from "./inventory/DrugList"
@@ -9,33 +9,20 @@ import DrugList from "./inventory/DrugList"
 
 export default function Inventory () {
     const [selectedComponent, setSelectedComponent] = useState('0')
-    // const [currentComponent, setCurrentComponent] = useState()
+    const [searchResults, setSearchResults] = useState([])
+    const [search, setSearch] = useState("paracetamol")
+    const [inventoryList, setInventoryList] = useState([])
 
-    // let currentComponent;
-    // const getSelectedComponent = (num) => {
-    //   setSelectedComponent(num)
-    //   if (selectedComponent === "0") {
-    //     console.log(currentComponent)
-    //     return  <AddMedicine />
-        
-    //   } else if (selectedComponent === "1") {
-    //     console.log(currentComponent)
-    //   currentComponent = <EditMedicine />
-    //   } else {
-    //     console.log(currentComponent)
-    //     currentComponent = <About />
-    //   }
-    // }
+    const [medicineToEdit, setMedicineToEdit] = useState({}) //this is where I'll store the medicine to edit including it's id.
 
-    // let currentComponent = function () {
-    //   if(selectedComponent == 0) {
-    //     return <AddMedicine />
-    //   } else if (selectedComponent == 2) {
-    //     return <EditMedicine />
-    //   } else {
-    //     return null
-    //   }
-    // }
+//I moved this useEffect from DrugList to Inventory.jsx so I can pass it down to it's children components.
+    useEffect(() => {
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)
+          .then(response => {
+              setInventoryList(response.data)
+              // console.log(response.data)
+          })
+  },[])
 
     
   return (
@@ -63,10 +50,10 @@ export default function Inventory () {
         selectedComponent == 0 ? <AddMedicine /> : null
       }
       {
-        selectedComponent == 1 ? <EditMedicine /> : null
+        selectedComponent == 1 ? <EditMedicine medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit}/> : null
       }
       {
-        selectedComponent == 2 ? <DrugList /> : null
+        selectedComponent == 2 ? <DrugList inventoryList={inventoryList} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
       }
    
       </div>
