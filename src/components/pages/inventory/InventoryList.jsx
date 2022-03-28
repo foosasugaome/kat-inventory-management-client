@@ -1,8 +1,8 @@
 import React from 'react'
-import axios from "axios"
-import DrugList from '../DrugList'
 
-const InventoryList = ({inventory}) => {
+
+
+export default function InventoryList ({inventory}){
   
   const allInventory = inventory.map((drug, idx) => {
     return(
@@ -17,5 +17,3 @@ const InventoryList = ({inventory}) => {
     </div>
   )
 }
-
-export default InventoryList
