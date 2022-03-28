@@ -47,7 +47,7 @@ export default function Inventory () {
 
 {/* Had to do multiple ternaries since ternaries only take 2 conditions (Justin) */}
       {
-        selectedComponent == 0 ? <AddMedicine /> : null
+        selectedComponent == 0 ? <AddMedicine inventoryList={inventoryList} setInventoryList={setInventoryList}/> : null
       }
       {
         selectedComponent == 1 ? <EditMedicine medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit}/> : null
