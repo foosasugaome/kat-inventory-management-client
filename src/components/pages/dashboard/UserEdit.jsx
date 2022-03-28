@@ -31,7 +31,7 @@ export default function UserEdit({ users, setUsers }) {
         .then(response => {
             console.log(response.data)
         })
-    }, [manager])
+    }, [])
 
     return (
         <>

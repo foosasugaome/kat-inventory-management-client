@@ -10,6 +10,7 @@ import Layout from './components/layout/Layout'
 import axios from 'axios'
 import Inventory from './components/pages/Inventory'
 import Dashboard from './components/pages/Dashboard'
+import SearchApi from './components/SearchApi';
 
 
 
@@ -51,7 +52,7 @@ function App() {
         <Route path='/about' element={<About />} />     
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-        
+        <Route path='/searchapi' element={<SearchApi />} />
       
       </Routes>      
       </Layout>

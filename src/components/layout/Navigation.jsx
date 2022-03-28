@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 export default function Navigation({ handleLogout, isLogged }) {
-    const [displayComponent, setDisplayComponent] = useState('0')
-    console.log(displayComponent)
+    const [displayComponent, setDisplayComponent] = useState('0')    
     return(
         <>
         {
