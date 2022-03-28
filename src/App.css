@@ -51,7 +51,7 @@
   align-content: flex-start;
   height: 100%;
   padding: 5px;
-  gap: 5px;
+  gap: 0px;
   justify-content: flex-start;
   min-width: 400px;
   /* width: 100%; */
@@ -195,6 +195,7 @@ label {
 .form-container {
   /* border: 0.05rem solid rgb(204, 201, 201); */
   padding: 20px;
+  padding-top: 0px;
   width: fit-content;
   /* border-top: 25px solid rgb(204, 201, 201); */
   width: 200px;  
@@ -302,6 +303,7 @@ select {
 }
 table {
   border: 0.05rem solid gray;
+  min-width: 600px;
 }
 tr:nth-child(odd) {
   background: rgb(240, 237, 237);

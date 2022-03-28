@@ -25,9 +25,12 @@ export default function AddMedicine ({inventoryList, setInventoryList}) {
             })
     }
     return(
-        <div className="main">
-            <h1>Add New Medicine</h1>
-
+        <>
+        
+        <div className='flex-container'>        
+            <h3>Manually Add Medicine</h3>
+        </div>
+        <div className='form-container'>
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>
                 <input type="text" name="genericName" id="genericName" onChange={(e) => {setForm({...form, genericName: e.target.value})}}/>
@@ -53,5 +56,6 @@ export default function AddMedicine ({inventoryList, setInventoryList}) {
                 <input type="submit" value="Submit" />
             </form>
         </div>
+        </>
     )
 }

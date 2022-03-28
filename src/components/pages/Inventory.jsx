@@ -48,7 +48,6 @@ export default function Inventory () {
       {
         selectedComponent === '0' ? <SearchApi /> : null
       }
-      
       {
         selectedComponent === '0' ? <AddMedicine inventoryList={inventoryList} setInventoryList={setInventoryList}/> : null
       }      
