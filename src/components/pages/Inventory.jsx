@@ -5,6 +5,7 @@ import AddMedicine from "./inventory/AddMedicine"
 import EditMedicine from "./inventory/EditMedicine"
 import DrugList from "./inventory/DrugList"
 import SearchApi from '../SearchApi'
+import Transaction from './inventory/Transaction'
 
 export default function Inventory () {
     const [selectedComponent, setSelectedComponent] = useState('0')
@@ -54,8 +55,11 @@ export default function Inventory () {
       {
         selectedComponent === '1' ? <EditMedicine medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit}/> : null
       }
-      {
+      {/* {
         selectedComponent === '2' ? <DrugList inventoryList={inventoryList} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
+      }    */}
+      {
+        selectedComponent === '2' ? <Transaction /> : null
       }   
       </div>
     </>
