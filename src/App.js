@@ -10,13 +10,14 @@ import Layout from './components/layout/Layout'
 import axios from 'axios'
 import Inventory from './components/pages/Inventory'
 import Dashboard from './components/pages/Dashboard'
-
+import UserEdit from './components/pages/dashboard/UserEdit';
 
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
   const [users, setUsers] = useState([])
+  const [currentUserId, setCurrentUserId] = useState('')
 
   useEffect(() => { 
     const token = localStorage.getItem('jwt')
@@ -46,7 +47,8 @@ function App() {
       <Routes>       
        
         <Route path='/' element={<About />} />
-        <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} currentUserId={currentUserId} setCurrentUserId={setCurrentUserId}/>} />
+        <Route path="/dashboard/:id" element={<UserEdit currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} />} />
         <Route path='/inventory' element={<Inventory />}/>                
         <Route path='/about' element={<About />} />     
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />

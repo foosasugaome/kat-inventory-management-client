@@ -15,7 +15,7 @@ export default function Dashboard ({ currentUser, setCurrentUser }) {
         </div>
         <div>
           <button onClick={() => setShowComponent(true)}  className={showComponent ? 'button-nav-selected' : 'button-nav'}> Users </button>
-        </div>        
+        </div>      
       </div>
       <div className='tab-container'>
       {showComponent ? (

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default function Users () {
   const [users, setUsers] = useState([])
@@ -29,7 +30,7 @@ export default function Users () {
                user.manager ? '✅': ' ' 
             }</td>
         <td className='centered-element'>
-            {  user.username === 'admin' ? ' ' : <button>Edit</button>
+            {  user.username === 'admin' ? ' ' : <button><Link to={`/dashboard/${user._id}`}>Edit</Link></button>
             }          
         </td>
       </tr>

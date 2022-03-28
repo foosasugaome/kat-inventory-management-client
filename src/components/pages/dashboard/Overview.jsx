@@ -24,11 +24,12 @@ export default function Overview({ currentUser }) {
                 <h4>Product Type: {inventory.productType}</h4>
                 <h4>Route: {inventory.route}</h4>
                 <h4>{inventory.transactions}</h4>
+                <h4>Unit Count: {inventory.unitCount}</h4>
             </div>
         )
     })
 
-    // if (!currentUser) return <Navigate to="/login" />
+    if (!currentUser) return <Navigate to="/login" />
 
     return (
         <>
