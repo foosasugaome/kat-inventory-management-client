@@ -90,19 +90,19 @@
   width: 150px;
 }
 .sidenav a:hover {
-  color: #3da5e0;
-  border: 0.05rem solid gray;
-  background-color: rgb(47, 173, 148);
-  border-radius: 5px;
-  color: rgb(240, 248, 255);
-  font-weight: 600;
+  /* color: #3da5e0; */
+  /* border: 0.05rem solid gray; */
+  /* background-color: rgb(47, 173, 148); */
+  /* border-radius: 5px; */
+  /* color: rgb(240, 248, 255); */
+  /* font-weight: 600; */
   border-left: 10px solid rgb(248, 137, 33);
 }
 .sidenav-selected {
-  color: #3da5e0;
-  border: 0.05rem solid gray;
+  /* color: #3da5e0; */
+  /* border: 0.05rem solid gray; */
   background-color: rgb(255, 255, 255);
-  border-radius: 5px;
+  border-radius: 0px;
   color: rgb(240, 248, 255);
   font-weight: 600;
   border-left: 10px solid rgb(248, 137, 33);
