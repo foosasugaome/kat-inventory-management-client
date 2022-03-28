@@ -50,16 +50,15 @@ export default function Inventory () {
       }
       
       {
-        selectedComponent === '0' ? <AddMedicine /> : null
-      }
-      
+        selectedComponent === '0' ? <AddMedicine inventoryList={inventoryList} setInventoryList={setInventoryList}/> : null
+      }      
       {
         selectedComponent === '1' ? <EditMedicine medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit}/> : null
+        
       }
       {
         selectedComponent === '2' ? <DrugList inventoryList={inventoryList} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
-      }
-   
+      }   
       </div>
     </>
   )
