@@ -44,7 +44,9 @@ export default function Overview({ currentUser }) {
 
     return (
         <div>
-            <h3>Low Stock Inventory</h3>
+            <div className='flex-container'>
+                <h3>Low Stock Inventory</h3>
+            </div>
             <div className='flex-container'>
                 <table>
                     <tr>
@@ -55,7 +57,9 @@ export default function Overview({ currentUser }) {
                 </table>
             </div>
 
-            <h3>All Inventory</h3>
+            <div className='flex-container'>
+                <h3>All Inventory</h3>
+            </div>
             <div className='flex-container'>
                 <table>
                     <tr>
