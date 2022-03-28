@@ -49,6 +49,7 @@ export default function Login ({ currentUser, setCurrentUser }) {
 
   return (
     <>
+    <p>{message}</p>
     <div className='flex-container'><h3>Login</h3></div>      
     <div className='tab-container'>    
         <div className='form-container'>        
