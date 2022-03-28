@@ -1,33 +1,15 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import Search from "../../Search"
+import DrugList from "./DrugList"
 
 
-export default function EditMedicine ({medicineToEdit, setMedicineToEdit}) {
+export default function EditMedicine ({medicineToEdit, setMedicineToEdit, inventoryList, setSelectedComponent, selectedComponent}) {
+    
+    const [fetchedMedicine, setFetchedMedicine] = useState()
     
 
-    //This is just placeholder medicine to edit. This is going to be replaced by the medicine specific to the id params.
-    // const [editForm, setMedicineToEdit] = useState({
-    //     genericName: "",
-    //     brandName: "",
-    //     manufacturerName: "",
-    //     productType: "",
-    //     route: "",
-    //     usedFor: "",
-    //     unitCount: 0
-    // }
-        
-    // )
-
-    const { id } = useParams()
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/${id}`)
-            .then(response => {
-                setMedicineToEdit(response.data)
-            })
-    },[])
-    
     const [form, setForm] = useState({
         genericName: "",
         brandName: "",
@@ -37,7 +19,6 @@ export default function EditMedicine ({medicineToEdit, setMedicineToEdit}) {
         usedFor: "",
         unitCount: 0
     })
-    // console.log(id)
 
 
     const submitForm = (e) => {
@@ -45,9 +26,23 @@ export default function EditMedicine ({medicineToEdit, setMedicineToEdit}) {
         console.log(form)
         // axios.put(`url here`, form)
     }
+
+    const filterMed = (name) => {
+        let filteredMedicine = inventoryList.filter((drug) => {
+            return drug.genericName.toLowerCase().trim() === name.toLowerCase().trim()
+        })
+        console.log(filteredMedicine)
+        setFetchedMedicine(filteredMedicine)
+        console.log(fetchedMedicine)
+    }
     return(
         <>
             <h1>Edit Medicine</h1>
+            
+            <Search fetchedMedicine={fetchedMedicine} setFetchedMedicine={setFetchedMedicine} filterMed={filterMed} />
+
+
+            <DrugList inventoryList={inventoryList} fetchedMedicine={fetchedMedicine} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} />
 
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>
