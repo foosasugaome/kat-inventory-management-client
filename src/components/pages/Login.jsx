@@ -9,44 +9,49 @@ export default function Login ({ currentUser, setCurrentUser }) {
     password: ''
   })
 
-  const [msg, setMessage] = useState('')
+  const [message, setMessage] = useState('')
+//   console.log(form.email)
 
   const handleFormSubmit = async e => {
     e.preventDefault()
     try {
-      console.log(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`)
-      // post to the backend with the form data to login
+      
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`,
-        form
-      )
-      // decode the token that is sent to use
+        form)
+        
+    
+      // decode the token that is sent to me
       const { token } = response.data
       const decoded = jwt_decode(token)
-      // save the token in localstorage
+    //   console.log(decoded)
+
+      // save the token in localStorage
       localStorage.setItem('jwt', token)
-      // set the app state to the logged in user
+
+      // sets the app state to the logged in user
       setCurrentUser(decoded)
-      console.log(response.data)
+
     } catch (err) {
-      // handle errors suchs as wrong credentials
-      if (err.response.status === 409) {
-        console.log(err.response.data)
-        setMessage(err.response.data.msg)
-      }
       console.log(err)
+      if(err.response.status === 409 || err.response.status === 406) {
+            // console.log(err.response.data)
+            setMessage('Invalid login credentials.')
+            // console.log(err.response.data.message)
+        }
+      
+    //   console.log(message)
     }
   }
 
-  if (currentUser) return <Navigate to='/dashboard/overview' />
+
+  if (currentUser) return <Navigate to='/dashboard' />
 
   return (
     <>
     <div className='flex-container'><h3>Login</h3></div>
-      <div className='flex-container'>
-        
-        <div className='form-container'>
-        {/* <p>{msg ? `the server has a message for you: ${msg}` : ''}</p> */}
+      <div className='flex-container'>        
+        <div className='form-container'>        
         <form onSubmit={handleFormSubmit}>
           <p>
             <label htmlFor='username'>Username:</label>         
@@ -54,7 +59,7 @@ export default function Login ({ currentUser, setCurrentUser }) {
               id='username'
               type='text'
               onChange={e => setForm({ ...form, username: e.target.value })}
-              value={form.email}
+              value={form.username}
               required
             />
           </p>
@@ -68,8 +73,9 @@ export default function Login ({ currentUser, setCurrentUser }) {
               required
             />
           </p>
-          <input type='submit' />
+          <button type='submit'>Submit</button>
         </form>        
+        <p>{message ? `${message}` : ''}</p>
         </div>
       </div>
     </>

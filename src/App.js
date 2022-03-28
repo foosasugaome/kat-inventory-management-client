@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import About from './components/pages/About'
 import DrugList from "./components/pages/DrugList"
 import Navigation from './components/layout/Navigation'
@@ -41,6 +41,7 @@ function App() {
   const handleLogout = () => {
     if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
     setCurrentUser(null)
+    
   }
 
   // lifted state and combined the useEffects into 1
@@ -64,22 +65,30 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <Navigation handleLogout={handleLogout}/>
+    <Navigation handleLogout={handleLogout} isLogged={(currentUser)} />
       <Layout>
       <Routes>        
-        <Route path='/' element={<Home />} />
+
+        
         <Route path='/medicine/add' element={<AddMedicine />} />
         {/* just input a random number to reach the edit page. Need access to medicine list in backend to get actual id. */}
         <Route path='/medicine/:id/edit' element={<EditMedicine />} />
+
+        <Route path='/' element={<About />} />
+        <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path='/inventory' element={<Inventory />}/>
+
+        <Route path='/add-medicine' element={<AddMedicine />} />
+
         <Route path="/search" element={<DrugList />} />
         <Route path='/about' element={<About />} />
         {/* adding route for inventory here */}
         {/* <Route path='/inventory' element={<Inventory />} /> */}
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-        <Route path="/dashboard/overview" element={<DashboardOverview currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-        <Route path="/dashboard/users" element={<DashboardUsers currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
-        <Route path="/dashboard/users/:id" element={<UserEdit currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUser={setUsers} />} />
+        
+        {/* <Route path="/dashboard/users" element={<DashboardUsers currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} /> */}
+        {/* <Route path="/dashboard/users/:id" element={<UserEdit currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUser={setUsers} />} /> */}
       </Routes>      
       </Layout>
     </BrowserRouter>
