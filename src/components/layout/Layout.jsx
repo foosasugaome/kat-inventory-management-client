@@ -1,3 +1,4 @@
+import Footer from './Footer'
 import Header from './Header'
 
 export default function Layout ({ children }) {
@@ -8,7 +9,7 @@ export default function Layout ({ children }) {
       </header>
       <main>{children}</main>
 
-      <footer> Powered by : KAT Sortware Solutions</footer>
+      <footer> <Footer /></footer>
     </>
   )
 }
