@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Search from '../Search'
-import InventoryList from './inventory/InventoryList'
+
+
 
 export default function Inventory () {
     const [selectedComponent, setSelectedComponent] = useState('0')
@@ -22,7 +23,7 @@ export default function Inventory () {
       </div>
       <div className='tab-container'>
         <Search />
-        <InventoryList />
+
       </div>
     </>
   )
