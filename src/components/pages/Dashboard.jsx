@@ -19,7 +19,7 @@ export default function Dashboard ({ currentUser, setCurrentUser }) {
       </div>
       <div className='tab-container'>
       {showComponent ? (
-        <Users />
+        <Users currentUser={currentUser} />
       ) : (
         <Overview currentUser={currentUser} setCurrentUser={setCurrentUser} />
       )}

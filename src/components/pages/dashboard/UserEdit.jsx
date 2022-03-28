@@ -5,12 +5,12 @@ import axios from "axios";
 export default function UserEdit({ currentUser, setCurrentUser, users, setUsers }) {
 
     const { id } = useParams()
-    const [manager, setManager] = useState(false);
-    const [form, setForm] = useState({})
-
     const foundUser = users.find(user => {
         return user._id === id
     })
+
+    const [manager, setManager] = useState(false);
+    const [form, setForm] = useState({})
 
     const handleManager = () => {
         setManager(!manager)
@@ -32,7 +32,7 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
     }, [manager])
 
     // console.log("CurrentUser", currentUser)
-    // console.log("Found User ", foundUser)
+    console.log("Found User ", foundUser)
 
     const handleSubmit = async e => {
         e.preventDefault()
