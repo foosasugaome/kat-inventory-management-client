@@ -90,14 +90,24 @@
   width: 150px;
 }
 .sidenav a:hover {
-  color: #3da5e0;
-  border: 0.05rem solid gray;
-  background-color: rgb(47, 173, 148);
-  border-radius: 5px;
+  /* color: #3da5e0; */
+  /* border: 0.05rem solid gray; */
+  /* background-color: rgb(47, 173, 148); */
+  /* border-radius: 5px; */
+  /* color: rgb(240, 248, 255); */
+  /* font-weight: 600; */
+  border-left: 10px solid rgb(248, 137, 33);
+}
+.sidenav-selected {
+  /* color: #3da5e0; */
+  /* border: 0.05rem solid gray; */
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px;
   color: rgb(240, 248, 255);
   font-weight: 600;
   border-left: 10px solid rgb(248, 137, 33);
 }
+
 main {
   margin-left: 190px;
   font-size: 16px;
@@ -289,7 +299,7 @@ th {
   font-weight: 400;
   border-bottom: 0.05rem solid gray;
   font-size: 14px;
-  text-align: left;
+  /* text-align: left; */
   width: 150px;
   padding: 5px;
   background-color: rgb(47, 173, 148);
