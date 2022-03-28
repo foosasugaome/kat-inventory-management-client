@@ -7,7 +7,7 @@ export default function Dashboard ({ currentUser, setCurrentUser }) {
   return (
     <>
       <div className='flex-container'>          
-        <h3>Dashboard</h3>
+        <h2>Dashboard</h2>
       </div>
       <div className='flex-menu-container'>
         <div>
@@ -15,14 +15,15 @@ export default function Dashboard ({ currentUser, setCurrentUser }) {
         </div>
         <div>
           <button onClick={() => setShowComponent(true)}  className={showComponent ? 'button-nav-selected' : 'button-nav'}> Users </button>
-        </div>        
+        </div>      
       </div>
       <div className='tab-container'>
       {showComponent ? (
-        <Users />
+        <Users currentUser={currentUser} />
       ) : (
         <Overview currentUser={currentUser} setCurrentUser={setCurrentUser} />
       )}
+        
       </div>
     </>
   )

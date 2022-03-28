@@ -5,8 +5,6 @@ import AddMedicine from "./inventory/AddMedicine"
 import EditMedicine from "./inventory/EditMedicine"
 import DrugList from "./inventory/DrugList"
 
-
-
 export default function Inventory () {
     const [selectedComponent, setSelectedComponent] = useState('0')
     const [searchResults, setSearchResults] = useState([])

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
-export default function Users () {
+export default function Users({ currentUser }) {
   const [users, setUsers] = useState([])
   useEffect(() => {
     ;(async () => {
@@ -29,8 +30,14 @@ export default function Users () {
                user.manager ? '✅': ' ' 
             }</td>
         <td className='centered-element'>
-            {  user.username === 'admin' ? ' ' : <button>Edit</button>
-            }          
+            { currentUser.manager === true ?
+              <>
+                {  user.username === 'admin' ? ' ' : <button><Link to={`/dashboard/${user._id}`}>Edit</Link></button>
+                }
+              </>
+              :
+              <></>
+            }
         </td>
       </tr>
     )
