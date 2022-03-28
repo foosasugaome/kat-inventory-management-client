@@ -195,6 +195,7 @@ label {
 .form-container {
   /* border: 0.05rem solid rgb(204, 201, 201); */
   padding: 20px;
+  padding-top: 0px;
   width: fit-content;
   /* border-top: 25px solid rgb(204, 201, 201); */
   width: 200px;  

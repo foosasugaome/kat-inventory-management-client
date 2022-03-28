@@ -3,6 +3,15 @@ import { useState, useEffect } from 'react'
 
 export default function SearchApi () {
   const [search, setSearch] = useState('')
+  const [form, setForm] = useState({
+    genericName: '',
+    brandName: '',
+    manufacturerName: '',
+    productType: '',
+    route: '',
+    usedFor: '',
+    unitCount: 0
+  })
   const [apiResponse, setApiResponse] = useState(null)
 
   const endPoint = `https://api.fda.gov/drug/event.json?search=patient.drug.openfda.brand_name:"${search}"`
@@ -20,7 +29,6 @@ export default function SearchApi () {
       axios
         .get(endPoint)
         .then(response => {
-          setResult(response.data.results[0].patient.drug[0].openfda)
           setBrandName(
             response.data.results[0].patient.drug[0].openfda.brand_name
           )
@@ -95,7 +103,19 @@ export default function SearchApi () {
       </>
     )
   })
-
+  const handleApiForm = e => {
+    e.preventDefault()
+    console.log(form)
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`, form)
+      .then(response => {
+        setResult(`Saved to inventory.`)
+        setSearch('')
+      })
+      .catch(error =>
+        setResult(`Something went wrong. Please contact your administrator.`)
+      )
+  }
   return (
     <>
       <div className='flex-container'>
@@ -113,22 +133,76 @@ export default function SearchApi () {
           />
           <button type='submit'> Search </button>
         </form>
+        
       </div>
+      <div className='flex-container'>{result}</div>
+      
       {search !== '' ? (
-        <div className='form-container'>
-          <label htmlFor='brandName'>Brand Name </label>
-          <select id='brandName'>{listBrandName}</select>
-          <label htmlFor='genericName'>Generic Name </label>
-          <select id='genericName'>{listGenericName}</select>
-          <label htmlFor='manufacturerName'>Manufacturer Name </label>
-          <select id='manufacturerName'>{listManufacturerName}</select>
-          <label htmlFor='productType'>Product Type </label>
-          <select id='productType'>{listProductType}</select>
-          <label htmlFor='route'>Route</label>
-          <select id='route'>{listRoute}</select>
-          <label htmlFor='substanceName'>Substance Name </label>
-          <select id='substanceName'>{listSubstanceName}</select>
-        </div>
+        <form onSubmit={handleApiForm}>
+          <div className='form-container'>
+           
+            <label htmlFor='brandName'>Brand Name </label>
+            <select
+              id='brandName'
+              onChange={e => setForm({ ...form, brandName: e.target.value })}
+            >
+              <option value=''>---</option>
+              {listBrandName}
+            </select>
+            <label htmlFor='genericName'>Generic Name </label>
+            <select
+              id='genericName'
+              onChange={e => setForm({ ...form, genericName: e.target.value })}
+            >
+              <option value=''></option>
+              {listGenericName}
+            </select>
+            <label htmlFor='manufacturerName'>Manufacturer Name </label>
+            <select
+              id='manufacturerName'
+              onChange={e =>
+                setForm({ ...form, manufacturerName: e.target.value })
+              }
+            >
+              <option value=''></option>
+              {listManufacturerName}
+            </select>
+            <label htmlFor='productType'>Product Type </label>
+            <select
+              id='productType'
+              onChange={e => setForm({ ...form, productType: e.target.value })}
+            >
+              <option value=''></option>
+              {listProductType}
+            </select>
+            <label htmlFor='route'>Route</label>
+            <select
+              id='route'
+              onChange={e => setForm({ ...form, route: e.target.value })}
+            >
+              <option value=''></option>
+              {listRoute}
+            </select>
+            <label htmlFor='substanceName'>Substance Name </label>
+            <select
+              id='substanceName'
+              onChange={e =>
+                setForm({ ...form, substanceName: e.target.value })
+              }
+            >
+              <option value=''></option>
+              {listSubstanceName}
+            </select>
+            <label htmlFor='unitCount'>Unit Count </label>
+            <input
+              type='text'
+              id='unitCount'
+              value={form.unitCount}
+              onChange={e => setForm({ ...form, unitCount: e.target.value })}
+            />
+            <button type='submit'>Save</button>
+          </div>
+        </form>
       ) : (
         <></>
       )}
