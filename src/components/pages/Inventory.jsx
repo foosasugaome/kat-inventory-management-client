@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import Search from '../Search'
 
-
-
 export default function Inventory () {
     const [selectedComponent, setSelectedComponent] = useState('0')
   return (
