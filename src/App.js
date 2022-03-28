@@ -11,6 +11,7 @@ import Layout from './components/layout/Layout'
 import Home from './components/pages/Home'
 import Dashboard from './components/pages/Dashboard'
 import AddMedicine from './components/pages/AddMedicine'
+import EditMedicine from './components/pages/EditMedicine'
 import UserEdit from './components/pages/UserEdit'
 import axios from 'axios'
 import Inventory from './components/pages/Inventory'
@@ -48,11 +49,18 @@ function App() {
     <Navigation handleLogout={handleLogout} isLogged={(currentUser)} />
       <Layout>
       <Routes>        
+
+        
+        <Route path='/medicine/add' element={<AddMedicine />} />
+        {/* just input a random number to reach the edit page. Need access to medicine list in backend to get actual id. */}
+        <Route path='/medicine/:id/edit' element={<EditMedicine />} />
+
         <Route path='/' element={<About />} />
         <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/inventory' element={<Inventory />}/>
 
         <Route path='/add-medicine' element={<AddMedicine />} />
+
         <Route path="/search" element={<DrugList />} />
         <Route path='/about' element={<About />} />
         

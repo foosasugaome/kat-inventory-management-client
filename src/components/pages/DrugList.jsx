@@ -1,6 +1,7 @@
 import Search from "../Search";
 import axios from "axios"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export default function DrugList () {
     const [inventoryList, setInventoryList] = useState([
@@ -74,6 +75,9 @@ export default function DrugList () {
                 <p>{item.manufacturerName}</p>
                 <p>{item.route}</p>
                 <p>{item.usedFor}</p>
+                <Link to="/medicine/:id">
+                <button>Edit</button>
+                </Link>
             </div>
         )
     })
