@@ -9,7 +9,9 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
         return user._id === id
     })
 
-    const [manager, setManager] = useState(false);
+    console.log("Found User", foundUser)
+
+    const [manager, setManager] = useState(foundUser.manager);
     const [form, setForm] = useState({})
 
     const handleManager = () => {
@@ -19,20 +21,28 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
         } else {
             console.log('not manager')
         }
-    };
-
-    useEffect(() => {
         const managerStatus = {
-            manager: manager
+            manager: !foundUser.manager
         }
         axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${id}`, managerStatus)
         .then(response => {
             console.log(response.data)
+            setUsers(response.data)
         })
-    }, [])
+    };
+
+    // useEffect(() => {
+    //     const managerStatus = {
+    //         manager: manager
+    //     }
+    //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${id}`, managerStatus)
+    //     .then(response => {
+    //         console.log(response.data)
+    //     })
+    // }, [manager])
 
     // console.log("CurrentUser", currentUser)
-    console.log("Found User ", foundUser)
+    // console.log("Found User ", foundUser)
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -68,7 +78,7 @@ export default function UserEdit({ currentUser, setCurrentUser, users, setUsers 
                             type="checkbox" 
                             id="manager" 
                             name="manager" 
-                            checked={manager} 
+                            checked={foundUser.manager} 
                             onChange={handleManager}>
                         </input>
                     </h4>
