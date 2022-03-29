@@ -5,6 +5,8 @@ import { Navigate } from "react-router-dom"
 export default function Overview({ currentUser }) {
 
     const [inventories, setInventories] = useState([])
+    const [searchTextLow, setSearchTextLow] = useState('')
+    const [searchText, setSearchText] = useState('')
 
     useEffect(() => {
         (async () => {
@@ -14,19 +16,34 @@ export default function Overview({ currentUser }) {
         })()        
     }, [])
 
-    const inventory = inventories.map((inventory, index) => {
-        return (
-            <tr key={`id-${index}`}>
-                <td>{inventory.brandName}</td>
-                <td>{inventory.unitCount}</td>
-            </tr>
-        )
-    })
+    // const inventory = inventories.map((inventory, index) => {
+    //     return (
+    //         <tr key={`id-${index}`}>
+    //             <td>{inventory.brandName}</td>
+    //             <td>{inventory.unitCount}</td>
+    //         </tr>
+    //     )
+    // })
 
-    const lowStock = inventories.map((inventory, index) => {
+    // const lowStock = inventories.map((inventory, index) => {
+    //     return (
+    //         <tr key={`id-${index}`}>
+    //             {inventory.unitCount < 11 ? 
+    //                 <>
+    //                     <td>{inventory.brandName}</td>
+    //                     <td>{inventory.unitCount}</td>
+    //                 </>
+    //                 :
+    //                 <></>
+    //             }
+    //         </tr>
+    //     )
+    // })
+
+    const searchedLow = inventories.map((inventory, index) => {
         return (
             <tr key={`id-${index}`}>
-                {inventory.unitCount < 11 ? 
+                {inventory.brandName.toUpperCase().includes(searchTextLow) ?
                     <>
                         <td>{inventory.brandName}</td>
                         <td>{inventory.unitCount}</td>
@@ -37,8 +54,22 @@ export default function Overview({ currentUser }) {
             </tr>
         )
     })
-    
-    console.log(inventory)
+
+    const searched = inventories.map((inventory, index) => {
+        return (
+            <tr key={`id-${index}`}>
+                {inventory.brandName.toUpperCase().includes(searchText) ?
+                    <>
+                        <td>{inventory.brandName}</td>
+                        <td>{inventory.unitCount}</td>
+                    </>
+                    :
+                    <></>
+                }
+            </tr>
+        )
+    })
+
 
     if (!currentUser) return <Navigate to="/login" />
 
@@ -48,18 +79,49 @@ export default function Overview({ currentUser }) {
                 <h3>Low Stock Inventory</h3>
             </div>
             <div className='flex-container'>
+                <input
+                    type="text"
+                    placeholder="Filter inventory by name"
+                    value={searchTextLow}
+                    onChange={e => setSearchTextLow((e.target.value).toUpperCase())}
+                />
+            </div>
+            <div className='flex-container'>
                 <table>
                     <tbody>
                         <tr>
                             <th>Name</th>
                             <th>Stock</th>
                         </tr>
-                        {lowStock}
+                        {searchedLow}
                     </tbody>
                 </table>
             </div>
 
             <div className='flex-container'>
+                <h3>All Inventory</h3>
+            </div>
+            <div className='flex-container'>
+                <input
+                    type="text"
+                    placeholder="Filter inventory by name"
+                    value={searchText}
+                    onChange={e => setSearchText((e.target.value).toUpperCase())}
+                />
+            </div>
+            <div className='flex-container'>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th>Stock</th>
+                        </tr>
+                        {searched}
+                    </tbody>
+                </table>       
+            </div>
+
+            {/* <div className='flex-container'>
                 <h3>All Inventory</h3>
             </div>
             <div className='flex-container'>
@@ -72,8 +134,7 @@ export default function Overview({ currentUser }) {
                         {inventory}
                     </tbody>
                 </table>
-            </div>
+            </div> */}
         </div>
-
     )
 }
