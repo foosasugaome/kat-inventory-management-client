@@ -211,8 +211,9 @@ h1,
 h2,
 h3 {
   font-weight: 400;
+  padding: 0px;
 }
-input {
+input textarea {
   border: 0.05rem solid rgb(204, 201, 201);
   color: rgb(0, 0, 0);
   font-weight: 400;
@@ -220,6 +221,7 @@ input {
   border-radius: 2px;
   margin: 30px;
   min-width: 200px;
+  resize: none;
 }
 input:focus {
   border: 0.05rem solid rgb(47, 173, 148);
@@ -291,9 +293,9 @@ select {
   height: 100%;
   padding: 5px;
   gap: 5px;
-  justify-content: flex-start;
-  width: 96%;
-  min-width: 400px;
+  justify-content: flex-start;  
+  min-width: 400px;  
+  max-width:fit-content;
   /* width: 100%; */
   margin-left: 0px;
   margin-right: 0;
@@ -326,18 +328,16 @@ td {
   padding: 5px;
   font-size: 14px;
 }
-.form-fields { 
-  resize: none;
-}
 .box{
   min-width: 400px;
   max-width: 600px;
-  height: 400px;            
-  position:absolute;
+  height:fit-content;
+  position:static;
   top: 100px;
   /* left: 200px;   */
   border: .05rem solid black;
   background-color: rgb(255, 255, 255);
+  resize: both;  
 }
 .stack-top{
   z-index: 9;

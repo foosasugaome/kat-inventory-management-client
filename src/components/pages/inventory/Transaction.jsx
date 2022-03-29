@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import TransactionForm from './TransactionForm'
 
-export default function Transaction ({ selectedComponent, setSelectedComponent }) {
+export default function Transaction () {
   const [form, setForm] = useState({
     genericName: ''
   })
@@ -39,7 +39,7 @@ export default function Transaction ({ selectedComponent, setSelectedComponent }
   const handleSelect = (e) => {    
     setInventoryId(e.target.value)
     setShowTransForm(true)
-    selectedComponent('2')
+    // setSelectedComponent('2')    
   }
   const listResults = results.map((drug, index) => {
     return (
@@ -50,7 +50,7 @@ export default function Transaction ({ selectedComponent, setSelectedComponent }
           <td>{drug.manufacturerName}</td>
           <td>{drug.route}</td>
           <td className='centered-element'>
-            <button value={drug._id} onClick={handleSelect}>Select</button>
+            <button value={`${drug._id} ${drug.genericName} ${drug.brandName}`} onClick={handleSelect}>Select</button>
           </td>
         </tr>
       </>
@@ -73,7 +73,7 @@ export default function Transaction ({ selectedComponent, setSelectedComponent }
       </div>
       {
           showTransForm ? 
-          <TransactionForm showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} />
+          <TransactionForm setMessage={setMessage} showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} />
           :
           null
       }
