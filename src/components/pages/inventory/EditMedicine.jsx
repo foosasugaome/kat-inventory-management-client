@@ -28,13 +28,13 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
     }
     return(
         <>
-            <h1>Edit Medicine</h1>
-            
+            <h1>Edit Medicine</h1>            
             <Search inventoryList={inventoryList} setInventoryList={setInventoryList} />
-
-
-            <DrugList inventoryList={inventoryList} setInventoryList={setInventoryList} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} setForm={setForm} setShowForm={setShowForm} />
            { showForm ? 
+           <div className="box stack-top" draggable='true'>                 
+           <div className="flex-container">            
+           
+           <div className="form-container">
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>
                 <input type="text" name="genericName" id="genericName" value={form.genericName} onChange={(e) => {setForm({...form, genericName: e.target.value})}}/>
@@ -59,8 +59,10 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
                 
                 <input type="submit" value="Submit" />
             </form>
+            </div></div></div>
             : null
 }
+<DrugList inventoryList={inventoryList} setInventoryList={setInventoryList} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} setForm={setForm} setShowForm={setShowForm} />
         </>
     )
 }

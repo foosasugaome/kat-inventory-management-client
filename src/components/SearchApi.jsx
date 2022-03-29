@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import AddMedicine from './pages/inventory/AddMedicine'
 
-export default function SearchApi () {
+export default function SearchApi ({ currentUser }) {
   const [search, setSearch] = useState('')
   const [form, setForm] = useState({
     genericName: '',
@@ -13,7 +13,8 @@ export default function SearchApi () {
     usedFor: '',
     unitCount: 0
   })  
-  const [apiResponse, setApiResponse] = useState(null)
+
+    const [apiResponse, setApiResponse] = useState(null)
 
   const endPoint = `https://api.fda.gov/drug/event.json?search=patient.drug.openfda.brand_name:"${search}"`
 
@@ -109,13 +110,14 @@ export default function SearchApi () {
     axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`, form)
       .then(response => {
         setResult(`Saved to inventory.`)
-        setSearch('')
-        setForm({...form, unitCount:0})
+        setSearch('')       
+        // setForm({...form, unitCount:0})  
       })
       .catch(error =>
         setResult(`Something went wrong. Please contact your administrator.`)
       )
   }
+
   return (
     <>
       <div className='flex-container'>
@@ -194,13 +196,13 @@ export default function SearchApi () {
               <option value=''></option>
               {listSubstanceName}
             </select>
-            <label htmlFor='unitCount'>Unit Count </label>
+            {/* <label htmlFor='unitCount'>Unit Count </label>
             <input
               type='text'
               id='unitCount'
               value={form.unitCount}
               onChange={e => setForm({ ...form, unitCount: e.target.value })}
-            />
+            /> */}
             <button type='submit'>Save</button>
           </div>          
         </form>

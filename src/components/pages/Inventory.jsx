@@ -28,9 +28,9 @@ export default function Inventory ({ currentUser }) {
     
   return (
     <>
-      <div className='flex-container'>
+      {/* <div className='flex-container'>
         <h3>Inventory</h3>
-      </div>
+      </div> */}
       <div className='flex-menu-container'>
         <div>
           <button onClick={() => setSelectedComponent('0')}  className={selectedComponent === '0' ? 'button-nav-selected' : 'button-nav'}> Add Product </button>
@@ -48,7 +48,7 @@ export default function Inventory ({ currentUser }) {
 
 {/* Had to do multiple ternaries since ternaries only take 2 conditions (Justin) */}
       {
-        selectedComponent === '0' ? <SearchApi /> : null
+        selectedComponent === '0' ? <SearchApi currentUser={{currentUser}}/> : null
       }
       {
         selectedComponent === '0' ? <AddMedicine inventoryList={inventoryList} setInventoryList={setInventoryList}/> : null

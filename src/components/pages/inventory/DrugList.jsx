@@ -20,7 +20,7 @@ export default function DrugList ({inventoryList, setInventoryList, setForm, set
                 <td>{item.manufacturerName}</td>
                 <td>{item.route}</td>
                 <td>{item.productType}</td>
-                <td>{item.usedFor}</td>
+                {/* <td>{item.usedFor}</td> */}
                 {/* Put an onclick function here on the edit button that sets the medtoedit state to the clicked medicine */}
                 <td><button onClick={() => {editBtnHandler(item)}}>Edit</button> </td>
             </tr>
@@ -30,6 +30,7 @@ export default function DrugList ({inventoryList, setInventoryList, setForm, set
     return(
         <>
              <div className='flex-container'>
+                
                 <table>
                     <thead>
                     <tr>
@@ -38,14 +39,14 @@ export default function DrugList ({inventoryList, setInventoryList, setForm, set
                     <th>Manufacturer</th>
                     <th>Route</th>
                     <th>Product Type</th>
-                    <th>Use</th>
+                    {/* <th>Use</th> */}
                     <th></th>
                     </tr>
                     </thead>
                     <tbody>
                         {allDrugs}
                     </tbody>
-                </table>
+                </table>                
             </div>
         </>
     )

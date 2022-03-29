@@ -50,8 +50,8 @@ export default function AddMedicine ({inventoryList, setInventoryList}) {
                 <label htmlFor="usedFor">Used For: </label>
                 <input type="text" name="usedFor" id="usedFor" onChange={(e) => {setForm({...form, usedFor: e.target.value})}}/>
 
-                <label htmlFor="unitCount">Unit Count: </label>
-                <input type="number" name="unitCount" id="unitCount" onChange={(e) => {setForm({...form, unitCount: e.target.value})}}/>
+                {/* <label htmlFor="unitCount">Unit Count: </label>
+                <input type="number" name="unitCount" id="unitCount" onChange={(e) => {setForm({...form, unitCount: e.target.value})}}/> */}
 
                 <input type="submit" value="Submit" />
             </form>
