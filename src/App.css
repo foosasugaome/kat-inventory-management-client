@@ -279,10 +279,7 @@ select {
   border-radius: 5px;  
   margin: 2px;
 }
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-}
+
 .tab-container {
   display: flex;
   /* align-items: flex-start;  */
