@@ -3,27 +3,14 @@ import axios from "axios";
 
 export default function UpdateUser({ currentUser, users, setUsers }) {
 
-    const [form, setForm] = useState({})
+    const [form, setForm] = useState({currentUser})
     const [userId, setUserId] = useState('')
 
-    // const handleManager = (e) => {
-    //     console.log('Checked', e.target.checked)
-    //     let id = e.target.id
-    //     let manager = e.target.checked
-    //     const managerStatus = {
-    //         manager: !manager
-    //     }
-    //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${id}`, managerStatus)
-    //     .then(response => {
-    //         console.log(response.data)
-    //         setUsers(response.data)
-    //     })
-    // };
+    console.log("currentuser", currentUser)
+    console.log("form", form)
 
     const handleSubmit = async e => {
         e.preventDefault()
-        // let id = e.target.id
-        // console.log("e.target", e.target)
         console.log("userId", userId)
         try {
             await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${userId}`, form)
@@ -43,45 +30,46 @@ export default function UpdateUser({ currentUser, users, setUsers }) {
     }
 
     const userList = users.map((user, index) => {
-
         return (
             <>
                 {currentUser.id === user._id ?
-                    
                     <div className='form-container'>
                         <form onSubmit={handleSubmit}>
-                            <td>
-                                <label htmlFor='firstname'>{user.firstname}</label>
+                            <div>
+                                <label htmlFor='firstname'>First Name:</label>
                                 <input
                                 type='text'
                                 id='firstname'
                                 value={form.firstname}
                                 placeholder={user.firstname}
                                 onChange={e => setForm({ ...form, firstname: e.target.value })}
+                                required
                                 />
-                            </td>
-                            <td>
-                                <label htmlFor='lastname'>{user.lastname}</label>
+                            </div>
+                            <div>
+                                <label htmlFor='lastname'>Last Name:</label>
                                 <input
                                 type='text'
                                 id='lastname'
                                 value={form.lastname}
                                 placeholder={user.lastname}
                                 onChange={e => setForm({ ...form, lastname: e.target.value })}
+                                required
                                 />
-                            </td>
-                            <td>
+                            </div>
+                            <div>
                                 <label htmlFor='password'>Password:</label>
                                 <input
                                 type='password'
                                 id='password'
                                 value={form.password}
                                 onChange={e => setForm({ ...form, password: e.target.value })}
+                                required
                                 />
-                            </td>
-                            <td>
+                            </div>
+                            <div>
                                 <button type='submit' onClick={e => setUserId(user._id)}>Submit</button>
-                            </td>
+                            </div>
                         </form>
                     </div>
                     :
@@ -98,12 +86,9 @@ export default function UpdateUser({ currentUser, users, setUsers }) {
             </div>
             <div className='flex-container'>
                 <table>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Password</th>
-                        <th>Submit</th>
-                    </tr>
+                    <div className='flex-container'>
+                        <h3>Please enter information in all fields</h3>
+                    </div>
                     {userList}
                 </table>
             </div>

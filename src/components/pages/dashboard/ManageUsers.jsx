@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function Users({ currentUser, users }) {
+export default function ManageUsers({ currentUser, users }) {
 
   const userList = users.map((user, index) => {
     return (
@@ -45,7 +45,7 @@ export default function Users({ currentUser, users }) {
             <th>Email</th>
             <th>Active</th>
             <th>Manager</th>
-            <th>Edit</th>
+            <th>Edit Role</th>
           </tr>
           {userList}
         </table>
