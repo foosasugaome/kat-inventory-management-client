@@ -5,11 +5,7 @@ import Search from "../../Search"
 import DrugList from "./DrugList"
 
 
-export default function EditMedicine ({inventoryList, setInventoryList, setSelectedComponent, selectedComponent}) {
-    
-    // const [fetchedMedicine, setFetchedMedicine] = useState()
-    const [showForm, setShowForm] = useState(false)
-
+export default function EditMedicine ({inventoryList, setInventoryList, setSelectedComponent, selectedComponent, showForm, setShowForm}) {
     const [form, setForm] = useState({
         genericName: "",
         brandName: "",
@@ -19,7 +15,7 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
         usedFor: "",
         unitCount: 0
     })
-
+    const [fetchedMedicine, setFetchedMedicine] = useState([])
 
     const submitForm = (e) => {
         e.preventDefault()
@@ -27,27 +23,17 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
         axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/${form._id}`, form)
             .then(response => {
                 setInventoryList([...inventoryList, form])
-            })
+                setShowForm(!showForm)
+            })       
     }
-
-    // const filterMed = (name) => {
-    //     let filteredMedicine = inventoryList.filter((drug) => {
-    //         return drug.genericName.toLowerCase().trim() === name.toLowerCase().trim()
-    //     })
-    //     console.log(filteredMedicine)
-    //     setFetchedMedicine(filteredMedicine)
-    //     console.log(fetchedMedicine)
-    // }
-
-    console.log(form)
     return(
         <>
             <h1>Edit Medicine</h1>
             
-            {/* <Search fetchedMedicine={fetchedMedicine} setFetchedMedicine={setFetchedMedicine} /> */}
+            <Search inventoryList={inventoryList} setInventoryList={setInventoryList} />
 
 
-            <DrugList inventoryList={inventoryList} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} setForm={setForm} setShowForm={setShowForm} />
+            <DrugList inventoryList={inventoryList} setInventoryList={setInventoryList} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} setForm={setForm} setShowForm={setShowForm} />
            { showForm ? 
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>
