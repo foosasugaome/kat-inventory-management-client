@@ -4,7 +4,7 @@ import Search from "../../Search"
 import DrugList from "./DrugList"
 
 
-export default function EditMedicine ({inventoryList, setInventoryList, setSelectedComponent, selectedComponent, showForm, setShowForm}) {
+export default function EditMedicine ({inventoryList, setInventoryList, showForm, setShowForm}) {
     const [form, setForm] = useState({
         genericName: "",
         brandName: "",
@@ -14,7 +14,9 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
         usedFor: "",
         unitCount: 0
     })
-    // const [fetchedMedicine, setFetchedMedicine] = useState([])
+
+    const [showList, setShowList] = useState(false)
+
 
     const submitForm = (e) => {
         e.preventDefault()
@@ -27,8 +29,11 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
     }
     return(
         <>
-            <h1>Edit Medicine</h1>            
-            <Search inventoryList={inventoryList} setInventoryList={setInventoryList} />
+
+            <h1>Edit Medicine</h1>
+            
+            <Search inventoryList={inventoryList} setInventoryList={setInventoryList} setShowList={setShowList} />
+
            { showForm ? 
            <div className="box stack-top" draggable='true'>                 
            <div className="flex-container">            
@@ -60,8 +65,10 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
             </form>
             </div></div></div>
             : null
-}
-<DrugList inventoryList={inventoryList} setInventoryList={setInventoryList} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} setForm={setForm} setShowForm={setShowForm} />
+            }
+            {
+                showList ? <DrugList inventoryList={inventoryList} setInventoryList={setInventoryList}  setForm={setForm} setShowForm={setShowForm} setShowList={setShowList} showList={showList} /> : null
+            }
         </>
     )
 }

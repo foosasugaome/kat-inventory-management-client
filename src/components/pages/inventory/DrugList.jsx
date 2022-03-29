@@ -1,13 +1,17 @@
+import axios from "axios"
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
-export default function DrugList ({inventoryList, setInventoryList, setForm, setShowForm, fetchedMedicine}) {
+export default function DrugList ({inventoryList, setShowList, showList, setForm, setShowForm}) {
+
 
     const editBtnHandler = (med) => {
-        // setMedicineToEdit(med)
+
         setForm(med)
         setShowForm(true)
+        setShowList(!showList)
         
     }
-    // console.log(selectedComponent)
     const allDrugs = inventoryList.map((item, idx) => {
         return (
             <tr className="main" key={idx}>
@@ -15,9 +19,7 @@ export default function DrugList ({inventoryList, setInventoryList, setForm, set
                 <td>{item.brandName}</td>
                 <td>{item.manufacturerName}</td>
                 <td>{item.route}</td>
-                <td>{item.productType}</td>
-                {/* <td>{item.usedFor}</td> */}
-                {/* Put an onclick function here on the edit button that sets the medtoedit state to the clicked medicine */}
+                <td>{item.productType}</td>          
                 <td><button onClick={() => {editBtnHandler(item)}}>Edit</button> </td>
             </tr>
         )
@@ -34,8 +36,7 @@ export default function DrugList ({inventoryList, setInventoryList, setForm, set
                     <th>Brand name</th>
                     <th>Manufacturer</th>
                     <th>Route</th>
-                    <th>Product Type</th>
-                    {/* <th>Use</th> */}
+                    <th>Product Type</th>                    
                     <th></th>
                     </tr>
                     </thead>
@@ -44,6 +45,8 @@ export default function DrugList ({inventoryList, setInventoryList, setForm, set
                     </tbody>
                 </table>                
             </div>
+            
+
         </>
     )
 }

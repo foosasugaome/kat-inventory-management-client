@@ -120,7 +120,7 @@ export default function SearchApi ({ currentUser }) {
   return (
     <>
       <div className='flex-container'>
-        <h3>Search FDA Database </h3>        
+        <h3>Search FDA Database </h3>         
       </div>
      
       <div className='flex-container'>
