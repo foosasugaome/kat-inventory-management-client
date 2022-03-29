@@ -18,7 +18,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
   const [users, setUsers] = useState([])
-  const [currentUserId, setCurrentUserId] = useState('')
+  // const [currentUserId, setCurrentUserId] = useState('')
 
   useEffect(() => { 
     const token = localStorage.getItem('jwt')
@@ -49,8 +49,8 @@ function App() {
 
        
         <Route path='/' element={<About />} />
-        <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} currentUserId={currentUserId} setCurrentUserId={setCurrentUserId}/>} />
-        <Route path="/dashboard/:id" element={<UserEdit currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
+        <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
+        <Route path="/dashboard/:id" element={<UserEdit currentUser={currentUser} users={users} setUsers={setUsers} />} />
         <Route path='/inventory' element={<Inventory />}/>                
         <Route path='/about' element={<About />} />     
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
