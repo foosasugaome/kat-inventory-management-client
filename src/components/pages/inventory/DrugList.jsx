@@ -3,7 +3,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-export default function DrugList ({inventoryList, setMedicineToEdit, fetchedMedicine, setSelectedComponent, selectedComponent}) {
+export default function DrugList ({inventoryList, setForm, setShowForm}) {
     // const [inventoryList, setInventoryList] = useState([])
 
     // const [inventory, setInventory] = useState([])
@@ -21,7 +21,9 @@ export default function DrugList ({inventoryList, setMedicineToEdit, fetchedMedi
     // console.log(inventoryList)
 
     const editBtnHandler = (med) => {
-        setMedicineToEdit(med)
+        // setMedicineToEdit(med)
+        setForm(med)
+        setShowForm(true)
         
     }
     // console.log(selectedComponent)
