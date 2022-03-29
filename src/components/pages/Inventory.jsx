@@ -6,10 +6,8 @@ import EditMedicine from "./inventory/EditMedicine"
 import SearchApi from '../SearchApi'
 import Transaction from './inventory/Transaction'
 
-export default function Inventory () {
+export default function Inventory ({ currentUser }) {
     const [selectedComponent, setSelectedComponent] = useState('0')
-    // const [searchResults, setSearchResults] = useState([])
-    // const [search, setSearch] = useState("paracetamol")
     const [inventoryList, setInventoryList] = useState([])
     const [showForm, setShowForm] = useState(false)
 
