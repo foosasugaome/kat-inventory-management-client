@@ -3,7 +3,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-export default function DrugList ({inventoryList, setMedicineToEdit, setSelectedComponent, selectedComponent}) {
+export default function DrugList ({inventoryList, setForm, setShowForm}) {
     // const [inventoryList, setInventoryList] = useState([])
 
     // const [inventory, setInventory] = useState([])
@@ -18,14 +18,15 @@ export default function DrugList ({inventoryList, setMedicineToEdit, setSelected
     
     // const myApiKey = process.env.REACT_APP_API_KEY
     // const apiUrl = `https://dailymed.nlm.nih.gov/dailymed/services/v2/drugnames.json?drug_name=${search}`
-    console.log(inventoryList)
+    // console.log(inventoryList)
 
     const editBtnHandler = (med) => {
-        setMedicineToEdit(med)
-        setSelectedComponent(1)
+        // setMedicineToEdit(med)
+        setForm(med)
+        setShowForm(true)
         
     }
-    console.log(selectedComponent)
+    // console.log(selectedComponent)
     const allDrugs = inventoryList.map((item, idx) => {
         return (
             <div className="main" key={idx}>
@@ -44,6 +45,9 @@ export default function DrugList ({inventoryList, setMedicineToEdit, setSelected
         <>
             <h1>Druglist</h1>
             {allDrugs}
+            {/* {
+                !fetchedMedicine ? null : fetchedMedicine
+            } */}
 
         </>
     )
