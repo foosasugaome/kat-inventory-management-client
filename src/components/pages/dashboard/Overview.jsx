@@ -12,33 +12,8 @@ export default function Overview({ currentUser }) {
         (async () => {
             const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)            
             setInventories(response.data)
-            
         })()        
     }, [])
-
-    // const inventory = inventories.map((inventory, index) => {
-    //     return (
-    //         <tr key={`id-${index}`}>
-    //             <td>{inventory.brandName}</td>
-    //             <td>{inventory.unitCount}</td>
-    //         </tr>
-    //     )
-    // })
-
-    // const lowStock = inventories.map((inventory, index) => {
-    //     return (
-    //         <tr key={`id-${index}`}>
-    //             {inventory.unitCount < 11 ? 
-    //                 <>
-    //                     <td>{inventory.brandName}</td>
-    //                     <td>{inventory.unitCount}</td>
-    //                 </>
-    //                 :
-    //                 <></>
-    //             }
-    //         </tr>
-    //     )
-    // })
 
     const searchedLow = inventories.map((inventory, index) => {
         return (
@@ -70,11 +45,11 @@ export default function Overview({ currentUser }) {
         )
     })
 
-
     if (!currentUser) return <Navigate to="/login" />
 
     return (
         <div>
+            
             <div className='flex-container'>
                 <h3>Low Stock Inventory</h3>
             </div>
@@ -121,20 +96,6 @@ export default function Overview({ currentUser }) {
                 </table>       
             </div>
 
-            {/* <div className='flex-container'>
-                <h3>All Inventory</h3>
-            </div>
-            <div className='flex-container'>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Name</th>
-                            <th>Stock</th>
-                        </tr>
-                        {inventory}
-                    </tbody>
-                </table>
-            </div> */}
         </div>
     )
 }
