@@ -49,11 +49,13 @@ export default function Overview({ currentUser }) {
             </div>
             <div className='flex-container'>
                 <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Stock</th>
-                    </tr>
-                    {lowStock}
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th>Stock</th>
+                        </tr>
+                        {lowStock}
+                    </tbody>
                 </table>
             </div>
 
@@ -62,11 +64,13 @@ export default function Overview({ currentUser }) {
             </div>
             <div className='flex-container'>
                 <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Stock</th>
-                    </tr>
-                    {inventory}
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th>Stock</th>
+                        </tr>
+                        {inventory}
+                    </tbody>
                 </table>
             </div>
         </div>
