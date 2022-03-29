@@ -12,6 +12,7 @@ import Inventory from './components/pages/Inventory'
 import Dashboard from './components/pages/Dashboard'
 import UserEdit from './components/pages/dashboard/UserEdit';
 import SearchApi from './components/SearchApi';
+import Report from './components/pages/report/Report';
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <Navigation handleLogout={handleLogout} isLogged={(currentUser)} />
+    <Navigation handleLogout={handleLogout} isLogged={(currentUser)} currentUser={currentUser}/>
       <Layout>
       <Routes>       
 
@@ -51,14 +52,11 @@ function App() {
         <Route path='/' element={<About />} />
         <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
         <Route path="/dashboard/:id" element={<UserEdit currentUser={currentUser} users={users} setUsers={setUsers} />} />
-        <Route path='/inventory' element={<Inventory />}/>                
-        <Route path='/about' element={<About />} />     
+        <Route path='/inventory' element={<Inventory currentUser={currentUser} />}/>                
+        <Route path='/report' element={<Report />} />        
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-        <Route path='/searchapi' element={<SearchApi />} />
-      
-
-      </Routes>      
+        </Routes>      
       </Layout>
     </BrowserRouter>
     </>
