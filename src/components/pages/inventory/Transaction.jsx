@@ -35,6 +35,7 @@ export default function Transaction ({ currentUser }) {
       console.log(error)
     }
   }
+
   
   const handleSelect = (e) => {    
     setInventoryId(e.target.value)

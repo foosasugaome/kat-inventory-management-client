@@ -12,6 +12,7 @@ export default function Inventory ({ currentUser }) {
     const [searchResults, setSearchResults] = useState([])
     const [search, setSearch] = useState("paracetamol")
     const [inventoryList, setInventoryList] = useState([])
+    const [showForm, setShowForm] = useState(false)
 
     const [medicineToEdit, setMedicineToEdit] = useState({}) //this is where I'll store the medicine to edit including it's id.
 
@@ -22,7 +23,7 @@ export default function Inventory ({ currentUser }) {
               setInventoryList(response.data)
               // console.log(response.data)
           })
-  },[])
+  },[showForm])
 
     
   return (
@@ -53,11 +54,10 @@ export default function Inventory ({ currentUser }) {
         selectedComponent === '0' ? <AddMedicine inventoryList={inventoryList} setInventoryList={setInventoryList}/> : null
       }      
       {
-        selectedComponent === '1' ? <EditMedicine inventoryList={inventoryList} setInventoryList={setInventoryList} medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit} /> : null
-        
+        selectedComponent === '1' ? <EditMedicine inventoryList={inventoryList} showForm={showForm} setShowForm={setShowForm} setInventoryList={setInventoryList} medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
       }
       {/* {
-        selectedComponent === '2' ? <DrugList inventoryList={inventoryList} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
+        selectedComponent === '1' ? <DrugList inventoryList={inventoryList} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
       }    */}
       {
         selectedComponent === '2' ? <Transaction currentUser={currentUser} /> : null

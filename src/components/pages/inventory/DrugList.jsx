@@ -3,22 +3,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-export default function DrugList ({inventoryList, setForm, setShowForm}) {
-    // const [inventoryList, setInventoryList] = useState([])
-
-    // const [inventory, setInventory] = useState([])
-
-    // useEffect(() => {
-    //     axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)
-    //         .then(response => {
-    //             setInventoryList(response.data)
-    //             // console.log(response.data)
-    //         })
-    // },[])
-    
-    // const myApiKey = process.env.REACT_APP_API_KEY
-    // const apiUrl = `https://dailymed.nlm.nih.gov/dailymed/services/v2/drugnames.json?drug_name=${search}`
-    // console.log(inventoryList)
+export default function DrugList ({inventoryList, setInventoryList, setForm, setShowForm, fetchedMedicine}) {
 
     const editBtnHandler = (med) => {
         // setMedicineToEdit(med)
@@ -29,26 +14,39 @@ export default function DrugList ({inventoryList, setForm, setShowForm}) {
     // console.log(selectedComponent)
     const allDrugs = inventoryList.map((item, idx) => {
         return (
-            <div className="main" key={idx}>
-                <h3>{item.genericName}</h3>
-                <p>{item.brandName}</p>
-                <p>{item.productType}</p>
-                <p>{item.manufacturerName}</p>
-                <p>{item.route}</p>
-                <p>{item.usedFor}</p>
+            <tr className="main" key={idx}>
+                <td>{item.genericName}</td>
+                <td>{item.brandName}</td>
+                <td>{item.manufacturerName}</td>
+                <td>{item.route}</td>
+                <td>{item.productType}</td>
+                <td>{item.usedFor}</td>
                 {/* Put an onclick function here on the edit button that sets the medtoedit state to the clicked medicine */}
-                <button onClick={() => {editBtnHandler(item)}}>Edit</button>
-            </div>
+                <td><button onClick={() => {editBtnHandler(item)}}>Edit</button> </td>
+            </tr>
         )
     })
+
     return(
         <>
-            <h1>Druglist</h1>
-            {allDrugs}
-            {/* {
-                !fetchedMedicine ? null : fetchedMedicine
-            } */}
-
+             <div className='flex-container'>
+                <table>
+                    <thead>
+                    <tr>
+                    <th>Generic name</th>
+                    <th>Brand name</th>
+                    <th>Manufacturer</th>
+                    <th>Route</th>
+                    <th>Product Type</th>
+                    <th>Use</th>
+                    <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {allDrugs}
+                    </tbody>
+                </table>
+            </div>
         </>
     )
 }
