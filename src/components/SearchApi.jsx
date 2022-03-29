@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
-import AddMedicine from './pages/inventory/AddMedicine'
+import { useState } from 'react'
 
 export default function SearchApi ({ currentUser }) {
   const [search, setSearch] = useState('')

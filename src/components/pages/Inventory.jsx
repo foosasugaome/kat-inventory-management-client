@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react'
-import Search from '../Search'
 import axios from "axios"
 import AddMedicine from "./inventory/AddMedicine"
 import EditMedicine from "./inventory/EditMedicine"
-import DrugList from "./inventory/DrugList"
+
 import SearchApi from '../SearchApi'
 import Transaction from './inventory/Transaction'
 
 export default function Inventory ({ currentUser }) {
     const [selectedComponent, setSelectedComponent] = useState('0')
-    const [searchResults, setSearchResults] = useState([])
-    const [search, setSearch] = useState("paracetamol")
+    // const [searchResults, setSearchResults] = useState([])
+    // const [search, setSearch] = useState("paracetamol")
     const [inventoryList, setInventoryList] = useState([])
     const [showForm, setShowForm] = useState(false)
 

@@ -1,6 +1,5 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useState } from "react"
 import Search from "../../Search"
 import DrugList from "./DrugList"
 
@@ -15,7 +14,7 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
         usedFor: "",
         unitCount: 0
     })
-    const [fetchedMedicine, setFetchedMedicine] = useState([])
+    // const [fetchedMedicine, setFetchedMedicine] = useState([])
 
     const submitForm = (e) => {
         e.preventDefault()
