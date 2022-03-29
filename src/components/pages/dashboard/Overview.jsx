@@ -20,8 +20,14 @@ export default function Overview({ currentUser }) {
             <tr key={`id-${index}`}>
                 {inventory.brandName.toUpperCase().includes(searchTextLow) ?
                     <>
-                        <td>{inventory.brandName}</td>
-                        <td>{inventory.unitCount}</td>
+                        {inventory.unitCount < 11 ? 
+                            <>
+                                <td>{inventory.brandName}</td>
+                                <td>{inventory.unitCount}</td>
+                            </>
+                            :
+                            <></>
+                        }
                     </>
                     :
                     <></>
