@@ -6,7 +6,7 @@ export default function Overview({ currentUser }) {
 
     const [inventories, setInventories] = useState([])
     const [searchTextLow, setSearchTextLow] = useState('')
-    const [searchText, setSearchText] = useState('')
+    const [searchTextAll, setSearchTextAll] = useState('')
 
     useEffect(() => {
         (async () => {
@@ -33,7 +33,7 @@ export default function Overview({ currentUser }) {
     const searched = inventories.map((inventory, index) => {
         return (
             <tr key={`id-${index}`}>
-                {inventory.brandName.toUpperCase().includes(searchText) ?
+                {inventory.brandName.toUpperCase().includes(searchTextAll) ?
                     <>
                         <td>{inventory.brandName}</td>
                         <td>{inventory.unitCount}</td>
@@ -49,7 +49,7 @@ export default function Overview({ currentUser }) {
 
     return (
         <div>
-            
+
             <div className='flex-container'>
                 <h3>Low Stock Inventory</h3>
             </div>
@@ -80,8 +80,8 @@ export default function Overview({ currentUser }) {
                 <input
                     type="text"
                     placeholder="Filter inventory by name"
-                    value={searchText}
-                    onChange={e => setSearchText((e.target.value).toUpperCase())}
+                    value={searchTextAll}
+                    onChange={e => setSearchTextAll((e.target.value).toUpperCase())}
                 />
             </div>
             <div className='flex-container'>
