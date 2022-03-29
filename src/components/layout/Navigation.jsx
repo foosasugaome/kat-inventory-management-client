@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-export default function Navigation({ handleLogout, isLogged }) {
+export default function Navigation({ handleLogout, isLogged, currentUser }) {
     const [displayComponent, setDisplayComponent] = useState('0')    
     return(
         <>
         {
             (isLogged ? 
                 <div className="sidenav" >
+                <h2>Welcome, {currentUser.username}</h2>
                 <Link to='/dashboard' onClick={() => setDisplayComponent('0')} className={displayComponent === '0' ? 'sidenav-selected' : ''}>Dashboard</Link>
                 <Link to='/inventory' onClick={() => setDisplayComponent('1')} className={displayComponent === '1' ? 'sidenav-selected' : ''}>Inventory</Link>
                 <Link to='/reports' onClick={() => setDisplayComponent('2')} className={displayComponent === '2' ? 'sidenav-selected' : ''}>Reports</Link>        

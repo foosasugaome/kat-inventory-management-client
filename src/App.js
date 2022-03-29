@@ -43,7 +43,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <Navigation handleLogout={handleLogout} isLogged={(currentUser)} />
+    <Navigation handleLogout={handleLogout} isLogged={(currentUser)} currentUser={currentUser}/>
       <Layout>
       <Routes>       
 

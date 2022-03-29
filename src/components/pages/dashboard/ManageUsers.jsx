@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import UserEdit from './UserEdit'
 
-export default function Users({ currentUser, users, setUsers }) {
+export default function ManageUsers({ currentUser, users }) {
+
   const userList = users.map((user, index) => {
-    // if (user.username === 'admin') return <></>
     return (
       <tr key={`key-${index}`}>
         <td>
@@ -21,8 +18,14 @@ export default function Users({ currentUser, users, setUsers }) {
               user.manager ? '✅': ' ' 
             }
         </td>
-        <td className='centered-element'>{
-              user.username === 'admin' ? ' ' : <button><Link to={`/dashboard/${user._id}`}>Edit</Link></button>
+        <td className='centered-element'>
+            { currentUser.manager === true ?
+              <>
+                {  user.username === 'admin' ? ' ' : <button><Link to={`/dashboard/${user._id}`}>Edit</Link></button>
+                }
+              </>
+              :
+              <></>
             }
         </td>
       </tr>
@@ -42,7 +45,7 @@ export default function Users({ currentUser, users, setUsers }) {
             <th>Email</th>
             <th>Active</th>
             <th>Manager</th>
-            <th>Edit</th>
+            <th>Edit Role</th>
           </tr>
           {userList}
         </table>
