@@ -294,7 +294,7 @@ select {
   padding: 5px;
   gap: 5px;
   justify-content: flex-start;  
-  min-width: 400px;  
+  min-width: 600px;  
   max-width:fit-content;
   /* width: 100%; */
   margin-left: 0px;
@@ -305,7 +305,7 @@ select {
 }
 table {
   border: 0.05rem solid gray;
-  min-width: 600px;
+  min-width: 800px;  
 }
 tr:nth-child(odd) {
   background: rgb(240, 237, 237);
