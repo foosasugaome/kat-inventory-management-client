@@ -1,48 +1,41 @@
 import { useState } from "react"
 import axios from "axios"
-export default function TransactionForm({ setMessage, showTransForm, setShowTransForm, inventoryId }) {
+export default function TransactionForm({ setMessage, showTransForm, setShowTransForm, inventoryId, currentUser }) {
     const invId = inventoryId.slice(0,inventoryId.indexOf(' '))
     const invDesc = inventoryId.slice(inventoryId.indexOf(' '))
     
     const [form, setForm] = useState({
         transType: '',
-        transCount: 0,
+        transCount: null,
         transNotes : '',
-        transOwner: ''
+        transOwner: currentUser.username
     })
-
+    
     console.log(form)
     const handleShowForm = () => {        
         setShowTransForm(!showTransForm)        
     }
     const handleSubmit = (e) => {
-        e.preventDefault()
-        if(form.transType === 'rem') {
-            const negCount = (form.transCount * -1)
-            console.log(negCount)
-            setForm({...form,transCount: negCount})
-            console.log(form)
-        }
+        e.preventDefault()    
         try {
-        axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/${invId}/transaction`,form)    
+            axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/${invId}/transaction`,form)    
             .then(response => {
-                
-                setMessage('Record updated.')
-                console.log(form)
-                console.log('updated')
-                setForm({...form, transType:''})
+                setMessage('Record updated.')            
+                setForm({
+                    transType: '',
+                    transCount: 0,
+                    transNotes : '',
+                    transOwner: ''
+                })
             })
             .catch(error => {
                 setMessage('An error occured. Please contact your administrator.')
             })
-        } catch (error) {
-            
-        }
-        console.log(form)
-        // setShowTransForm(!showTransForm)        
-        // /api-v1/inventory/:id/transaction
+        } catch (error) {   
+            setMessage('An error occured. Please contact your administrator.')
+        }        
+        setShowTransForm(!showTransForm)                
     }
-
 
     return(
         <>
@@ -61,9 +54,9 @@ export default function TransactionForm({ setMessage, showTransForm, setShowTran
                 <label htmlFor='transCount'>Unit Count</label>
                 <input type='number' id='transCount' value={form.transCount} onChange={(e)=>setForm({...form, transCount:e.target.value})} required/>
                 <label htmlFor="transNotes">Note </label>
-                <textarea id='transNotes' value={form.transNotes} onChange={(e)=>setForm({...form, transNotes:e.target.value})} required/>
+                <textarea id='transNotes' value={form.transNotes} onChange={(e)=>setForm({...form, transNotes:e.target.value})} />
                 <label htmlFor='transOwner'>Created by</label>
-                <input type='text' id='transOwner' value={form.transOwner} onChange={(e)=>setForm({...form, transOwner:e.target.value})}required/>                
+                <input type='text' id='transOwner' value={form.transOwner} disabled/>                
                 <p><button type='submit'>Save </button> <button onClick={()=> handleShowForm()}> Cancel</button></p>
                 </form>
             </div>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import TransactionForm from './TransactionForm'
 
-export default function Transaction () {
+export default function Transaction ({ currentUser }) {
   const [form, setForm] = useState({
     genericName: ''
   })
@@ -44,13 +44,13 @@ export default function Transaction () {
   const listResults = results.map((drug, index) => {
     return (
       <>
-        <tr key={`key-${index}`}>
+        <tr>
           <td>{drug.genericName}</td>
           <td>{drug.brandName}</td>
           <td>{drug.manufacturerName}</td>
           <td>{drug.route}</td>
           <td className='centered-element'>
-            <button value={`${drug._id} ${drug.genericName} ${drug.brandName}`} onClick={handleSelect}>Select</button>
+            <button key={`key-${index}`} value={`${drug._id} ${drug.genericName} ${drug.brandName}`} onClick={handleSelect}>Select</button>
           </td>
         </tr>
       </>
@@ -73,7 +73,7 @@ export default function Transaction () {
       </div>
       {
           showTransForm ? 
-          <TransactionForm setMessage={setMessage} showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} />
+          <TransactionForm setMessage={setMessage} showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} currentUser={currentUser} />
           :
           null
       }

@@ -51,14 +51,11 @@ function App() {
         <Route path='/' element={<About />} />
         <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
         <Route path="/dashboard/:id" element={<UserEdit currentUser={currentUser} users={users} setUsers={setUsers} />} />
-        <Route path='/inventory' element={<Inventory />}/>                
+        <Route path='/inventory' element={<Inventory currentUser={currentUser} />}/>                
         <Route path='/about' element={<About />} />     
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-        <Route path='/searchapi' element={<SearchApi />} />
-      
-
-      </Routes>      
+        </Routes>      
       </Layout>
     </BrowserRouter>
     </>
