@@ -7,7 +7,7 @@ import DrugList from "./inventory/DrugList"
 import SearchApi from '../SearchApi'
 import Transaction from './inventory/Transaction'
 
-export default function Inventory ({ currentUser }) {
+export default function Inventory () {
     const [selectedComponent, setSelectedComponent] = useState('0')
     const [searchResults, setSearchResults] = useState([])
     const [search, setSearch] = useState("paracetamol")
@@ -21,7 +21,6 @@ export default function Inventory ({ currentUser }) {
       axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)
           .then(response => {
               setInventoryList(response.data)
-              // console.log(response.data)
           })
   },[showForm])
 
@@ -39,7 +38,7 @@ export default function Inventory ({ currentUser }) {
           <button onClick={() => setSelectedComponent('1')}  className={selectedComponent === '1' ? 'button-nav-selected' : 'button-nav'}> Edit Product </button>
         </div>
         <div>
-          <button onClick={() => setSelectedComponent('2')}  className={selectedComponent === '2' ? 'button-nav-selected' : 'button-nav'}> Create Transaction </button>
+          <button onClick={() => setSelectedComponent('2')}  className={selectedComponent === '2' ? 'button-nav-selected' : 'button-nav'}> Manage Inventory </button>
         </div>
       </div>
       <div className='tab-container'>
@@ -55,12 +54,10 @@ export default function Inventory ({ currentUser }) {
       }      
       {
         selectedComponent === '1' ? <EditMedicine inventoryList={inventoryList} showForm={showForm} setShowForm={setShowForm} setInventoryList={setInventoryList} medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
+        
       }
-      {/* {
-        selectedComponent === '1' ? <DrugList inventoryList={inventoryList} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
-      }    */}
       {
-        selectedComponent === '2' ? <Transaction currentUser={currentUser} /> : null
+        selectedComponent === '2' ? <Transaction /> : null
       }   
       </div>
     </>

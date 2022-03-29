@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import Inventory from "./pages/Inventory"
 
-export default function Search ({ inventoryList, setInventoryList }) {
+export default function Search ({ inventoryList, setInventoryList, setShowList, showList}) {
     const [errorMsg, setErrorMsg] = useState("")
     const [form, setForm] = useState({
         genericName: ''
@@ -18,8 +18,8 @@ export default function Search ({ inventoryList, setInventoryList }) {
             )
             .then(response => {
               setInventoryList(response.data)
+              setShowList(true)
               setMessage(`Search results for : ${form.genericName}`)
-            
             })
             .catch(error => setMessage(`An error occured. Please contact your administrator.`))
            
@@ -27,6 +27,7 @@ export default function Search ({ inventoryList, setInventoryList }) {
           setMessage(`An error occured. Please contact your administrator.`)
           console.log(error)
         }
+        
       }
       console.log(inventoryList)
     

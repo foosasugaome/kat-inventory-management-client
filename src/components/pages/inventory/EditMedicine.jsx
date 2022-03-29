@@ -5,7 +5,7 @@ import Search from "../../Search"
 import DrugList from "./DrugList"
 
 
-export default function EditMedicine ({inventoryList, setInventoryList, setSelectedComponent, selectedComponent, showForm, setShowForm}) {
+export default function EditMedicine ({inventoryList, setInventoryList, showForm, setShowForm}) {
     const [form, setForm] = useState({
         genericName: "",
         brandName: "",
@@ -15,7 +15,7 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
         usedFor: "",
         unitCount: 0
     })
-    const [fetchedMedicine, setFetchedMedicine] = useState([])
+    const [showList, setShowList] = useState(false)
 
     const submitForm = (e) => {
         e.preventDefault()
@@ -30,10 +30,10 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
         <>
             <h1>Edit Medicine</h1>
             
-            <Search inventoryList={inventoryList} setInventoryList={setInventoryList} />
+            <Search inventoryList={inventoryList} setInventoryList={setInventoryList} setShowList={setShowList} />
 
-
-            <DrugList inventoryList={inventoryList} setInventoryList={setInventoryList} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} setForm={setForm} setShowForm={setShowForm} />
+         
+            
            { showForm ? 
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>
@@ -60,7 +60,10 @@ export default function EditMedicine ({inventoryList, setInventoryList, setSelec
                 <input type="submit" value="Submit" />
             </form>
             : null
-}
+            }
+            {
+                showList ? <DrugList inventoryList={inventoryList} setInventoryList={setInventoryList}  setForm={setForm} setShowForm={setShowForm} setShowList={setShowList} showList={showList} /> : null
+            }
         </>
     )
 }
