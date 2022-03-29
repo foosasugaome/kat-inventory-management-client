@@ -46,7 +46,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
     }
   }
 
-  if (currentUser) return <Navigate to='/dashboard/overview' />
+  if (currentUser) return <Navigate to='/dashboard' />
 
   return (
     <>
