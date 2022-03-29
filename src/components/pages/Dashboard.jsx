@@ -7,9 +7,9 @@ export default function Dashboard ({ currentUser, setCurrentUser, users, setUser
     const [showComponent, setShowComponent] = useState('0')
     return (
         <>
-            <div className='flex-container'>          
+            {/* <div className='flex-container'>          
                 <h2>Dashboard</h2>
-            </div>
+            </div> */}
             <div className='flex-menu-container'>
                 <div>
                 <button onClick={() => setShowComponent('0')}  className={showComponent === '0' ? 'button-nav-selected' : 'button-nav'}> Overview </button>

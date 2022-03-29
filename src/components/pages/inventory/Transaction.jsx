@@ -10,10 +10,6 @@ export default function Transaction ({ currentUser }) {
   const [message, setMessage] = useState('')
   const [inventoryId, setInventoryId] = useState('')
   const [showTransForm, setShowTransForm] = useState(false)
-  const [info, setInfo]=useState({
-      genericName:'',
-      brandName:''
-  })
 
   const handleSearchDB = e => {
     e.preventDefault()

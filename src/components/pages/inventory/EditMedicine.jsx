@@ -1,6 +1,5 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useState } from "react"
 import Search from "../../Search"
 import DrugList from "./DrugList"
 
@@ -15,7 +14,9 @@ export default function EditMedicine ({inventoryList, setInventoryList, showForm
         usedFor: "",
         unitCount: 0
     })
+
     const [showList, setShowList] = useState(false)
+
 
     const submitForm = (e) => {
         e.preventDefault()
@@ -28,13 +29,16 @@ export default function EditMedicine ({inventoryList, setInventoryList, showForm
     }
     return(
         <>
+
             <h1>Edit Medicine</h1>
             
             <Search inventoryList={inventoryList} setInventoryList={setInventoryList} setShowList={setShowList} />
 
-         
-            
            { showForm ? 
+           <div className="box stack-top" draggable='true'>                 
+           <div className="flex-container">            
+           
+           <div className="form-container">
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>
                 <input type="text" name="genericName" id="genericName" value={form.genericName} onChange={(e) => {setForm({...form, genericName: e.target.value})}}/>
@@ -59,6 +63,7 @@ export default function EditMedicine ({inventoryList, setInventoryList, showForm
                 
                 <input type="submit" value="Submit" />
             </form>
+            </div></div></div>
             : null
             }
             {

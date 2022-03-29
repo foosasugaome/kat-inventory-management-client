@@ -11,8 +11,7 @@ import axios from 'axios'
 import Inventory from './components/pages/Inventory'
 import Dashboard from './components/pages/Dashboard'
 import UserEdit from './components/pages/dashboard/UserEdit';
-import SearchApi from './components/SearchApi';
-import Report from './components/pages/report/Report';
+import Report from './components/pages/Report';
 
 
 function App() {

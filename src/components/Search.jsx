@@ -1,9 +1,9 @@
 import { useState } from "react"
 import axios from "axios"
-import Inventory from "./pages/Inventory"
 
 export default function Search ({ inventoryList, setInventoryList, setShowList, showList}) {
     const [errorMsg, setErrorMsg] = useState("")
+
     const [form, setForm] = useState({
         genericName: ''
       })
@@ -34,6 +34,7 @@ export default function Search ({ inventoryList, setInventoryList, setShowList, 
     return(
         <>
         <form onSubmit={handleSearchDB}>
+            {message}
             <label htmlFor="search">Search: </label>
             <input 
                 type="text" 

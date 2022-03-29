@@ -1,9 +1,9 @@
-
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 export default function DrugList ({inventoryList, setShowList, showList, setForm, setShowForm}) {
+
 
     const editBtnHandler = (med) => {
 
@@ -19,8 +19,7 @@ export default function DrugList ({inventoryList, setShowList, showList, setForm
                 <td>{item.brandName}</td>
                 <td>{item.manufacturerName}</td>
                 <td>{item.route}</td>
-                <td>{item.productType}</td>
-                <td>{item.usedFor}</td>
+                <td>{item.productType}</td>          
                 <td><button onClick={() => {editBtnHandler(item)}}>Edit</button> </td>
             </tr>
         )
@@ -29,6 +28,7 @@ export default function DrugList ({inventoryList, setShowList, showList, setForm
     return(
         <>
              <div className='flex-container'>
+                
                 <table>
                     <thead>
                     <tr>
@@ -36,15 +36,14 @@ export default function DrugList ({inventoryList, setShowList, showList, setForm
                     <th>Brand name</th>
                     <th>Manufacturer</th>
                     <th>Route</th>
-                    <th>Product Type</th>
-                    <th>Use</th>
+                    <th>Product Type</th>                    
                     <th></th>
                     </tr>
                     </thead>
                     <tbody>
                         {allDrugs}
                     </tbody>
-                </table>
+                </table>                
             </div>
             
 
