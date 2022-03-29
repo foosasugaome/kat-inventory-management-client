@@ -106,8 +106,7 @@ export default function SearchApi () {
   })
   const handleApiForm = e => {
     e.preventDefault()    
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`, form)
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`, form)
       .then(response => {
         setResult(`Saved to inventory.`)
         setSearch('')
