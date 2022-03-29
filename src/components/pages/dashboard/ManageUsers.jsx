@@ -39,15 +39,17 @@ export default function ManageUsers({ currentUser, users }) {
       </div>
       <div className='flex-container'>
         <table>
-          <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Active</th>
-            <th>Manager</th>
-            <th>Edit Role</th>
-          </tr>
-          {userList}
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Active</th>
+              <th>Manager</th>
+              <th>Edit Role</th>
+            </tr>
+            {userList}
+          </tbody>
         </table>
       </div>
     </>
