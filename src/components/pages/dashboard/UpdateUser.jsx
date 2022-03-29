@@ -31,7 +31,7 @@ export default function UpdateUser({ currentUser, users, setUsers }) {
 
     const userList = users.map((user, index) => {
         return (
-            <>
+            <div key={`user-key${index}`}>
                 {currentUser.id === user._id ?
                     <div className='form-container'>
                         <form onSubmit={handleSubmit}>
@@ -75,7 +75,7 @@ export default function UpdateUser({ currentUser, users, setUsers }) {
                     :
                     <></> 
                 }
-            </>
+            </div>
         )
     })
     
@@ -85,12 +85,8 @@ export default function UpdateUser({ currentUser, users, setUsers }) {
                 <h3>Update Info</h3>
             </div>
             <div className='flex-container'>
-                <table>
-                    <div className='flex-container'>
-                        <h3>Please enter information in all fields</h3>
-                    </div>
-                    {userList}
-                </table>
+                <div>Please enter information in all fields</div>
+                {userList}
             </div>
         </>
     )
