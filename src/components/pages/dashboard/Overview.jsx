@@ -8,6 +8,9 @@ export default function Overview({ currentUser }) {
     const [searchTextLow, setSearchTextLow] = useState('')
     const [searchTextAll, setSearchTextAll] = useState('')
 
+    let today = new Date();
+    let time = today.getHours()
+
     useEffect(() => {
         (async () => {
             const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)            
@@ -54,7 +57,12 @@ export default function Overview({ currentUser }) {
     if (!currentUser) return <Navigate to="/login" />
 
     return (
-        <>
+        <>        
+            <div className='greeting'>
+                { time > 3 && time < 12 ? <p className='greeting'>Good Morning, {currentUser.username.toUpperCase()}</p> : <></>}
+                { time > 11 && time < 18 ? <p className='greeting'>Good Afternoon, {currentUser.username.toUpperCase()}</p> : <></>}
+                { time > 17 || time < 4 ? <p className='greeting'>Good Evening, {currentUser.username.toUpperCase()}</p> : <></>}
+            </div>
 
             <div className='flex-container'>
                 <h3>Low Stock Inventory</h3>
