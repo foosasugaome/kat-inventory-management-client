@@ -26,35 +26,37 @@ export default function UserEdit({ currentUser, users, setUsers, userId, setUser
 
             <div className='flex-container'>
                 <table>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Manager Priveleges</th>
-                    </tr>
-    
-                    {foundUser && currentUser ? 
+                    <tbody>
                         <tr>
-                            <td>{foundUser.firstname}</td>
-                            <td>{foundUser.lastname}</td>
-                            <td>{foundUser.email}</td>
-                            {currentUser.manager === true ?                                
-                                    <td className="centered-element">
-                                        <input 
-                                            type="checkbox" 
-                                            id="manager" 
-                                            name="manager" 
-                                            checked={foundUser.manager} 
-                                            onChange={handleManager}>
-                                        </input>                                
-                                </td>
-                                :
-                                <></>
-                            }
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Manager Priveleges</th>
                         </tr>
-                        :
-                        <></>
-                    }
+        
+                        {foundUser && currentUser ? 
+                            <tr>
+                                <td>{foundUser.firstname}</td>
+                                <td>{foundUser.lastname}</td>
+                                <td>{foundUser.email}</td>
+                                {currentUser.manager === true ?                                
+                                        <td className="centered-element">
+                                            <input 
+                                                type="checkbox" 
+                                                id="manager" 
+                                                name="manager" 
+                                                checked={foundUser.manager} 
+                                                onChange={handleManager}>
+                                            </input>                                
+                                    </td>
+                                    :
+                                    <></>
+                                }
+                            </tr>
+                            :
+                            <></>
+                        }
+                    </tbody>
                 </table>
             </div>
         </div>

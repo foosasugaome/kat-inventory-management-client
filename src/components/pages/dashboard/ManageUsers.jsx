@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import UserEdit from './UserEdit'
@@ -40,15 +40,15 @@ export default function ManageUsers({ currentUser, users, setUsers }) {
             {/* <td className='centered-element'>{user.active ? '✅' : ' '}</td> */}
             <td className='centered-element'>{user.manager ? '✅': ' '}</td>
             <td className='centered-element'>
-                { currentUser.manager === true ?
-                  <>
-                    {  user.username === 'admin' ? ' ' : <button value={user._id} onClick={handleSelect}>Edit</button>
-                    }
-                  </>
-                  :
-                  <></>
-                }
-                 {/* <Link to={`/dashboard/${user._id}`}>Edit</Link> */}
+              { currentUser.manager === true ?
+                <>
+                  {  user.username === 'admin' ? ' ' : <button value={user._id} onClick={handleSelect}>Edit</button>
+                  }
+                </>
+                :
+                <></>
+              }
+                  {/* <Link to={`/dashboard/${user._id}`}>Edit</Link> */}
             </td>
             {currentUser.username === 'admin' ? 
               <td className='centered-element'>
