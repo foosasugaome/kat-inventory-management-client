@@ -1,12 +1,21 @@
+import axios from "axios"
+
 export default function DrugList ({inventoryList, setShowList, showList, setForm, setShowForm}) {
 
 
     const editBtnHandler = (med) => {
-
         setForm(med)
         setShowForm(true)
         setShowList(!showList)
-        
+    }
+
+    const deleteBtnHandler = (med) => {
+        // console.log(med)
+        axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/${med}`)
+            .then(response => {
+                console.log(response.data)
+                setShowList(!showList)
+            })
     }
     const allDrugs = inventoryList.map((item, idx) => {
         return (
@@ -16,7 +25,10 @@ export default function DrugList ({inventoryList, setShowList, showList, setForm
                 <td>{item.manufacturerName}</td>
                 <td>{item.route}</td>
                 <td>{item.productType}</td>          
-                <td><button onClick={() => {editBtnHandler(item)}}>Edit</button> </td>
+                <td>
+                    <button onClick={() => {editBtnHandler(item)}}>Edit</button> 
+                    <button onClick={() => {deleteBtnHandler(item._id)}}>Delete</button> 
+                </td>
             </tr>
         )
     })
