@@ -62,6 +62,9 @@
 .centered-element {
   text-align: center;
 }
+.right-align {
+  text-align: right;
+}
 .sidenav {
   height: 100%;
   width: 180px;
@@ -319,9 +322,10 @@ table {
   table-layout: fixed;
   /* border-collapse: collapse; */
   width: 100%;  
+  border-radius: 5px;
 }
 tr:nth-child(odd) {
-  background: rgb(240, 237, 237);
+  background: rgb(245, 244, 244);
 }
 tr:nth-child(even) {
   background: rgb(255, 255, 255);
@@ -329,13 +333,14 @@ tr:nth-child(even) {
 th {
   white-space: nowrap;
   font-weight: 400;
-  border-bottom: 0.05rem solid gray;
+  /* border-bottom: 0.05rem solid gray; */
   font-size: 14px;
   /* text-align: left; */
   width: 100px;
   padding: 2px;
-  background-color: rgb(47, 173, 148);
-  color: rgb(255, 255, 255);
+  background-color: rgb(221, 220, 220);
+  color: rgb(0, 0, 0);
+  border-radius: 3px;
 }
 
 td {
