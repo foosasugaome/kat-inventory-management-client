@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom"
+// import { useParams } from "react-router-dom"
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export default function UserEdit({ currentUser, users, setUsers, userId, setUserId }) {
 
@@ -23,46 +22,43 @@ export default function UserEdit({ currentUser, users, setUsers, userId, setUser
 
     return (
         <div>
-
-            {/* <h2 className='flex-container'>
-                <Link to={`/dashboard`}>Dashboard {userId}</Link>
-            </h2> */}
-
             <div className='flex-container'>
                 <h3>Edit User Access</h3>
             </div>
 
             <div className='flex-container'>
                 <table>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Manager Priveleges</th>
-                    </tr>
-    
-                    {foundUser && currentUser ? 
+                    <tbody>
                         <tr>
-                            <td>{foundUser.firstname}</td>
-                            <td>{foundUser.lastname}</td>
-                            <td>{foundUser.email}</td>
-                            {currentUser.manager === true ?                                
-                                    <td className="centered-element">
-                                        <input 
-                                            type="checkbox" 
-                                            id="manager" 
-                                            name="manager" 
-                                            checked={foundUser.manager} 
-                                            onChange={handleManager}>
-                                        </input>                                
-                                </td>
-                                :
-                                <></>
-                            }
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Manager Priveleges</th>
                         </tr>
-                        :
-                        <></>
-                    }
+        
+                        {foundUser && currentUser ? 
+                            <tr>
+                                <td>{foundUser.firstname}</td>
+                                <td>{foundUser.lastname}</td>
+                                <td>{foundUser.email}</td>
+                                {currentUser.manager === true ?                                
+                                        <td className="centered-element">
+                                            <input 
+                                                type="checkbox" 
+                                                id="manager" 
+                                                name="manager" 
+                                                checked={foundUser.manager} 
+                                                onChange={handleManager}>
+                                            </input>                                
+                                    </td>
+                                    :
+                                    <></>
+                                }
+                            </tr>
+                            :
+                            <></>
+                        }
+                    </tbody>
                 </table>
             </div>
         </div>
