@@ -23,7 +23,7 @@ export default function Overview({ currentUser }) {
                         {inventory.unitCount < 11 ? 
                             <>
                                 <td>{inventory.brandName}</td>
-                                <td>{inventory.unitCount}</td>
+                                <td className='right-align'>{inventory.unitCount.toLocaleString("en-us")}</td>
                             </>
                             :
                             <></>
@@ -42,7 +42,7 @@ export default function Overview({ currentUser }) {
                 {inventory.brandName.toUpperCase().includes(searchTextAll) ?
                     <>
                         <td>{inventory.brandName}</td>
-                        <td>{inventory.unitCount}</td>
+                        <td className='right-align'>{inventory.unitCount.toLocaleString("en-us")}</td>
                     </>
                     :
                     <></>

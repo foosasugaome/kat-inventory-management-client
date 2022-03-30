@@ -359,11 +359,11 @@ th {
   /* border-bottom: 0.05rem solid gray; */
   font-size: 14px;
   /* text-align: left; */
-  width: 100px;
+  /* width: 100px; */
   padding: 2px;
   background-color: rgb(221, 220, 220);
   color: rgb(0, 0, 0);
-  border-radius: 3px;
+  border-radius: 3px;  
 }
 
 td {
@@ -373,7 +373,8 @@ td {
   overflow: hidden;
   text-overflow: ellipsis; 
   font-size: 14px;
-  width: 100px;
+  /* width: 100px; */
+  
 }
 
 .box{

@@ -35,10 +35,10 @@ export default function UserEdit({ currentUser, users, setUsers, userId, setUser
                         </tr>
         
                         {foundUser && currentUser ? 
-                            <tr>0
-                                <td>{foundUser.firstname}</td>
-                                <td>{foundUser.lastname}</td>
-                                <td>{foundUser.email}</td>
+                            <tr>
+                                <td className="centered-element">{foundUser.firstname}</td>
+                                <td className="centered-element">{foundUser.lastname}</td>
+                                <td className="centered-element">{foundUser.email}</td>
                                 {currentUser.manager === true ?                                
                                         <td className="centered-element">
                                             <input 
