@@ -1,11 +1,11 @@
 import { useState } from "react"
 import axios from "axios"
-export default function TransactionForm({ setMessage, showTransForm, setShowTransForm, inventoryId, currentUser }) {
+export default function SalesTransactionForm({ setMessage, showTransForm, setShowTransForm, inventoryId, currentUser }) {
     const invId = inventoryId.slice(0,inventoryId.indexOf(' '))
     const invDesc = inventoryId.slice(inventoryId.indexOf(' '))
     
     const [form, setForm] = useState({
-        transType: 'P',
+        transType: 'S',
         transCount: null,
         transNotes : '',
         transOwner: currentUser.username

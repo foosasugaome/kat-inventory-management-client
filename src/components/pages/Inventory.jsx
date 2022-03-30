@@ -34,9 +34,9 @@ export default function Inventory ({ currentUser }) {
         <div>
           <button onClick={() => setSelectedComponent('1')}  className={selectedComponent === '1' ? 'button-nav-selected' : 'button-nav'}> Edit Product </button>
         </div>
-        <div>
+        {/* <div>
           <button onClick={() => setSelectedComponent('2')}  className={selectedComponent === '2' ? 'button-nav-selected' : 'button-nav'}> Manage Inventory </button>
-        </div>
+        </div> */}
       </div>
       <div className='tab-container'>
       {/* <Search />g */}

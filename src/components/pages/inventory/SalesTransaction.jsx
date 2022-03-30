@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
-import TransactionForm from './TransactionForm'
+import SalesTransactionForm from './SalesTransactionForm'
 
-export default function Transaction ({ currentUser }) {
+export default function SalesTransaction ({ currentUser }) {
   const [form, setForm] = useState({
     genericName: ''
   })
@@ -75,7 +75,7 @@ export default function Transaction ({ currentUser }) {
       </div>
       {
           showTransForm ? 
-          <TransactionForm setMessage={setMessage} showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} currentUser={currentUser} />
+          <SalesTransactionForm setMessage={setMessage} showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} currentUser={currentUser} />
           :
           null
       }

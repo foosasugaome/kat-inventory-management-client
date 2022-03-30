@@ -12,6 +12,8 @@ import Inventory from './components/pages/Inventory'
 import Dashboard from './components/pages/Dashboard'
 import UserEdit from './components/pages/dashboard/UserEdit';
 import Report from './components/pages/Report';
+import Purchases from './components/pages/Purchases';
+import Sales from './components/pages/Sales';
 
 
 function App() {
@@ -52,6 +54,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
         <Route path="/dashboard/:id" element={<UserEdit currentUser={currentUser} users={users} setUsers={setUsers} />} />
         <Route path='/inventory' element={<Inventory currentUser={currentUser} />}/>                
+        <Route path='/sales' element={<Sales currentUser={currentUser} />}/>
+        <Route path='/purchases' element={<Purchases currentUser={currentUser} />}/>
         <Route path='/report' element={<Report />} />        
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />

@@ -1,7 +1,4 @@
 import React from 'react'
-
-
-
 export default function InventoryList ({inventory}){
   
   const allInventory = inventory.map((drug, idx) => {
