@@ -10,10 +10,19 @@ export default function SearchApi ({ currentUser }) {
     productType: '',
     route: '',
     usedFor: '',
-    unitCount: 0
-  })  
+    unitCount: 0,
+    transactions: [
+      {
+        transType: 'add',
+        transCount: 0,
+        transNotes: 'New record',
+        transOwner: 'System',
+        transUpdatedBy: 'System'
+      }
+    ]
+  })
 
-    const [apiResponse, setApiResponse] = useState(null)
+  const [apiResponse, setApiResponse] = useState(null)
 
   const endPoint = `https://api.fda.gov/drug/event.json?search=patient.drug.openfda.brand_name:"${search}"`
 
@@ -29,7 +38,7 @@ export default function SearchApi ({ currentUser }) {
     try {
       axios
         .get(endPoint)
-        .then(response => {          
+        .then(response => {
           setBrandName(
             response.data.results[0].patient.drug[0].openfda.brand_name
           )
@@ -65,52 +74,65 @@ export default function SearchApi ({ currentUser }) {
   const listBrandName = brandName.map((brand, index) => {
     return (
       <>
-        <option value={brand} key={`brand-${index}`}>{brand}</option>
+        <option value={brand} key={`brand-${index}`}>
+          {brand}
+        </option>
       </>
     )
   })
   const listGenericName = genericName.map((generic, index) => {
     return (
       <>
-        <option value={generic} key={`generic-${index}`}>{generic}</option>
+        <option value={generic} key={`generic-${index}`}>
+          {generic}
+        </option>
       </>
     )
   })
   const listManufacturerName = manufacturerName.map((manufacturer, index) => {
     return (
       <>
-        <option value={manufacturer} key={`mfg-${index}`}>{manufacturer}</option>
+        <option value={manufacturer} key={`mfg-${index}`}>
+          {manufacturer}
+        </option>
       </>
     )
   })
   const listProductType = productType.map((producttype, index) => {
     return (
       <>
-        <option value={producttype} key={`prodtype-${index}`}>{producttype}</option>
+        <option value={producttype} key={`prodtype-${index}`}>
+          {producttype}
+        </option>
       </>
     )
   })
   const listRoute = route.map((route, index) => {
     return (
       <>
-        <option value={route} key={`route-${index}`}>{route}</option>
+        <option value={route} key={`route-${index}`}>
+          {route}
+        </option>
       </>
     )
   })
   const listSubstanceName = substanceName.map((substance, index) => {
     return (
       <>
-        <option value={substance} key={`subs-${index}`}>{substance}</option>
+        <option value={substance} key={`subs-${index}`}>
+          {substance}
+        </option>
       </>
     )
   })
   const handleApiForm = e => {
-    e.preventDefault()    
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`, form)
+    e.preventDefault()
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`, form)
       .then(response => {
         setResult(`Saved to inventory.`)
-        setSearch('')       
-        // setForm({...form, unitCount:0})  
+        setSearch('')
+        // setForm({...form, unitCount:0})
       })
       .catch(error =>
         setResult(`Something went wrong. Please contact your administrator.`)
@@ -120,9 +142,9 @@ export default function SearchApi ({ currentUser }) {
   return (
     <>
       <div className='flex-container'>
-        <h3>Search FDA Database </h3>         
+        <h3>Search FDA Database </h3>
       </div>
-     
+
       <div className='flex-container'>
         <form onSubmit={handleSearch}>
           <label htmlFor='search'></label>
@@ -135,14 +157,12 @@ export default function SearchApi ({ currentUser }) {
           />
           <button type='submit'> Search </button>
         </form>
-        
       </div>
       <div className='flex-container'>{result}</div>
-     
+
       {search !== '' ? (
         <form onSubmit={handleApiForm}>
           <div className='form-container'>
-           
             <label htmlFor='brandName'>Brand Name </label>
             <select
               id='brandName'
@@ -203,13 +223,11 @@ export default function SearchApi ({ currentUser }) {
               onChange={e => setForm({ ...form, unitCount: e.target.value })}
             /> */}
             <button type='submit'>Save</button>
-          </div>          
+          </div>
         </form>
-        
       ) : (
         <></>
       )}
-      
     </>
   )
 }

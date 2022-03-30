@@ -11,7 +11,16 @@ export default function AddMedicine ({inventoryList, setInventoryList}) {
         productType: "",
         route: "",
         usedFor: "",
-        unitCount: 0
+        unitCount: 0,
+        transactions: [
+            {
+              transType: 'add',
+              transCount: 0,
+              transNotes: 'New record',
+              transOwner: 'System',
+              transUpdatedBy: 'System'
+            }
+          ]
     })
 
 

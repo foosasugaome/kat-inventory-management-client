@@ -222,8 +222,7 @@ input textarea {
   resize: none;
 }
 input:focus {
-  border: 0.05rem solid rgb(47, 173, 148);
-  width: fit-content;
+  border: 0.05rem solid rgb(47, 173, 148);  
 }
 select {
   border: 0.05rem solid rgb(204, 201, 201);
