@@ -46,9 +46,10 @@ export default function Transaction ({ currentUser }) {
           <td>{drug.brandName}</td>
           <td>{drug.manufacturerName}</td>
           <td>{drug.route}</td>
+          <td className='centered-element'>{drug.unitCount}</td>
           <td className='centered-element'>
             <button key={`key-${index}`} value={`${drug._id} ${drug.genericName} ${drug.brandName}`} onClick={handleSelect}>Select</button>
-          </td>
+          </td>          
         </tr>
       </>
     )
@@ -56,6 +57,9 @@ export default function Transaction ({ currentUser }) {
 
   return (
     <>
+    <div className='flex-container'>      
+      <h3>Create Transaction</h3>
+    </div>
       <div className='flex-container'>
         <form onSubmit={handleSearchDB}>
           <label htmlFor='genericName'></label>
@@ -64,7 +68,7 @@ export default function Transaction ({ currentUser }) {
             value={form.genericName}
             onChange={e => setForm({ ...form, genericName: e.target.value })}
             required
-          />
+          />&nbsp;
           <button type='submit'> Search </button>
         </form>
       </div>
@@ -85,6 +89,7 @@ export default function Transaction ({ currentUser }) {
               <th>Brand name</th>
               <th>Manufacturer</th>
               <th>Route</th>
+              <th>Count</th>
               <th></th>
             </tr>
             </thead>

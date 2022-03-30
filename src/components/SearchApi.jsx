@@ -21,10 +21,12 @@ export default function SearchApi ({ currentUser }) {
       }
     ]
   })
+  const [showResults, setShowResults] = useState(false)
 
   const [apiResponse, setApiResponse] = useState(null)
 
   const endPoint = `https://api.fda.gov/drug/event.json?search=patient.drug.openfda.brand_name:"${search}"`
+  console.log(endPoint)
 
   const [result, setResult] = useState([])
   const [brandName, setBrandName] = useState([]) // brand_name
@@ -69,6 +71,7 @@ export default function SearchApi ({ currentUser }) {
   const handleSearch = e => {
     e.preventDefault()
     fetchAPI(endPoint)
+    setShowResults(true)
   }
 
   const listBrandName = brandName.map((brand, index) => {
@@ -133,6 +136,7 @@ export default function SearchApi ({ currentUser }) {
         setResult(`Saved to inventory.`)
         setSearch('')
         // setForm({...form, unitCount:0})
+        setShowResults(false)
       })
       .catch(error =>
         setResult(`Something went wrong. Please contact your administrator.`)
@@ -153,14 +157,14 @@ export default function SearchApi ({ currentUser }) {
             id='search'
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder='search'
-          />
+            placeholder='Search brand name'
+          /> &nbsp;
           <button type='submit'> Search </button>
         </form>
       </div>
       <div className='flex-container'>{result}</div>
 
-      {search !== '' ? (
+      {showResults  ? (
         <form onSubmit={handleApiForm}>
           <div className='form-container'>
             <label htmlFor='brandName'>Brand Name </label>
@@ -222,7 +226,9 @@ export default function SearchApi ({ currentUser }) {
               value={form.unitCount}
               onChange={e => setForm({ ...form, unitCount: e.target.value })}
             /> */}
+            <p>
             <button type='submit'>Save</button>
+            </p>
           </div>
         </form>
       ) : (
@@ -231,3 +237,4 @@ export default function SearchApi ({ currentUser }) {
     </>
   )
 }
+

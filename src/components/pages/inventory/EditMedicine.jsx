@@ -29,15 +29,16 @@ export default function EditMedicine ({inventoryList, setInventoryList, showForm
     }
     return(
         <>
-
-            <h1>Edit Medicine</h1>
+            <div className="flex-container">
+            <h3>Edit Medicine</h3>
+            </div>
+            
             
             <Search inventoryList={inventoryList} setInventoryList={setInventoryList} setShowList={setShowList} />
 
            { showForm ? 
-           <div className="box stack-top" draggable='true'>                 
-           <div className="flex-container">            
            
+           <div className="flex-container">    
            <div className="form-container">
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>
@@ -63,7 +64,7 @@ export default function EditMedicine ({inventoryList, setInventoryList, showForm
                 
                 <input type="submit" value="Submit" />
             </form>
-            </div></div></div>
+            </div></div>
             : null
             }
             {

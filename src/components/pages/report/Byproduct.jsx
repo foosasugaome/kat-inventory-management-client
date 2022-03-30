@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import ProductTransDetails from './ProductTransDetails'
+
 export default function Byproduct () {
   const [form, setForm] = useState({
     genericName: ''
   })
   const [results, setResults] = useState([])
   const [prod, setProd] = useState([])
-  
+  const [showForm, setShowForm] = useState(false)
   useEffect(()=>{
     try {
         if(form.genericName !=='') {
@@ -30,13 +31,14 @@ export default function Byproduct () {
   const showResults = results.map((res, index) => {
       return (
           <>
-          <p><button className='button-link' value={res} onClick={() => handleSearch(res)}>{res.genericName}</button></p>
+          <button className='button-link' value={res} onClick={() => handleSearch(res)}>{res.genericName}</button>
           </>
       )
   })
 
   const handleSearch = (resp) => {
     setProd(resp)
+    setShowForm(true)
   }
 
   return (
@@ -53,9 +55,17 @@ export default function Byproduct () {
             />            
         </div>
         <div className='form-container'>            
-            {showResults}
-            <ProductTransDetails selectedProduct={prod} />
-        </div>
+            {showResults}            
+        </div>        
+      </div>
+
+      <div className='tab-container'>
+      {
+                showForm ?                
+                <ProductTransDetails selectedProduct={prod} />               
+                : 
+                null 
+            }            
       </div>
     </>
   )

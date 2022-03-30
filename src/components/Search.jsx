@@ -32,17 +32,19 @@ export default function Search ({ inventoryList, setInventoryList, setShowList, 
     
     return(
         <>
+        <div className="flex-container">
         <form onSubmit={handleSearchDB}>
             {message}
-            <label htmlFor="search">Search: </label>
+            <label htmlFor="search"></label>
             <input 
                 type="text" 
                 name="" id="search" 
                 onChange={(e) => {setForm({...form, genericName: e.target.value})}}
                 placeholder="Search by generic name"
-                />
+                />&nbsp;
             <input type="submit" value="Search"/>
         </form>
+        </div>
         </>
     )
 }

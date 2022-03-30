@@ -117,6 +117,7 @@ main {
   top: 80px;
   z-index: 0;
   left: 20px;
+  max-width: 1000px;
 }
 @media screen and (max-height: 450px) {
   .sidenav {
@@ -189,17 +190,13 @@ footer a:hover {
   border: 0.05rem solid rgb(163, 159, 159);
   border-radius: 5px;
 }
-label {
-  font-size: 14px;
-  padding: 0;
-}
 .form-container {
   /* border: 0.05rem solid rgb(204, 201, 201); */
   padding: 20px;
   padding-top: 0px;
   width: fit-content;
   /* border-top: 25px solid rgb(204, 201, 201); */
-  width: 200px;  
+  width: 600px;  
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -220,9 +217,15 @@ input textarea {
   margin: 3px;
   min-width: 200px;
   resize: none;
+  display: block;
 }
 input:focus {
   border: 0.05rem solid rgb(47, 173, 148);  
+}
+label {
+  font-size: 14px;
+  padding: 0;
+  display: block;
 }
 select {
   border: 0.05rem solid rgb(204, 201, 201);
@@ -231,6 +234,10 @@ select {
   padding: 5px;  
   margin: 0;
   min-width: 200px;
+  width: 200px;
+}
+select:focus{
+  width:fit-content;
 }
 .flex-menu-container {
   width: 98%;
@@ -297,20 +304,21 @@ select {
   gap: 5px;
   justify-content: flex-start;  
   min-width: 600px;  
-  max-width:fit-content;
+  max-width:90%;
   /* width: 100%; */
   margin-left: 0px;
   margin-right: 0;
   border: 0.05rem solid gray;
   border-radius: 5px;
   margin-top: 3px;
+  width: 100%;
 }
 table {
   border: 0.05rem solid gray;
   /* min-width: 800px;   */
   table-layout: fixed;
   /* border-collapse: collapse; */
-  /* width: 100%;   */
+  width: 100%;  
 }
 tr:nth-child(odd) {
   background: rgb(240, 237, 237);
@@ -358,13 +366,18 @@ td {
 .button-link {
   border: 0;
   background-color: rgb(255,255,255);
-  width: fit-content;
+  width: 400px;
   white-space: nowrap;
+  text-align: left;
+  padding: 2px
 }
 .button-link:hover {
-  border: 0;
-  background-color: rgb(225, 247, 236);
-  width: fit-content;
+  border: 0px;
+  border-left: 10px solid orangered;
+  background-color: rgb(232, 233, 232);
+  width: 400px;
   white-space: nowrap;
+  text-align: left;
 }
+
 
