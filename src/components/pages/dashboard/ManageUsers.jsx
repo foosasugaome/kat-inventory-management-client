@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
+import UserEdit from './UserEdit'
 
 export default function ManageUsers({ currentUser, users, setUsers }) {
 
   const [userSearch, setUserSearch] = useState('')
+  const [userId, setUserId] = useState('')
+  const [showUserEdit, setShowUserEdit] = useState(false)
 
   const handleUserDelete = async (userId) => {
     // console.log('delete user')
@@ -18,6 +21,10 @@ export default function ManageUsers({ currentUser, users, setUsers }) {
     } catch (err) {
       console.log(err)
     }
+  }
+  const handleSelect= (e) => {
+        setUserId(e.target.value)
+        setShowUserEdit(true)
   }
 
   const userList = users.map((user, index) => {
@@ -35,12 +42,13 @@ export default function ManageUsers({ currentUser, users, setUsers }) {
             <td className='centered-element'>
                 { currentUser.manager === true ?
                   <>
-                    {  user.username === 'admin' ? ' ' : <button><Link to={`/dashboard/${user._id}`}>Edit</Link></button>
+                    {  user.username === 'admin' ? ' ' : <button value={user._id} onClick={handleSelect}>Edit</button>
                     }
                   </>
                   :
                   <></>
                 }
+                 {/* <Link to={`/dashboard/${user._id}`}>Edit</Link> */}
             </td>
             {currentUser.username === 'admin' ? 
               <td className='centered-element'>
@@ -86,6 +94,11 @@ export default function ManageUsers({ currentUser, users, setUsers }) {
           </tbody>
         </table>
       </div>
+      { showUserEdit ?
+        <UserEdit currentUser={currentUser} users={users} setUsers={setUsers} userId={userId} setUserId={userId} />
+        :
+        null
+      }
     </>
   )
 }

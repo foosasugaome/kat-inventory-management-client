@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom"
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function UserEdit({ currentUser, users, setUsers }) {
+export default function UserEdit({ currentUser, users, setUsers, userId, setUserId }) {
 
-    const { id } = useParams()
+    // const { id } = useParams()
+    const id = userId
     const foundUser = users.find(user => {
         return user._id === id
     })
@@ -23,12 +24,12 @@ export default function UserEdit({ currentUser, users, setUsers }) {
     return (
         <div>
 
-            <h2 className='flex-container'>
-                <Link to={`/dashboard`}>Dashboard</Link>
-            </h2>
+            {/* <h2 className='flex-container'>
+                <Link to={`/dashboard`}>Dashboard {userId}</Link>
+            </h2> */}
 
             <div className='flex-container'>
-                <h3>Manage Users</h3>
+                <h3>Edit User Access</h3>
             </div>
 
             <div className='flex-container'>
@@ -45,17 +46,15 @@ export default function UserEdit({ currentUser, users, setUsers }) {
                             <td>{foundUser.firstname}</td>
                             <td>{foundUser.lastname}</td>
                             <td>{foundUser.email}</td>
-                            {currentUser.manager === true ?
-                                <td>
-                                    <td>
+                            {currentUser.manager === true ?                                
+                                    <td className="centered-element">
                                         <input 
                                             type="checkbox" 
                                             id="manager" 
                                             name="manager" 
                                             checked={foundUser.manager} 
                                             onChange={handleManager}>
-                                        </input>
-                                    </td>
+                                        </input>                                
                                 </td>
                                 :
                                 <></>
