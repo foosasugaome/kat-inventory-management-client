@@ -35,7 +35,7 @@ export default function UserEdit({ currentUser, users, setUsers, userId, setUser
                         </tr>
         
                         {foundUser && currentUser ? 
-                            <tr>
+                            <tr>0
                                 <td>{foundUser.firstname}</td>
                                 <td>{foundUser.lastname}</td>
                                 <td>{foundUser.email}</td>

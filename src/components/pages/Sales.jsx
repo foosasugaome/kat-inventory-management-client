@@ -11,10 +11,7 @@ export default function Sales({ currentUser }) {
         </div>
         <div>
           <button onClick={() => setSelectedComponent('1')}  className={selectedComponent === '1' ? 'button-nav-selected' : 'button-nav'}> Add Sale </button>
-        </div>
-        {/* <div>
-          <button onClick={() => setSelectedComponent('2')}  className={selectedComponent === '2' ? 'button-nav-selected' : 'button-nav'}> Manage Inventory </button>
-        </div> */}
+        </div>   
       </div>
 
       <div className='tab-container'>      

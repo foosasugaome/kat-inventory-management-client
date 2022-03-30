@@ -1,6 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
-export default function SalesTransactionForm({ setMessage, showTransForm, setShowTransForm, inventoryId, currentUser }) {
+export default function SalesTransactionForm({ setMessage, showTransForm, setShowTransForm, inventoryId, currentUser, getData }) {
     const invId = inventoryId.slice(0,inventoryId.indexOf(' '))
     const invDesc = inventoryId.slice(inventoryId.indexOf(' '))
     
@@ -27,6 +27,7 @@ export default function SalesTransactionForm({ setMessage, showTransForm, setSho
                     transNotes : '',
                     transOwner: ''
                 })
+                getData()
             })
             .catch(error => {
                 setMessage('An error occured. Please contact your administrator.')
@@ -44,13 +45,7 @@ export default function SalesTransactionForm({ setMessage, showTransForm, setSho
             
             <div className="form-container">
             <h3>{invDesc}</h3>                            
-            <form onSubmit={handleSubmit}>                
-                {/* <label htmlFor='transType'>Transaction Type</label>
-                <select id='transType' onChange={(e)=>setForm({...form, transType:e.target.value})} required>
-                    <option></option>
-                    <option value='add'>Add</option>
-                    <option value='rem'>Remove</option>
-                </select> */}
+            <form onSubmit={handleSubmit}>                    
                 <label htmlFor='transCount'>Unit Count</label>
                 <input type='number' id='transCount' value={form.transCount} onChange={(e)=>setForm({...form, transCount:e.target.value})} required/>
                 <label htmlFor="transNotes">Note </label>

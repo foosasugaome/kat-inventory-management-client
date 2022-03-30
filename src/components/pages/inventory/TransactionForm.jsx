@@ -44,13 +44,7 @@ export default function TransactionForm({ setMessage, showTransForm, setShowTran
             
             <div className="form-container">
             <h3>{invDesc}</h3>                            
-            <form onSubmit={handleSubmit}>                
-                {/* <label htmlFor='transType'>Transaction Type</label>
-                <select id='transType' onChange={(e)=>setForm({...form, transType:e.target.value})} required>
-                    <option></option>
-                    <option value='add'>Add</option>
-                    <option value='rem'>Remove</option>
-                </select> */}
+            <form onSubmit={handleSubmit}>                         
                 <label htmlFor='transCount'>Unit Count</label>
                 <input type='number' id='transCount' value={form.transCount} onChange={(e)=>setForm({...form, transCount:e.target.value})} required/>
                 <label htmlFor="transNotes">Note </label>

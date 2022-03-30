@@ -3,7 +3,7 @@ import axios from "axios"
 import AddMedicine from "./inventory/AddMedicine"
 import EditMedicine from "./inventory/EditMedicine"
 
-import SearchApi from '../SearchApi'
+// import SearchApi from '../SearchApi'
 import Transaction from './inventory/Transaction'
 
 export default function Inventory ({ currentUser }) {

@@ -46,7 +46,7 @@ export default function Transaction ({ currentUser }) {
           <td>{drug.brandName}</td>
           <td>{drug.manufacturerName}</td>
           <td>{drug.route}</td>
-          <td className='centered-element'>{drug.unitCount}</td>
+          <td className='centered-element'>{drug.unitCount.toLocaleString("en-us")}</td>
           <td className='centered-element'>
             <button key={`key-${index}`} value={`${drug._id} ${drug.genericName} ${drug.brandName}`} onClick={handleSelect}>Select</button>
           </td>          

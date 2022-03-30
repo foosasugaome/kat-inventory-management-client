@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-export default function SearchApi ({ currentUser, form, setForm }) {
+export default function SearchApi ({ currentUser, form, setForm, result, setResult }) {
   const [search, setSearch] = useState('')
   // const [form, setForm] = useState({
   //   genericName: '',
@@ -26,37 +26,24 @@ export default function SearchApi ({ currentUser, form, setForm }) {
   const [apiResponse, setApiResponse] = useState(null)
 
   const endPoint = `https://api.fda.gov/drug/event.json?search=patient.drug.openfda.brand_name:"${search}"`
-  console.log(endPoint)
-
-  const [result, setResult] = useState([])
+    
   const [brandName, setBrandName] = useState([]) // brand_name
   const [genericName, setGenericName] = useState([]) // generic_name
   const [manufacturerName, setManufacturerName] = useState([]) // manufacturer_name
   const [productType, setProductType] = useState([]) // product_type
-  const [route, setRoute] = useState([]) // route
-  const [substanceName, setSubstanceName] = useState([]) // substance_name
+  const [route, setRoute] = useState([]) // route  
 
   function fetchAPI (endpoint) {
     try {
       axios
         .get(endPoint)
         .then(response => {
-          setBrandName(
-            response.data.results[0].patient.drug[0].openfda.brand_name
-          )
-          setGenericName(
-            response.data.results[0].patient.drug[0].openfda.generic_name
-          )
-          setManufacturerName(
-            response.data.results[0].patient.drug[0].openfda.manufacturer_name
-          )
-          setProductType(
-            response.data.results[0].patient.drug[0].openfda.product_type
-          )
+          setBrandName(response.data.results[0].patient.drug[0].openfda.brand_name)
+          setGenericName(response.data.results[0].patient.drug[0].openfda.generic_name)
+          setManufacturerName(response.data.results[0].patient.drug[0].openfda.manufacturer_name)
+          setProductType(response.data.results[0].patient.drug[0].openfda.product_type)
           setRoute(response.data.results[0].patient.drug[0].openfda.route)
-          setSubstanceName(
-            response.data.results[0].patient.drug[0].openfda.substance_name
-          )
+          
           setApiResponse(response.status)
         })
         .catch(error => {
@@ -72,8 +59,7 @@ export default function SearchApi ({ currentUser, form, setForm }) {
     e.preventDefault()
     fetchAPI(endPoint)
     setShowResults(true)
-  }
-  console.log(form)
+  }  
 
   const listBrandName = brandName.map((brand, index) => {
     return (
@@ -119,16 +105,7 @@ export default function SearchApi ({ currentUser, form, setForm }) {
         </option>
       </>
     )
-  })
-  const listSubstanceName = substanceName.map((substance, index) => {
-    return (
-      <>
-        <option value={substance} key={`subs-${index}`}>
-          {substance}
-        </option>
-      </>
-    )
-  })
+  })  
   const handleApiForm = e => {
     e.preventDefault()
     axios
@@ -143,31 +120,24 @@ export default function SearchApi ({ currentUser, form, setForm }) {
         setResult(`Something went wrong. Please contact your administrator.`)
       )
   }
-
   return (
     <>
-      <div className='flex-container'>
-        <h3>Search FDA Database </h3>
-      </div>
-
-      <div className='flex-container'>
         <form onSubmit={handleSearch}>
-          <label htmlFor='search'></label>
+          <label htmlFor='search'>Search FDA Database </label>
           <input
             type='text'
             id='search'
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder='Search brand name'
-          /> &nbsp;
-          <button type='submit'> Search </button>
+          /> 
+          <p>
+            <button type='submit'> Search </button>
+          </p>
         </form>
-      </div>
-      <div className='flex-container'>{result}</div>
-
       {showResults  ? (
         <form onSubmit={handleApiForm}>
-          <div className='form-container'>
+          <div className='api-result-container'>
             <label htmlFor='brandName'>Brand Name </label>
             <select
               id='brandName'
@@ -209,20 +179,7 @@ export default function SearchApi ({ currentUser, form, setForm }) {
             >
               <option value=''></option>
               {listRoute}
-            </select>
-            <label htmlFor='substanceName'>Substance Name </label>
-            <select
-              id='substanceName'
-              onChange={e =>
-                setForm({ ...form, substanceName: e.target.value })
-              }
-            >
-              <option value=''></option>
-              {listSubstanceName}
             </select>            
-            <p>
-            <button type='submit'>Save</button>
-            </p>
           </div>
         </form>
       ) : (

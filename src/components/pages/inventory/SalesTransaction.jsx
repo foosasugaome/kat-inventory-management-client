@@ -13,6 +13,26 @@ export default function SalesTransaction ({ currentUser }) {
 
   const handleSearchDB = e => {
     e.preventDefault()
+    // try {
+    //   axios
+    //     .post(
+    //       `${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/search`,
+    //       form
+    //     )
+    //     .then(response => {
+    //       setResults(response.data)           
+    //       setMessage(`Search results for : ${form.genericName}`)
+      
+    //     })
+    //     .catch(error => setMessage(`An error occured. Please contact your administrator.`))
+       
+    // } catch (error) {
+    //   setMessage(`An error occured. Please contact your administrator.`)
+    //   console.log(error)
+    // }
+    getData()
+  }
+  function getData() {
     try {
       axios
         .post(
@@ -31,7 +51,6 @@ export default function SalesTransaction ({ currentUser }) {
       console.log(error)
     }
   }
-
   
   const handleSelect = (e) => {    
     setInventoryId(e.target.value)
@@ -46,7 +65,7 @@ export default function SalesTransaction ({ currentUser }) {
           <td>{drug.brandName}</td>
           <td>{drug.manufacturerName}</td>
           <td>{drug.route}</td>
-          <td className='centered-element'>{drug.unitCount}</td>
+          <td className='centered-element'>{drug.unitCount.toLocaleString("en-us")}</td>
           <td className='centered-element'>
             <button key={`key-${index}`} value={`${drug._id} ${drug.genericName} ${drug.brandName}`} onClick={handleSelect}>Select</button>
           </td>          
@@ -75,7 +94,7 @@ export default function SalesTransaction ({ currentUser }) {
       </div>
       {
           showTransForm ? 
-          <SalesTransactionForm setMessage={setMessage} showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} currentUser={currentUser} />
+          <SalesTransactionForm setMessage={setMessage} showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} currentUser={currentUser} handleSearchDB={getData}/>
           :
           null
       }

@@ -12,7 +12,6 @@ export default function SalesListDetail({  setMessage, showTransForm, setShowTra
         .catch(error => console.log(error))
     },[invId])
 
-
     const listTransactions = results.map((t,index) => {
         /// dipslay only transaction type "P"        
             return(
