@@ -55,9 +55,9 @@
   gap: 0px;
   justify-content: flex-start;
   min-width: 400px;
-  /* width: 100%; */
+  width: 100%;
   margin-left: 15px;
-  margin-right: 0;
+  margin-right: 0;  
 }
 .centered-element {
   text-align: center;
@@ -211,7 +211,7 @@ h3 {
   font-weight: 400;
   padding: 0px;
 }
-input textarea {
+input, textarea, label {
   border: 0.05rem solid rgb(204, 201, 201);
   color: rgb(0, 0, 0);
   font-weight: 400;
@@ -220,15 +220,14 @@ input textarea {
   margin: 3px;
   min-width: 200px;
   resize: none;
-  display: block;
+  font-size: 14px;
+  display: block;  
+}
+label {
+  border:0px;
 }
 input:focus {
   border: 0.05rem solid rgb(47, 173, 148);  
-}
-label {
-  font-size: 14px;
-  padding: 0;
-  display: block;
 }
 select {
   border: 0.05rem solid rgb(204, 201, 201);

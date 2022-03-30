@@ -1,26 +1,26 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-export default function SearchApi ({ currentUser }) {
+export default function SearchApi ({ currentUser, form, setForm }) {
   const [search, setSearch] = useState('')
-  const [form, setForm] = useState({
-    genericName: '',
-    brandName: '',
-    manufacturerName: '',
-    productType: '',
-    route: '',
-    usedFor: '',
-    unitCount: 0,
-    transactions: [
-      {
-        transType: 'add',
-        transCount: 0,
-        transNotes: 'New record',
-        transOwner: 'System',
-        transUpdatedBy: 'System'
-      }
-    ]
-  })
+  // const [form, setForm] = useState({
+  //   genericName: '',
+  //   brandName: '',
+  //   manufacturerName: '',
+  //   productType: '',
+  //   route: '',
+  //   usedFor: '',
+  //   unitCount: 0,
+  //   transactions: [
+  //     {
+  //       transType: 'add',
+  //       transCount: 0,
+  //       transNotes: 'New record',
+  //       transOwner: 'System',
+  //       transUpdatedBy: 'System'
+  //     }
+  //   ]
+  // })
   const [showResults, setShowResults] = useState(false)
 
   const [apiResponse, setApiResponse] = useState(null)
@@ -73,6 +73,7 @@ export default function SearchApi ({ currentUser }) {
     fetchAPI(endPoint)
     setShowResults(true)
   }
+  console.log(form)
 
   const listBrandName = brandName.map((brand, index) => {
     return (
@@ -218,14 +219,7 @@ export default function SearchApi ({ currentUser }) {
             >
               <option value=''></option>
               {listSubstanceName}
-            </select>
-            {/* <label htmlFor='unitCount'>Unit Count </label>
-            <input
-              type='text'
-              id='unitCount'
-              value={form.unitCount}
-              onChange={e => setForm({ ...form, unitCount: e.target.value })}
-            /> */}
+            </select>            
             <p>
             <button type='submit'>Save</button>
             </p>

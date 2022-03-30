@@ -68,7 +68,9 @@ export default function UpdateUser({ currentUser, users, setUsers }) {
                                 />
                             </div>
                             <div>
+                                <p>
                                 <button type='submit' onClick={e => setUserId(user._id)}>Submit</button>
+                                </p>
                             </div>
                         </form>
                     </div>
@@ -85,7 +87,7 @@ export default function UpdateUser({ currentUser, users, setUsers }) {
                 <h3>Update Info</h3>
             </div>
             <div className='flex-container'>
-                <div>Please enter information in all fields</div>
+                <div className="form-container">Please enter information in all fields</div>
                 {userList}
             </div>
         </>
