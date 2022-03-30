@@ -7,6 +7,7 @@ export default function TransactionForm({ setMessage, showTransForm, setShowTran
     const [form, setForm] = useState({
         transType: 'P',
         transCount: null,
+        transPPU:null,
         transNotes : '',
         transOwner: currentUser.username
     })
@@ -24,6 +25,7 @@ export default function TransactionForm({ setMessage, showTransForm, setShowTran
                 setForm({
                     transType: '',
                     transCount: 0,
+                    transPPU: null,
                     transNotes : '',
                     transOwner: ''
                 })
@@ -47,6 +49,8 @@ export default function TransactionForm({ setMessage, showTransForm, setShowTran
             <form onSubmit={handleSubmit}>                         
                 <label htmlFor='transCount'>Unit Count</label>
                 <input type='number' id='transCount' value={form.transCount} onChange={(e)=>setForm({...form, transCount:e.target.value})} required/>
+                <label htmlFor='transPPU'>Price per Unit</label>
+                <input type='number' id='transPPU' value={form.transPPU} onChange={(e)=>setForm({...form, transPPU:e.target.value})} required/>
                 <label htmlFor="transNotes">Note </label>
                 <textarea id='transNotes' value={form.transNotes} onChange={(e)=>setForm({...form, transNotes:e.target.value})} />
                 <label htmlFor='transOwner'>Created by</label>

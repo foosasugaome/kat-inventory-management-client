@@ -13,25 +13,9 @@ export default function SalesTransaction ({ currentUser }) {
 
   const handleSearchDB = e => {
     e.preventDefault()
-    // try {
-    //   axios
-    //     .post(
-    //       `${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/search`,
-    //       form
-    //     )
-    //     .then(response => {
-    //       setResults(response.data)           
-    //       setMessage(`Search results for : ${form.genericName}`)
-      
-    //     })
-    //     .catch(error => setMessage(`An error occured. Please contact your administrator.`))
-       
-    // } catch (error) {
-    //   setMessage(`An error occured. Please contact your administrator.`)
-    //   console.log(error)
-    // }
     getData()
   }
+
   function getData() {
     try {
       axios
@@ -54,9 +38,9 @@ export default function SalesTransaction ({ currentUser }) {
   
   const handleSelect = (e) => {    
     setInventoryId(e.target.value)
-    setShowTransForm(true)
-    // setSelectedComponent('2')    
+    setShowTransForm(true)    
   }
+  
   const listResults = results.map((drug, index) => {
     return (
       <>

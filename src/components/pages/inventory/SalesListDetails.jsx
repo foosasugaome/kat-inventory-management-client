@@ -30,12 +30,9 @@ export default function SalesListDetail({  setMessage, showTransForm, setShowTra
                 </>
             )
     })
-
     return(
 <>
-
-<div className="flex-container">
-    
+<div className="flex-container">    
 </div>
 <div className="flex-container">
     <h3>Purchases : {invDesc}</h3>
