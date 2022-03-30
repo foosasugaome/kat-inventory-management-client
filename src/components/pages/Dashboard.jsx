@@ -23,7 +23,7 @@ export default function Dashboard ({ currentUser, setCurrentUser, users, setUser
             </div>
             <div className='tab-container'>
                 {showComponent === '0' ? <Overview currentUser={currentUser} users={users} setUsers={setUsers} /> : null}
-                {showComponent === '1' ? <ManageUsers users={users} currentUser={currentUser}/> : null}
+                {showComponent === '1' ? <ManageUsers users={users} setUsers={setUsers} currentUser={currentUser}/> : null}
                 {showComponent === '2' ? <UpdateUser currentUser={currentUser} users={users} setUsers={setUsers} /> : null}
             </div>
         </>

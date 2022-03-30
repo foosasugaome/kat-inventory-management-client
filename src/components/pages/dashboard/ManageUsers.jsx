@@ -1,9 +1,24 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
 
-export default function ManageUsers({ currentUser, users }) {
+export default function ManageUsers({ currentUser, users, setUsers }) {
 
   const [userSearch, setUserSearch] = useState('')
+
+  const handleUserDelete = async (userId) => {
+    // console.log('delete user')
+    try {
+      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${userId}`)
+      .then(response => {
+          console.log(response.data)
+          return axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
+      }) 
+      .then(response => setUsers(response.data))
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   const userList = users.map((user, index) => {
     return (
@@ -15,7 +30,7 @@ export default function ManageUsers({ currentUser, users }) {
             </td>
             <td>{user.username}</td>
             <td>{user.email}</td>
-            <td className='centered-element'>{user.active ? '✅' : ' '}</td>
+            {/* <td className='centered-element'>{user.active ? '✅' : ' '}</td> */}
             <td className='centered-element'>{user.manager ? '✅': ' '}</td>
             <td className='centered-element'>
                 { currentUser.manager === true ?
@@ -27,6 +42,13 @@ export default function ManageUsers({ currentUser, users }) {
                   <></>
                 }
             </td>
+            {currentUser.username === 'admin' ? 
+              <td className='centered-element'>
+                {user.username === 'admin' ? ' ' : <button onClick={() => handleUserDelete(user._id)}>Delete</button>}
+              </td>
+              :
+              <></>
+            }
           </>
           :
           <></>
@@ -42,8 +64,8 @@ export default function ManageUsers({ currentUser, users }) {
       </div>
       <div className='flex-container'>
         <input
-          type="text"
-          placeholder="Filter users by name"
+          type='text'
+          placeholder='Filter users by name'
           value={userSearch}
           onChange={e => setUserSearch((e.target.value).toUpperCase())}
         />
@@ -55,9 +77,10 @@ export default function ManageUsers({ currentUser, users }) {
               <th>Name</th>
               <th>Username</th>
               <th>Email</th>
-              <th>Active</th>
+              {/* <th>Active</th> */}
               <th>Manager</th>
               <th>Edit Role</th>
+              {currentUser.username === 'admin' ? <th>Delete User</th> : <></>}
             </tr>
             {userList}
           </tbody>
