@@ -54,7 +54,7 @@ export default function Overview({ currentUser }) {
     if (!currentUser) return <Navigate to="/login" />
 
     return (
-        <div>
+        <>
 
             <div className='flex-container'>
                 <h3>Low Stock Inventory</h3>
@@ -102,6 +102,6 @@ export default function Overview({ currentUser }) {
                 </table>       
             </div>
 
-        </div>
+        </>
     )
 }

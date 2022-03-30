@@ -150,7 +150,7 @@ header {
   color: #fff;
   top: 0;
   height: 75px;
-  /* box-shadow: 0px 15px 10px -15px #111;  */
+  box-shadow: 0px 15px 10px -15px #111; 
   border-bottom: 0.05rem solid gray;
   display: flex;
   align-items: center;
