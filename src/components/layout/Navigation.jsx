@@ -1,13 +1,21 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-export default function Navigation({ handleLogout, isLogged, currentUser }) {
+export default function Navigation({ handleLogout, isLogged, currentUser}) {
+
+    let today = new Date();
+    let time = today.getHours()
+
     const [displayComponent, setDisplayComponent] = useState('0')    
     return(
         <>
         {
             (isLogged ? 
                 <div className="sidenav" >
-                <h4>Welcome, {currentUser.username.toUpperCase()}</h4>
+                {/* <h4>Welcome, {currentUser.username.toUpperCase()}</h4> */}
+                { time > 3 && time < 12 ? <h4>Good Morning, {currentUser.username.toUpperCase()}</h4> : <></>}
+                { time > 11 && time < 18 ? <h4>Good Afternoon, {currentUser.username.toUpperCase()}</h4> : <></>}
+                { time > 17 || time < 4 ? <h4>Good Evening, {currentUser.username.toUpperCase()}</h4> : <></>}
+
                 <Link to='/dashboard' onClick={() => setDisplayComponent('0')} className={displayComponent === '0' ? 'sidenav-selected' : ''}>Dashboard</Link>
                 <Link to='/inventory' onClick={() => setDisplayComponent('1')} className={displayComponent === '1' ? 'sidenav-selected' : ''}>Inventory</Link>
                 <Link to='/report' onClick={() => setDisplayComponent('2')} className={displayComponent === '2' ? 'sidenav-selected' : ''}>Reports</Link>        
