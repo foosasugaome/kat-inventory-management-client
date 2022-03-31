@@ -33,23 +33,6 @@ ___
 - As an admin user / manager, I want to be able to give selected basic users the ability to add, edit, and remove medications from the inventory.
 ___
 
-## Routing Chart
-| Method | Path | Purpose |
-| ------ | ---- | ------- |
-| GET | / | Home page
-| GET | /dashboard/overview | Summary of inventory updates.(Recent transactions, etc.)
-| GET | /dashboard/users | manage users page
-| PUT | /dashboard/users/:id | manage user's permission/ account type
-| GET | /inventory | Query database for medicine list.
-| GET | /inventory/:id | Show page for medicine. 
-| DELETE | /inventory/:id | Delete medicine from the database. 
-| GET | /inventory/add | Query the API and add to the inventory. 
-| PUT | /inventory/edit/:id | Query the DB for the medicine to edit.
-| POST | /inventory/transaction | Form to add transactions.
-| POST | /register | Register page
-| GET | /logout | logout
-
-
 
 ## URL Chart
 | Path | Purpose |
@@ -64,7 +47,9 @@ ___
 | /order | logs supplies orders. Add Order adds to the quantity of the current product count in the databse.
 
 
-#### Backend
+## Routing Chart (Server)
+| Method | Path | Purpose |
+| ------ | ---- | ------- |
 | GET | /users | Gets all user information from database
 | POST | /users/register | Adds a new user to the database
 | POST | /users/login | Validates user’s credentials and logs the user in 
