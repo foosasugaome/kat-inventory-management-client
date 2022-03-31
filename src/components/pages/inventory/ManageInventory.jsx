@@ -37,7 +37,7 @@ export default function ManageInventory({inventoryList, setInventoryList, refres
             </div>
             
             
-            <Search inventoryList={inventoryList} setInventoryList={setInventoryList} setShowList={setShowList} />
+            <Search inventoryList={inventoryList} setInventoryList={setInventoryList} showForm={showForm} setShowForm={setShowForm} showList={showList} setShowList={setShowList} />
            
             
            { showForm ? 
