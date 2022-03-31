@@ -13,7 +13,7 @@ export default function Navigation({ handleLogout, isLogged, currentUser}) {
         {
             (isLogged ? 
                 <div className="sidenav" >
-                <h4>{currentUser.username.toUpperCase()}</h4>
+                <h4>Logged as : {currentUser.username.toUpperCase()}</h4>
                 {/* { time > 3 && time < 12 ? <h4>Good Morning, {currentUser.username.toUpperCase()}</h4> : <></>}
                 { time > 11 && time < 18 ? <h4>Good Afternoon, {currentUser.username.toUpperCase()}</h4> : <></>}
                 { time > 17 || time < 4 ? <h4>Good Evening, {currentUser.username.toUpperCase()}</h4> : <></>} */}

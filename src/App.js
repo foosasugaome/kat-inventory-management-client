@@ -15,6 +15,7 @@ import Report from './components/pages/Report';
 import Purchases from './components/pages/Purchases';
 import Sales from './components/pages/Sales';
 import Error from './components/pages/Error';
+import Contact from './components/pages/Contact';
 
 
 function App() {
@@ -51,7 +52,9 @@ function App() {
       <Routes>       
 
        
-        <Route path='/' element={<About />} />
+        <Route path='/' element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
         <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
         <Route path="/dashboard/:id" element={<UserEdit currentUser={currentUser} users={users} setUsers={setUsers} />} />
         <Route path='/inventory' element={<Inventory currentUser={currentUser} />}/>                

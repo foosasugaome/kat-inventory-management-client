@@ -190,7 +190,7 @@ footer a:hover {
   justify-content: space-around;
   align-items: flex-start;
   /* flex-flow: row nowrap; */
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   height: 100%;
   padding: 15px;
@@ -198,13 +198,21 @@ footer a:hover {
 }
 .img-profile {
   height: 100%;
-  width: 100%;
-  border-radius: 5px;
+  width: 100%;  
 }
 .card-profile {
-  width: 200px;
-  border: 0.05rem solid rgb(163, 159, 159);
-  border-radius: 5px;
+  width: 800px;
+  border: 0.05rem solid rgb(163, 159, 159);  
+}
+.profile-holder {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width:600px;
+  margin-bottom: 40px;
+}
+.profile-text {
+  padding: 20px;
 }
 .form-container {
   /* border: 0.05rem solid rgb(204, 201, 201); */
