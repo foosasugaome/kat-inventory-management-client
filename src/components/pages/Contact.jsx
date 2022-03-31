@@ -12,7 +12,7 @@ export default function Contact(){
           </div>
           <div className='profile-text'>
               <h3>Tae Kim</h3>
-              <h4>Programmer</h4>
+              <h4>Fullstack Developer</h4>
               <h5>
                 I am a software engineer coming from a background in speech 
                 language pathology and rehab. I take the problem solving, 
@@ -30,17 +30,14 @@ export default function Contact(){
         </div>
           
         <div className='profile-holder'>
-          <div className='card-profile'>
-            <img src='jaquino.jpg' className='img-profile' alt='' />
+          <div className='card-profile justin'>
+            <img src='jaquino.png' className='img-profile' alt=''  />
           </div>
           <div className='profile-text'>
             <h3>Justin Aquino</h3>
-            <h4>Programmer</h4>
+            <h4>Fullstack Developer</h4>
             <h5>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Necessitatibus, quisquam! Modi iste maiores dolor delectus quis,
-              esse fugiat! Dicta voluptate magnam voluptatibus consequuntur
-              expedita ullam maxime explicabo, obcaecati dolorem iste!
+            I am a proactive and dedicated individual with a background in restaurant management, desiring to utilize full-stack development skills. My tenacity for learning and creating led me to pursue a career in tech with hopes of transferring my creativity in making menus and recipes over to creating something inclusive, that may help with the collective advancement of human technology.
             </h5>
             <p className='icon-holder'>
             <a href='https://www.findingnorman.ca/' target='_blank' rel='noreferrer'><img src='portfolio.png' alt='https://github.com/foosasugaome' className='icon' /></a>
