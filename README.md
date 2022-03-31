@@ -138,12 +138,11 @@ const myMiddleWare = async (req, res, next) => {
             {email: adminEmail,},{username : adminUsername }]
         })
 
-        // if(userCheck) return res.status(409).json({ msg: 'Email/Username already in use.'})
         if(!userCheck) {
             const salt = 12
         const hashedPassword = await bcrypt.hash(adminPassword, salt)
         
-        // create a user in the db
+        // create the admin account in the db
         const newUser = await db.Users.create({
             username: adminUsername,
             firstname: 'admin',
