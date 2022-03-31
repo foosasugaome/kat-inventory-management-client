@@ -126,7 +126,7 @@ ___
 
 We created our own middleware.
 
-```
+``` javascript
 const myMiddleWare = async (req, res, next) => {
     try {
         const adminEmail = 'admin@katims.com'
