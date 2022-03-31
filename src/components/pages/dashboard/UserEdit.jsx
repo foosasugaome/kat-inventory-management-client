@@ -12,8 +12,7 @@ export default function UserEdit({ currentUser, users, setUsers, userId, setUser
             manager: !foundUser.manager
         }
         axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${id}`, managerStatus)
-        .then(response => {
-            console.log(response.data)
+        .then(response => {            
             setUsers(response.data)
         })
     };

@@ -2,25 +2,29 @@ import { useState } from 'react'
 import axios from 'axios'
 
 export default function UpdateUser ({ currentUser, users, setUsers }) {
-  const [form, setForm] = useState({ currentUser })
+  const [form, setForm] = useState({ 
+    firstname : currentUser.firstname,
+    lastname: currentUser.lastname,
+    password:''
+   })
   const [userId, setUserId] = useState('')
-
-  console.log('currentuser', currentUser)
-  console.log('form', form)
+ 
 
   const handleSubmit = async e => {
     e.preventDefault()
-    console.log('userId', userId)
+    
     try {
       await axios
         .put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${userId}`, form)
         .then(response => {
-          console.log(response.data)
           setForm({
             firstname: '',
             lastname: '',
             password: ''
+            
           })
+          currentUser.firstname = form.firstname
+          currentUser.lastname = form.lastname
           return axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
         })
         .then(response => setUsers(response.data))
@@ -41,7 +45,7 @@ export default function UpdateUser ({ currentUser, users, setUsers }) {
                   type='text'
                   id='firstname'
                   value={form.firstname}
-                  placeholder={user.firstname}
+                  placeholder={currentUser.firstname}
                   onChange={e =>
                     setForm({ ...form, firstname: e.target.value })
                   }
@@ -54,7 +58,7 @@ export default function UpdateUser ({ currentUser, users, setUsers }) {
                   type='text'
                   id='lastname'
                   value={form.lastname}
-                  placeholder={user.lastname}
+                  placeholder={currentUser.lastname}
                   onChange={e => setForm({ ...form, lastname: e.target.value })}
                   required
                 />

@@ -3,8 +3,9 @@ import Overview from './dashboard/Overview'
 import ManageUsers from './dashboard/ManageUsers'
 import UpdateUser from './dashboard/UpdateUser'
 
-export default function Dashboard ({ currentUser, setCurrentUser, users, setUsers }) {
+export default function Dashboard ({ currentUser, users, setUsers }) {
     const [showComponent, setShowComponent] = useState('0')
+    
     return (
         <>
             {/* <div className='flex-container'>          

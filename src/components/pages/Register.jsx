@@ -16,11 +16,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
   const [msg, setMsg] = useState('')
 
   const handleSubmit = async e => {
-    e.preventDefault()
-    console.log(
-      `${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`,
-      form
-    )
+    e.preventDefault()    
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`,

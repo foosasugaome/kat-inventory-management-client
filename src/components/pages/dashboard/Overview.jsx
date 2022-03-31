@@ -1,9 +1,9 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect, useRef} from 'react'
 import axios from "axios"
 import { Navigate } from "react-router-dom"
 
 export default function Overview({ currentUser }) {
-
+    
     const [inventories, setInventories] = useState([])
     const [searchTextStock, setSearchTextStock] = useState('')
     const [searchTextAll, setSearchTextAll] = useState('')
@@ -12,12 +12,17 @@ export default function Overview({ currentUser }) {
     let today = new Date();
     let time = today.getHours()
 
+    let isRendered = useRef(false)
     useEffect(() => {
         (async () => {
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)            
-            setInventories(response.data)
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory`)           
+            if(isRendered) {
+                setInventories(response.data)                            
+            }               
         })()        
     }, [])
+    
+    
 
     const searchedLow = inventories.map((inventory, index) => {
         return (
