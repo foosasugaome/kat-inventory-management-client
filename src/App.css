@@ -327,6 +327,9 @@ select:focus{
   border-radius: 5px;  
   margin: 2px;
 }
+.justin {
+  width: 90em;
+}
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
