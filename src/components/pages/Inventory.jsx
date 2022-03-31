@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from "axios"
 import AddMedicine from "./inventory/AddMedicine"
-import EditMedicine from "./inventory/EditMedicine"
+import ManageInventory from "./inventory/ManageInventory"
 
 // import SearchApi from '../SearchApi'
 import Transaction from './inventory/Transaction'
@@ -11,6 +11,9 @@ export default function Inventory ({ currentUser }) {
     const [inventoryList, setInventoryList] = useState([])
     const [showForm, setShowForm] = useState(false)
     const [refresher, setRefresher] = useState(false) //only purpose is to update the useEffect(justin)
+    const [medDetails, setMedDetails] = useState({
+
+    })
 
     const [medicineToEdit, setMedicineToEdit] = useState({}) //this is where I'll store the medicine to edit including it's id.
 
@@ -44,7 +47,7 @@ export default function Inventory ({ currentUser }) {
         selectedComponent === '0' ? <AddMedicine inventoryList={inventoryList} setInventoryList={setInventoryList}/> : null
       }      
       {
-        selectedComponent === '1' ? <EditMedicine inventoryList={inventoryList} showForm={showForm} refresher={refresher} setRefresher={setRefresher} setShowForm={setShowForm} setInventoryList={setInventoryList} medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
+        selectedComponent === '1' ? <ManageInventory inventoryList={inventoryList} showForm={showForm} refresher={refresher} setRefresher={setRefresher} setShowForm={setShowForm} setInventoryList={setInventoryList} medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
         
       }
       {

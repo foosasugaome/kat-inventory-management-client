@@ -8,6 +8,7 @@ export default function DrugList ({inventoryList,setInventoryList, setShowList, 
         setShowForm(true)
         setShowList(!showList)
     }
+    
 
     const deleteBtnHandler = (med) => {
         // console.log(med)
@@ -29,11 +30,17 @@ export default function DrugList ({inventoryList,setInventoryList, setShowList, 
                 <td>{item.productType}</td>          
                 <td>
                     <button onClick={() => {editBtnHandler(item)}}>Edit</button> 
+                </td>
+                <td>
                     <button onClick={() => {deleteBtnHandler(item._id)}}>Delete</button> 
+                </td>
+                <td>
+                    <button>View</button>
                 </td>
             </tr>
         )
     })
+
 
     return(
         <>
@@ -47,6 +54,8 @@ export default function DrugList ({inventoryList,setInventoryList, setShowList, 
                     <th>Manufacturer</th>
                     <th>Route</th>
                     <th>Product Type</th>                    
+                    <th></th>
+                    <th></th>
                     <th></th>
                     </tr>
                     </thead>
