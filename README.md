@@ -49,7 +49,19 @@ ___
 | POST | /register | Register page
 | GET | /logout | logout
 
-_
+
+## URL Chart
+| Path | Purpose |
+| ------ | ---- |
+|/register | Register page 
+| /login | Login Page
+| /logout| Logs out user and redirect to login page.
+| /dashboard | manage users page (adding admin privileges to normal users), update user info (change password, etc), Overview of total inventory. 
+| /inventory | Query FDA API and add to the inventory database or manually add medicine that is not in FDA API.
+| /inventory | Query into the inventory database and be able to view, edit, or delete each results.
+| /sales | View and add sales. Add sales subtracts the quantity of sold product to reflect the actual count left in the database.
+| /order | logs supplies orders. Add Order adds to the quantity of the current product count in the databse.
+
 ## ERDs
 ![ERD image](/KAT%20Rx.drawio.png)
 
