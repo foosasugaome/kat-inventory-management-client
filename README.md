@@ -2,13 +2,11 @@
 
 ## Deployed Link
 
-___
+
 ## About
 Inventory management software for pharmacies, utilizing the FDA open drug API. Pharmacies can monitor the current inventory to help make decisions on placing additional orders to minimize over / under stocking and ultimately
 lower costs.
 
-
-___
 ## Installation Instructions
 #### Client-side
 - Fork and clone this repository.
@@ -21,8 +19,6 @@ ___
 - Run `npm i` to install the dependencies.
 - Create a .env and store the `JWT_SECRET`, and a `PORT` number
 
-
-___
 ## User Stories
 - As a user I want to be able to create an account (admin vs. basic) to have access to my pharmacy’s inventory.
 - As a user, I want to be able to log in and see the details about our inventory
@@ -31,8 +27,6 @@ ___
 - As an admin user / manager, I want to be able to update my transactions in case of errors.
 - As an admin user / manager, I want to be able to remove medications from our inventory
 - As an admin user / manager, I want to be able to give selected basic users the ability to add, edit, and remove medications from the inventory.
-___
-
 
 ## URL Chart
 | Path | Purpose |
@@ -64,7 +58,8 @@ ___
 | GET | /inventory/:id/transaction | Gets information about transactions made on a specific inventory item
 | PUT | /inventory/:id/transaction | Makes changes to the inventory schema to add transactions (transactions are subdocuments of inventory)
 
-_
+## Final Product Images
+![Final Product Image](/wireframe/final_prod_dashboard_ss.jpg)
 
 ## ERDs
 ![ERD image](/KAT%20Rx.drawio.png)
@@ -89,10 +84,7 @@ _
 ![wireframe image](/wireframe/dashboard_transactions_reports.jpg)
 
 
-___
-## Final Product Images
 
-___
 ## Tech Utilized
 - HTML
 - CSS
@@ -101,7 +93,7 @@ ___
 - Express
 - React
 - Node
-___
+
 
 ## MVP Checklist
 - [ ] Register & Login for users. 
@@ -113,14 +105,14 @@ ___
 - [ ] Transaction history only visible to admins/managers.
 - [ ] CRUD for medicine inventory.
 - [ ] CRUD for transaction history.
-___
+
 
 ## Stetch Goals
 - [ ] Scan items to input in the database.
 - [ ] Sends notification if inventory is below a certain quantity.
 - [ ] Download + print inventory reports.
 - [ ] Order form send to email.
-___
+
 
 ## Code Highlights
 
@@ -165,8 +157,7 @@ app.get('/', myMiddleWare, (req,res)=>{
 })
 
 ```
-___
+
 
 ## Resources
-- ![openFDA API](https://open.fda.gov/)
-- 
+- [openFDA API](https://open.fda.gov/)
