@@ -16,7 +16,7 @@ export default function ManageInventory({inventoryList, setInventoryList, refres
         usedFor: "",
         unitCount: 0
     })
-
+    const [fetchedMedicine, setFetchedMedicine] = useState()
     const [showList, setShowList] = useState(false)
 
 
@@ -33,18 +33,32 @@ export default function ManageInventory({inventoryList, setInventoryList, refres
     return(
         <>
             <div className="flex-container">
-            <h3>Edit Medicine</h3>
+            <h3>Manage Inventory</h3>
             </div>
             
             
             <Search inventoryList={inventoryList} setInventoryList={setInventoryList} setShowList={setShowList} />
-            <InventoryItem />
+           
+            
            { showForm ? 
                 <EditForm form={form} setForm={setForm} submitForm={submitForm} />
             : null
             }
             {
-                showList ? <DrugList inventoryList={inventoryList} setInventoryList={setInventoryList}  setForm={setForm} setShowForm={setShowForm} refresher={refresher} setRefresher={setRefresher} setShowList={setShowList} showList={showList} /> : null
+                showList ? <DrugList 
+                                inventoryList={inventoryList} 
+                                setInventoryList={setInventoryList}  
+                                setForm={setForm} setShowForm={setShowForm} 
+                                refresher={refresher} setRefresher={setRefresher} 
+                                setShowList={setShowList} 
+                                showList={showList} //list for search results
+                                setFetchedMedicine={setFetchedMedicine} //to grab the item being shown when view btn is clicked
+                            /> 
+                : 
+                null
+            }
+            {
+                !fetchedMedicine ? null : <InventoryItem fetchedMedicine={fetchedMedicine} />
             }
         </>
     )

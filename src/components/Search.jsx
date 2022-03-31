@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 
-export default function Search ({ inventoryList, setInventoryList, setShowList, showList}) {    
+export default function Search ({setInventoryList, setShowList}) {    
 
     const [form, setForm] = useState({
         genericName: ''
@@ -28,7 +28,7 @@ export default function Search ({ inventoryList, setInventoryList, setShowList, 
         }
         
       }
-      console.log(inventoryList)
+ 
     
     return(
         <>

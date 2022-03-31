@@ -1,11 +1,11 @@
 
 
-export default function InventoryItem () {
+export default function InventoryItem ({fetchedMedicine}) {
     return(
         <>
-        <h1>Inventory Item</h1>
 
         <div className='flex-container'>
+        <h3>Showing more details of: {fetchedMedicine.genericName}</h3>
             <table>
                 <thead>
                 <tr>
@@ -19,13 +19,21 @@ export default function InventoryItem () {
                 </tr>
                 </thead>
                 <tbody>
-                <td>Generic name</td>
-                <td>Brand name</td>
-                <td>Manufacturer</td>
-                <td>Route</td>
-                <td>Product Type</td>                    
-                <td>Used For</td>
-                <td>Substance Name</td>
+                <td>{fetchedMedicine.genericName}</td>
+                <td>{fetchedMedicine.brandName}</td>
+                <td>{fetchedMedicine.manufacturerName}</td>
+                <td>{fetchedMedicine.route}</td>
+                <td>{fetchedMedicine.productType}</td>                    
+                <td>
+                    {
+                    !fetchedMedicine.usedFor ? "Not Available" : fetchedMedicine.usedFor
+                    }
+                </td>
+                <td>
+                    {
+                    !fetchedMedicine.substanceName ? "Not Available" : fetchedMedicine.substanceName
+                    }
+                </td>
                 </tbody>
             </table>                                
         </div>    

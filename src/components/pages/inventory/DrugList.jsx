@@ -1,6 +1,17 @@
 import axios from "axios"
 
-export default function DrugList ({inventoryList,setInventoryList, setShowList, showList, setForm, setShowForm, refresher, setRefresher}) {
+export default function DrugList ({
+    inventoryList,
+    setInventoryList, 
+    setShowList, 
+    showList, 
+    setForm, 
+    setShowForm, 
+    refresher, 
+    setRefresher,
+    setFetchedMedicine
+
+}) {
 
 
     const editBtnHandler = (med) => {
@@ -20,6 +31,12 @@ export default function DrugList ({inventoryList,setInventoryList, setShowList, 
                 setInventoryList(inventoryList)
             })
     }
+
+    const viewBtnHandler = (med) => {
+        console.log(med)
+        setFetchedMedicine(med)
+        
+    }
     const allDrugs = inventoryList.map((item, idx) => {
         return (
             <tr className="main" key={idx}>
@@ -35,7 +52,7 @@ export default function DrugList ({inventoryList,setInventoryList, setShowList, 
                     <button onClick={() => {deleteBtnHandler(item._id)}}>Delete</button> 
                 </td>
                 <td>
-                    <button>View</button>
+                    <button onClick={() => {viewBtnHandler(item)}}>View</button>
                 </td>
             </tr>
         )
