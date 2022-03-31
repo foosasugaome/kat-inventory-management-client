@@ -3,9 +3,6 @@ import axios from "axios"
 import AddMedicine from "./inventory/AddMedicine"
 import ManageInventory from "./inventory/ManageInventory"
 
-// import SearchApi from '../SearchApi'
-import Transaction from './inventory/Transaction'
-
 export default function Inventory ({ currentUser }) {
     const [selectedComponent, setSelectedComponent] = useState('0')
     const [inventoryList, setInventoryList] = useState([])
