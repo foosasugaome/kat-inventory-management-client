@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {  useState } from 'react'
 import axios from 'axios'
 import TransactionForm from './TransactionForm'
 
@@ -10,9 +10,10 @@ export default function Transaction ({ currentUser }) {
   const [message, setMessage] = useState('')
   const [inventoryId, setInventoryId] = useState('')
   const [showTransForm, setShowTransForm] = useState(false)
+  
 
   const handleSearchDB = e => {
-    e.preventDefault()
+    e.preventDefault()  
     try {
       axios
         .post(
@@ -21,8 +22,7 @@ export default function Transaction ({ currentUser }) {
         )
         .then(response => {
           setResults(response.data)           
-          setMessage(`Search results for : ${form.genericName}`)
-      
+          setMessage(`Search results for : ${form.genericName}`)          
         })
         .catch(error => setMessage(`An error occured. Please contact your administrator.`))
        
@@ -32,12 +32,13 @@ export default function Transaction ({ currentUser }) {
     }
   }
 
-  
   const handleSelect = (e) => {    
     setInventoryId(e.target.value)
-    setShowTransForm(true)
-    // setSelectedComponent('2')    
+    setShowTransForm(true)   
+    setMessage('') 
+    setResults([])
   }
+
   const listResults = results.map((drug, index) => {
     return (
       <>
@@ -58,7 +59,7 @@ export default function Transaction ({ currentUser }) {
   return (
     <>
     <div className='flex-container'>      
-      <h3>Add Purchase</h3>
+      <h3>Add Order</h3>
     </div>
       <div className='flex-container'>
         <form onSubmit={handleSearchDB}>
@@ -75,14 +76,13 @@ export default function Transaction ({ currentUser }) {
       </div>
       {
           showTransForm ? 
-          <TransactionForm setMessage={setMessage} showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} currentUser={currentUser} />
+          <TransactionForm setMessage={setMessage} showTransForm={showTransForm} setShowTransForm={setShowTransForm} inventoryId={inventoryId} currentUser={currentUser} />          
           :
           null
       }
       {results.length > 0 ? (
         <div className='flex-container'>
           {message}
-
           <table>
               <thead>
             <tr>

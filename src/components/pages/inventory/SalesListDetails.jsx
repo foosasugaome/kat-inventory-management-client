@@ -35,7 +35,7 @@ export default function SalesListDetail({  setMessage, showTransForm, setShowTra
 <div className="flex-container">    
 </div>
 <div className="flex-container">
-    <h3>Purchases : {invDesc}</h3>
+    <h3>Sales : {invDesc}</h3>
 </div>
 <div className="flex-container">
 <table>

@@ -42,7 +42,7 @@ export default function Inventory ({ currentUser }) {
         
       }
       {
-        selectedComponent === '2' ? <Transaction currentUser={currentUser}/> : null
+        selectedComponent === '2' ? <Transaction currentUser={currentUser} /> : null
       }   
       </div>
     </>

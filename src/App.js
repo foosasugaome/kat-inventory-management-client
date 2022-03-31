@@ -14,6 +14,7 @@ import UserEdit from './components/pages/dashboard/UserEdit';
 import Report from './components/pages/Report';
 import Purchases from './components/pages/Purchases';
 import Sales from './components/pages/Sales';
+import Error from './components/pages/Error';
 
 
 function App() {
@@ -59,7 +60,9 @@ function App() {
         <Route path='/report' element={<Report />} />        
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-        </Routes>      
+        <Route path="*" element={<Error />} />     
+        </Routes>
+        
       </Layout>
     </BrowserRouter>
     </>

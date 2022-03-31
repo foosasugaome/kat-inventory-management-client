@@ -1,8 +1,11 @@
 import SalesListDetail from "./SalesListDetails"
 import axios from "axios"
 import { useState } from "react"
+import { Navigate } from "react-router-dom"
 
-export default function SalesList() {
+export default function SalesList({ currentUser }) {
+  
+  
     const [form, setForm] = useState({
         genericName: ''
       })
@@ -57,7 +60,7 @@ export default function SalesList() {
     return(
         <>
         <div className='flex-container'>      
-      <h3>List Purchases</h3>
+      <h3>List Sales</h3>
     </div>
       <div className='flex-container'>
         <form onSubmit={handleSearchDB}>

@@ -12,30 +12,36 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
     password: ''
     // manager: false
   })
+  const [passwordCheck, setPasswordCheck] = useState('')
 
-  const [msg, setMsg] = useState('')
+  const [message, setMessage] = useState('')
 
   const handleSubmit = async e => {
     e.preventDefault()    
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`,
-        form
-      )
-      // get the token from the response
-      const { token } = response.data
-      // set the token in local storage
-      localStorage.setItem('jwt', token)
-      // decode the token
-      const decoded = jwt_decode(token)
-      // log the user in
-      setCurrentUser(decoded)
-      return axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
-        .then(response => setUsers(response.data))
+      if(form.password === passwordCheck)  {
+        const response = await axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`,
+          form
+        )
+        // get the token from the response
+        const { token } = response.data
+        // set the token in local storage
+        localStorage.setItem('jwt', token)
+        // decode the token
+        const decoded = jwt_decode(token)
+        // log the user in
+        setCurrentUser(decoded)
+        return axios
+          .get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
+          .then(response => setUsers(response.data))
+      } else {
+        setMessage(`Passwords do not match.`)
+      }
+      
     } catch (err) {
       if (err.response.status === 409) {
-        setMsg(err.response.data.msg)
+        setMessage(err.response.data.msg)
       } else {
         console.log(err)
       }
@@ -45,8 +51,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
   if (currentUser) return <Navigate to='/dashboard' />
 
   return (
-    <>
-      <p>{msg}</p>
+    <>      
       <div className='flex-container'>
         <h3>Register An Account</h3>
       </div>
@@ -100,8 +105,18 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
                 // placeholder='enter your password...'
               />
             </p>
+            <p>
+              <label htmlFor='confirmpassword'>Confirm Password:</label>
+              <input
+                type='password'
+                id='confirmpassword'
+                value={passwordCheck}
+                onChange={e => setPasswordCheck(e.target.value)}                
+              />
+            </p>
             <button type='submit'>Submit</button>
           </form>
+          <p className='error-message'>{message ? `${message}` : ''}</p>
         </div>
       </div>
     </>

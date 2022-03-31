@@ -48,8 +48,7 @@ export default function Login ({ currentUser, setCurrentUser }) {
   if (currentUser) return <Navigate to='/dashboard' />
 
   return (
-    <>
-    <p>{message}</p>
+    <>    
     <div className='flex-container'><h3>Login</h3></div>      
     <div className='tab-container'>    
         <div className='form-container'>        
@@ -76,7 +75,7 @@ export default function Login ({ currentUser, setCurrentUser }) {
           </p>
           <button type='submit'>Submit</button>
         </form>        
-        <p>{message ? `${message}` : ''}</p>
+        <p className='error-message'>{message ? `${message}` : ''}</p>
       
       </div>
       </div>

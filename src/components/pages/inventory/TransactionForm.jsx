@@ -21,7 +21,7 @@ export default function TransactionForm({ setMessage, showTransForm, setShowTran
         try {
             axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/${invId}/transaction`,form)    
             .then(response => {
-                setMessage('Record updated.')            
+                setMessage('Record updated.')                            
                 setForm({
                     transType: '',
                     transCount: 0,
@@ -29,7 +29,9 @@ export default function TransactionForm({ setMessage, showTransForm, setShowTran
                     transNotes : '',
                     transOwner: ''
                 })
-            })
+                
+            })            
+            
             .catch(error => {
                 setMessage('An error occured. Please contact your administrator.')
             })

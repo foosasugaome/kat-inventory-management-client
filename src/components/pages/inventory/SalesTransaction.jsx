@@ -39,6 +39,8 @@ export default function SalesTransaction ({ currentUser }) {
   const handleSelect = (e) => {    
     setInventoryId(e.target.value)
     setShowTransForm(true)    
+    setResults([])
+    setMessage('')
   }
   
   const listResults = results.map((drug, index) => {
@@ -61,7 +63,7 @@ export default function SalesTransaction ({ currentUser }) {
   return (
     <>
     <div className='flex-container'>      
-      <h3>Add Purchase</h3>
+      <h3>Add Sale</h3>
     </div>
       <div className='flex-container'>
         <form onSubmit={handleSearchDB}>
@@ -103,7 +105,7 @@ export default function SalesTransaction ({ currentUser }) {
           </table>
         </div>
       ) : (
-        <div className='flex-container'>{message}</div>
+        <div className='flex-container message'>{message}</div>
       )}
      
     </>

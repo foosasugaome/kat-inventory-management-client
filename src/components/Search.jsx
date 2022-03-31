@@ -42,7 +42,7 @@ export default function Search ({setInventoryList, setShowList, showList, setSho
                 name="" id="search" 
                 onChange={(e) => {setForm({...form, genericName: e.target.value})}}
                 placeholder="Search by generic name"
-                />&nbsp;
+                required />&nbsp;
             <input type="submit" value="Search"/>
         </form>
         </div>

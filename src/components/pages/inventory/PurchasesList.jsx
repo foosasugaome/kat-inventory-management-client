@@ -56,7 +56,7 @@ export default function PurchasesList() {
     return(
         <>
         <div className='flex-container'>      
-      <h3>List Purchases</h3>
+      <h3>List Orders</h3>
     </div>
       <div className='flex-container'>
         <form onSubmit={handleSearchDB}>
