@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 
-export default function Search ({setInventoryList, setShowList}) {    
+export default function Search ({setInventoryList, setShowList, showList, setShowForm, showForm}) {    
 
     const [form, setForm] = useState({
         genericName: ''
@@ -18,6 +18,7 @@ export default function Search ({setInventoryList, setShowList}) {
             .then(response => {
               setInventoryList(response.data)
               setShowList(true)
+              setShowForm(false)
               setMessage(`Search results for : ${form.genericName}`)
             })
             .catch(error => setMessage(`An error occured. Please contact your administrator.`))
