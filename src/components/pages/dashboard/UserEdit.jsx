@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function UserEdit({ currentUser, users, setUsers, userId, setUserId }) {
+export default function UserEdit({ currentUser, users, setUsers, userId}) {
 
     const id = userId
     const foundUser = users.find(user => {
