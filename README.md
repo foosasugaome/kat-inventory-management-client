@@ -49,6 +49,20 @@ ___
 | POST | /register | Register page
 | GET | /logout | logout
 
+#### Backend
+| GET | /users | Gets all user information from database
+| POST | /users/register | Adds a new user to the database
+| POST | /users/login | Validates user’s credentials and logs the user in | PUT | /users/:id | Makes changes to values of certain key properties that a user can have (i.e., their name, password, manager status)
+| DEL | /users/:id | Deletes a user from the database
+| GET | /inventory | Gets all inventory information from database
+| POST | /inventory | Adds a new inventory item to track in the database
+| POST | /inventory/search | Posting the search term to get a specific result from the inventory list
+| GET | /inventory/:id | Gets a specific inventory item’s information from database
+| PUT | /inventory/:id | Makes changes to information regarding an specific inventory item
+| DEL | /inventory/:id | Deletes a specific inventory item 
+| GET | /inventory/:id/transaction | Gets information about transactions made on a specific inventory item
+| PUT | /inventory/:id/transaction | Makes changes to the inventory schema to add transactions (transactions are subdocuments of inventory)
+
 _
 ## ERDs
 ![ERD image](/KAT%20Rx.drawio.png)
