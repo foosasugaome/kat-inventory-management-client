@@ -8,9 +8,6 @@ export default function Dashboard ({ currentUser, users, setUsers }) {
     
     return (
         <>
-            {/* <div className='flex-container'>          
-                <h2>Dashboard</h2>
-            </div> */}
             <div className='flex-menu-container'>
                 <div>
                 <button onClick={() => setShowComponent('0')}  className={showComponent === '0' ? 'button-nav-selected' : 'button-nav'}> Overview </button>

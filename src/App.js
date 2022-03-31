@@ -20,7 +20,13 @@ import Contact from './components/pages/Contact';
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState({
+    email: '',
+    firstname: '',
+    lastname: '',
+    manager: false,
+    username: ''
+  })
   const [users, setUsers] = useState([])
   // const [currentUserId, setCurrentUserId] = useState('')
 
@@ -41,33 +47,29 @@ function App() {
   const handleLogout = () => {
     if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
     setCurrentUser(null)
-    
   }
 
   return (
     <>
-    <BrowserRouter>
-    <Navigation handleLogout={handleLogout} isLogged={(currentUser)} currentUser={currentUser}/>
-      <Layout>
-      <Routes>       
-
-       
-        <Route path='/' element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
-        <Route path="/dashboard/:id" element={<UserEdit currentUser={currentUser} users={users} setUsers={setUsers} />} />
-        <Route path='/inventory' element={<Inventory currentUser={currentUser} />}/>                
-        <Route path='/sales' element={<Sales currentUser={currentUser} />}/>
-        <Route path='/purchases' element={<Purchases currentUser={currentUser} />}/>
-        <Route path='/report' element={<Report />} />        
-        <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
-        <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-        <Route path="*" element={<Error />} />     
-        </Routes>
-        
-      </Layout>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Navigation handleLogout={handleLogout} isLogged={(currentUser)} currentUser={currentUser}/>
+        <Layout>
+          <Routes>       
+            <Route path='/' element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path="/dashboard" element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
+            <Route path="/dashboard/:id" element={<UserEdit currentUser={currentUser} users={users} setUsers={setUsers} />} />
+            <Route path='/inventory' element={<Inventory currentUser={currentUser} />}/>                
+            <Route path='/sales' element={<Sales currentUser={currentUser} />}/>
+            <Route path='/purchases' element={<Purchases currentUser={currentUser} />}/>
+            <Route path='/report' element={<Report />} />        
+            <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
+            <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+            <Route path="*" element={<Error />} />     
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </>
   );
 }
