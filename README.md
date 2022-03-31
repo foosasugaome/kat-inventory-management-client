@@ -96,20 +96,20 @@ lower costs.
 
 
 ## MVP Checklist
-- [ ] Register & Login for users. 
-- [ ] Change user permissions.
-- [ ] Query and display medicines from the API.
-- [ ] Show page for each medicine.
-- [ ] Query by brand name and generic name.
-- [ ] Track the transaction history for the inventory and display total inventory (PATCH)
-- [ ] Transaction history only visible to admins/managers.
-- [ ] CRUD for medicine inventory.
-- [ ] CRUD for transaction history.
+- [x] Register & Login for users. 
+- [x] Change user permissions.
+- [x] Query and display medicines from the API.
+- [x] Show page for each medicine.
+- [x] Query by brand name and generic name.
+- [x] Track the transaction history for the inventory and display total inventory
+- [x] Transaction history only visible to admins/managers.
+- [x] CRUD for medicine inventory.
+- [x] CRUD for transaction history.
 
 
 ## Stetch Goals
 - [ ] Scan items to input in the database.
-- [ ] Sends notification if inventory is below a certain quantity.
+- [x] Displays inventory if it is below a certain quantity.
 - [ ] Download + print inventory reports.
 - [ ] Order form send to email.
 
