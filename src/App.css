@@ -200,6 +200,10 @@ footer a:hover {
   height: 100%;
   width: 100%;  
 }
+.icon {
+  width:25px;  
+  margin: 10px;
+}
 .card-profile {
   width: 800px;
   border: 0.05rem solid rgb(163, 159, 159);  

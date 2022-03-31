@@ -23,7 +23,7 @@ export default function Navigation({ handleLogout, isLogged, currentUser}) {
                 <Link to='/sales' onClick={() => setDisplayComponent('2')} className={displayComponent === '2' ? 'sidenav-selected' : ''}>Sales</Link>        
                 <Link to="/purchases" onClick={() => setDisplayComponent('3')} className={displayComponent === '3' ? 'sidenav-selected' : ''} >Orders</Link>
                 {/* <Link to="/" onClick={() => setDisplayComponent('4')} className={displayComponent === '4' ? 'sidenav-selected' : ''} >Reports</Link> */}
-                <Link to="/" onClick={() => setDisplayComponent('5')} className={displayComponent === '5' ? 'sidenav-selected' : ''}><span onClick={handleLogout}>Logout</span></Link>
+                <Link to="/login" onClick={() => setDisplayComponent('5')} className={displayComponent === '5' ? 'sidenav-selected' : ''}><span onClick={handleLogout}>Logout</span></Link>
                 </div>
             :
                 <div className="sidenav">

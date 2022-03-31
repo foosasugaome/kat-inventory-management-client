@@ -7,6 +7,8 @@ export default function UserEdit({ currentUser, users, setUsers, userId, setUser
         return user._id === id
     })
 
+    console.log(currentUser)
+
     const handleManager = () => {
         const managerStatus = {
             manager: !foundUser.manager
