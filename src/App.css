@@ -131,6 +131,7 @@ main {
   top: 80px;
   z-index: 0;
   left: 20px;
+  min-width: 1000px;
   max-width: 1000px;
   margin-bottom: 150px;
 
@@ -188,25 +189,25 @@ footer a:hover {
 .profile-container {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
-  /* flex-flow: row nowrap; */
+  align-items: flex-start;  
   flex-direction: column;
   flex-wrap: nowrap;
   height: 100%;
   padding: 15px;
   gap: 5px;
 }
-.img-profile {
-  height: 100%;
-  width: 100%;  
+.img-profile {  
+  width: 200px;  
+  height: 250px;
+  object-fit:fill
 }
 .icon {
   width:25px;  
   margin: 10px;
 }
 .card-profile {
-  width: 800px;
-  border: 0.05rem solid rgb(163, 159, 159);  
+    width: 400px;
+    vertical-align:middle;    
 }
 .profile-holder {
   display:flex;
@@ -214,22 +215,28 @@ footer a:hover {
   flex-wrap: nowrap;
   width:600px;
   margin-bottom: 40px;
+  max-height: 400px;
+  
 }
 .profile-text {
-  padding: 20px;
+  padding-left: 10px;
+  max-height: 400px;  
 }
 .form-container {
-  /* border: 0.05rem solid rgb(204, 201, 201); */
+  border: 0.05rem solid rgb(129, 128, 128);
   padding: 20px;
   padding-top: 0px;
-  /* width: fit-content; */
-  /* border-top: 25px solid rgb(204, 201, 201); */
+  border-left: 15px solid rgba(47, 173, 148,.8);
+  box-shadow: 1px 5px 5px -2px rgba(113, 113, 113, 0.6); 
   min-width: 400px;  
-  width: 100%;
+  max-width: 600px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+  border-radius: 5px;
+  margin-right: 5px;
+
 }
 .api-result-container {
   border: 0.05rem solid rgb(204, 201, 201);
@@ -244,9 +251,9 @@ footer a:hover {
 }
 h1,
 h2,
-h3 {
+h3,h4,h5 {
   font-weight: 400;
-  padding: 0px;
+  padding: 0px;  
 }
 input, textarea, label {
   border: 0.05rem solid rgb(204, 201, 201);
@@ -332,11 +339,9 @@ select:focus{
   grid-template-columns: auto auto auto;
 }
 .tab-container {
-  display: flex;
-  /* align-items: flex-start;  */
-  align-items: stretch;
-  /* flex-flow: row wrap; */
-  flex-direction: column;
+  display: flex;  
+  align-items: stretch;  
+  flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
   height: 100%;
@@ -354,11 +359,9 @@ select:focus{
   width: 100%;
 }
 table {
-  border: 0.05rem solid gray;
-  /* min-width: 800px;   */
-  table-layout: fixed;
-  /* border-collapse: collapse; */
-  width: 100%;
+  border: 0.05rem solid gray;  
+  table-layout: fixed;  
+  width: 98%;
   max-width: 800px;  
   border-radius: 5px;
 }
@@ -434,8 +437,7 @@ td {
 .card {
   width: 80%;
   min-width: 350px;
-  min-height: 250px;
-  /* border-radius: 5px; */
+  min-height: 250px;  
   border: .05rem solid rgb(227, 230, 226);
   border-left: 15px solid rgb(47, 173, 148);
   height: fit-content;

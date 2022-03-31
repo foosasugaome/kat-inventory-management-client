@@ -67,8 +67,9 @@ export default function PurchasesList() {
             onChange={e => setForm({ ...form, genericName: e.target.value })}
             placeholder='Search database'
             required
-          />&nbsp;
+          /><p>
           <button type='submit'> Search </button>
+          </p>
         </form>
       </div>
       {results.length > 0 ? (

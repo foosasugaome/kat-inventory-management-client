@@ -41,7 +41,7 @@ export default function SalesTransactionForm({ setMessage, showTransForm, setSho
 
     return(
         <>
-        <div className="box stack-top" draggable='true'>                 
+        
             <div className="flex-container">            
             
             <div className="form-container">
@@ -60,7 +60,7 @@ export default function SalesTransactionForm({ setMessage, showTransForm, setSho
             </div>
             
             </div>
-        </div>
+        
 
         </>
     )

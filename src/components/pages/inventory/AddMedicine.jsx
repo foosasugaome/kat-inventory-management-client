@@ -37,7 +37,7 @@ export default function AddMedicine ({ inventoryList, setInventoryList }) {
   return (
     <>
       <div className='flex-container'>
-        <h3>Manually Add Medicine</h3>
+        <h3>Add Medicine</h3>
       </div>
       <div className='flex-container'>
         {result} 

@@ -55,7 +55,7 @@ export default function Register ({ currentUser, setCurrentUser, setUsers }) {
       <div className='flex-container'>
         <h3>Register An Account</h3>
       </div>
-      <div className='tab-container'>
+      <div className='flex-container'>
         <div className='form-container'>
           <form onSubmit={handleSubmit}>
             <p>

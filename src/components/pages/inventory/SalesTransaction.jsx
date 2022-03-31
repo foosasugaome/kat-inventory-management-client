@@ -74,8 +74,9 @@ export default function SalesTransaction ({ currentUser }) {
             onChange={e => setForm({ ...form, genericName: e.target.value })}
             placeholder='Search database'
             required
-          />&nbsp;
+          /><p>
           <button type='submit'> Search </button>
+          </p>
         </form>
       </div>
       {
