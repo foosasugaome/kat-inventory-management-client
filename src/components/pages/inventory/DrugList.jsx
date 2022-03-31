@@ -1,6 +1,17 @@
 import axios from "axios"
 
-export default function DrugList ({inventoryList, setShowList, showList, setForm, setShowForm}) {
+export default function DrugList ({
+    inventoryList,
+    setInventoryList, 
+    setShowList, 
+    showList, 
+    setForm, 
+    setShowForm, 
+    refresher, 
+    setRefresher,
+    setFetchedMedicine
+
+}) {
 
 
     const editBtnHandler = (med) => {
@@ -8,14 +19,23 @@ export default function DrugList ({inventoryList, setShowList, showList, setForm
         setShowForm(true)
         setShowList(!showList)
     }
+    
 
     const deleteBtnHandler = (med) => {
         // console.log(med)
         axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/${med}`)
             .then(response => {
                 console.log(response.data)
-                setShowList(!showList)
+                // setShowList(!showList)
+                setRefresher(!refresher)
+                setInventoryList(inventoryList)
             })
+    }
+
+    const viewBtnHandler = (med) => {
+        console.log(med)
+        setFetchedMedicine(med)
+        
     }
     const allDrugs = inventoryList.map((item, idx) => {
         return (
@@ -27,11 +47,17 @@ export default function DrugList ({inventoryList, setShowList, showList, setForm
                 <td>{item.productType}</td>          
                 <td>
                     <button onClick={() => {editBtnHandler(item)}}>Edit</button> 
+                </td>
+                <td>
                     <button onClick={() => {deleteBtnHandler(item._id)}}>Delete</button> 
+                </td>
+                <td>
+                    <button onClick={() => {viewBtnHandler(item)}}>View</button>
                 </td>
             </tr>
         )
     })
+
 
     return(
         <>
@@ -45,6 +71,8 @@ export default function DrugList ({inventoryList, setShowList, showList, setForm
                     <th>Manufacturer</th>
                     <th>Route</th>
                     <th>Product Type</th>                    
+                    <th></th>
+                    <th></th>
                     <th></th>
                     </tr>
                     </thead>

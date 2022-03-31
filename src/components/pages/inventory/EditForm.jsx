@@ -1,44 +1,7 @@
-import axios from "axios"
-import { useState } from "react"
-import Search from "../../Search"
-import DrugList from "./DrugList"
 
-
-export default function EditMedicine ({inventoryList, setInventoryList, showForm, setShowForm}) {
-    const [form, setForm] = useState({
-        genericName: "",
-        brandName: "",
-        manufacturerName: "",
-        productType: "",
-        route: "",
-        usedFor: "",
-        unitCount: 0
-    })
-
-    const [showList, setShowList] = useState(false)
-
-
-    const submitForm = (e) => {
-        e.preventDefault()
-        console.log(form)
-        axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/${form._id}`, form)
-            .then(response => {
-                setInventoryList([...inventoryList, form])
-                setShowForm(!showForm)
-            })       
-    }
+export default function EditForm ({form, setForm, submitForm}) {
     return(
-        <>
-            <div className="flex-container">
-            <h3>Edit Medicine</h3>
-            </div>
-            
-            
-            <Search inventoryList={inventoryList} setInventoryList={setInventoryList} setShowList={setShowList} />
-
-           { showForm ? 
-           
-           <div className="flex-container">    
+        <div className="flex-container">    
            <div className="form-container">
             <form onSubmit={submitForm}>
                 <label htmlFor="genericName">Generic Name:</label>
@@ -65,11 +28,5 @@ export default function EditMedicine ({inventoryList, setInventoryList, showForm
                 <input type="submit" value="Submit" />
             </form>
             </div></div>
-            : null
-            }
-            {
-                showList ? <DrugList inventoryList={inventoryList} setInventoryList={setInventoryList}  setForm={setForm} setShowForm={setShowForm} setShowList={setShowList} showList={showList} /> : null
-            }
-        </>
     )
 }
