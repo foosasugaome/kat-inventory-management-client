@@ -10,6 +10,7 @@ export default function Inventory ({ currentUser }) {
     const [selectedComponent, setSelectedComponent] = useState('0')
     const [inventoryList, setInventoryList] = useState([])
     const [showForm, setShowForm] = useState(false)
+    const [refresher, setRefresher] = useState(false) //only purpose is to update the useEffect(justin)
 
     const [medicineToEdit, setMedicineToEdit] = useState({}) //this is where I'll store the medicine to edit including it's id.
 
@@ -19,7 +20,7 @@ export default function Inventory ({ currentUser }) {
           .then(response => {
               setInventoryList(response.data)
           })
-  },[showForm])
+  },[refresher])
 
     
   return (
@@ -43,7 +44,7 @@ export default function Inventory ({ currentUser }) {
         selectedComponent === '0' ? <AddMedicine inventoryList={inventoryList} setInventoryList={setInventoryList}/> : null
       }      
       {
-        selectedComponent === '1' ? <EditMedicine inventoryList={inventoryList} showForm={showForm} setShowForm={setShowForm} setInventoryList={setInventoryList} medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
+        selectedComponent === '1' ? <EditMedicine inventoryList={inventoryList} showForm={showForm} refresher={refresher} setRefresher={setRefresher} setShowForm={setShowForm} setInventoryList={setInventoryList} medicineToEdit={medicineToEdit} setMedicineToEdit={setMedicineToEdit} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
         
       }
       {

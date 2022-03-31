@@ -2,9 +2,10 @@ import axios from "axios"
 import { useState } from "react"
 import Search from "../../Search"
 import DrugList from "./DrugList"
+import InventoryItem from "./InventoryItem"
 
 
-export default function EditMedicine ({inventoryList, setInventoryList, showForm, setShowForm}) {
+export default function EditMedicine ({inventoryList, setInventoryList, refresher, setRefresher, showForm, setShowForm}) {
     const [form, setForm] = useState({
         genericName: "",
         brandName: "",
@@ -25,6 +26,7 @@ export default function EditMedicine ({inventoryList, setInventoryList, showForm
             .then(response => {
                 setInventoryList([...inventoryList, form])
                 setShowForm(!showForm)
+                setRefresher(!refresher)
             })       
     }
     return(
@@ -35,7 +37,7 @@ export default function EditMedicine ({inventoryList, setInventoryList, showForm
             
             
             <Search inventoryList={inventoryList} setInventoryList={setInventoryList} setShowList={setShowList} />
-
+            <InventoryItem />
            { showForm ? 
            
            <div className="flex-container">    
@@ -68,7 +70,7 @@ export default function EditMedicine ({inventoryList, setInventoryList, showForm
             : null
             }
             {
-                showList ? <DrugList inventoryList={inventoryList} setInventoryList={setInventoryList}  setForm={setForm} setShowForm={setShowForm} setShowList={setShowList} showList={showList} /> : null
+                showList ? <DrugList inventoryList={inventoryList} setInventoryList={setInventoryList}  setForm={setForm} setShowForm={setShowForm} refresher={refresher} setRefresher={setRefresher} setShowList={setShowList} showList={showList} /> : null
             }
         </>
     )

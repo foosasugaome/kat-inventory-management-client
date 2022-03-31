@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export default function DrugList ({inventoryList, setShowList, showList, setForm, setShowForm}) {
+export default function DrugList ({inventoryList,setInventoryList, setShowList, showList, setForm, setShowForm, refresher, setRefresher}) {
 
 
     const editBtnHandler = (med) => {
@@ -14,7 +14,9 @@ export default function DrugList ({inventoryList, setShowList, showList, setForm
         axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/inventory/${med}`)
             .then(response => {
                 console.log(response.data)
-                setShowList(!showList)
+                // setShowList(!showList)
+                setRefresher(!refresher)
+                setInventoryList(inventoryList)
             })
     }
     const allDrugs = inventoryList.map((item, idx) => {
