@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import About from './components/pages/About'
 import Navigation from './components/layout/Navigation'
 import Register from './components/pages/Register';
@@ -40,18 +40,15 @@ function App() {
 
   const handleLogout = () => {
     if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
-    setCurrentUser(null)
-    
+    setCurrentUser(null)    
   }
-
+  
   return (
     <>
     <BrowserRouter>
     <Navigation handleLogout={handleLogout} isLogged={(currentUser)} currentUser={currentUser}/>
       <Layout>
-      <Routes>       
-
-       
+      <Routes>              
         <Route path='/' element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />

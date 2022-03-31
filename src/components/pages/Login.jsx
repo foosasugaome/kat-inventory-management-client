@@ -50,7 +50,7 @@ export default function Login ({ currentUser, setCurrentUser }) {
   return (
     <>    
     <div className='flex-container'><h3>Login</h3></div>      
-    <div className='tab-container'>    
+    <div className='flex-container'>    
         <div className='form-container'>        
         <form onSubmit={handleFormSubmit}>
           <p>

@@ -53,12 +53,10 @@ export default function Contact(){
             </div>
             <div className='profile-text'>
               <h3>Norman Teodoro</h3>
-              <h4>Git Manager</h4>
+              <p>
+              <h4>Git Manager</h4></p>
               <h5>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Necessitatibus, quisquam! Modi iste maiores dolor delectus quis,
-                esse fugiat! Dicta voluptate magnam voluptatibus consequuntur
-                expedita ullam maxime explicabo, obcaecati dolorem iste!                
+              I have worked in the fields of tech, insurance, manufacturing, and education, having held different roles like support, systems administration, and development. I am always looking for ways to maximize my potential by learning from my experiences and giving back to the community.                
               </h5>
               <p className='icon-holder'>
                 <a href='https://www.findingnorman.ca/' target='_blank' rel='noreferrer'><img src='portfolio.png' alt='https://github.com/foosasugaome' className='icon' /></a>

@@ -33,17 +33,12 @@ export default function Inventory ({ currentUser }) {
         
       </div>
       <div className='tab-container'>
-
       {
         selectedComponent === '0' ? <AddMedicine inventoryList={inventoryList} setInventoryList={setInventoryList}/> : null
       }      
       {
-        selectedComponent === '1' ? <ManageInventory inventoryList={inventoryList} showForm={showForm} refresher={refresher} setRefresher={setRefresher} setShowForm={setShowForm} setInventoryList={setInventoryList} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null
-        
-      }
-      {
-        selectedComponent === '2' ? <Transaction currentUser={currentUser} /> : null
-      }   
+        selectedComponent === '1' ? <ManageInventory inventoryList={inventoryList} showForm={showForm} refresher={refresher} setRefresher={setRefresher} setShowForm={setShowForm} setInventoryList={setInventoryList} setSelectedComponent={setSelectedComponent} selectedComponent={selectedComponent} /> : null        
+      }      
       </div>
     </>
   )
