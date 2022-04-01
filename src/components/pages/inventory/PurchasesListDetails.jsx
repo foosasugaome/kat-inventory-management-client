@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import dayjs from 'dayjs'
+
 
 export default function PurchasesListDetail ({
   setMessage,
