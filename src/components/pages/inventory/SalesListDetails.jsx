@@ -28,7 +28,7 @@ export default function SalesListDetail ({
       <>
         {t.transType === 'S' ? (
           <tr>
-            <td>{dayjs(t.createdAt).locale('en-us').format()}</td>
+            <td>{t.createdAt}</td>
             <td className='right-align'>
               {t.transCount.toLocaleString('en-us')}
             </td>
