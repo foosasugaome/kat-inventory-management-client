@@ -40,9 +40,9 @@ export default function Contact(){
             I am a proactive and dedicated individual with a background in restaurant management, desiring to utilize full-stack development skills. My tenacity for learning and creating led me to pursue a career in tech with hopes of transferring my creativity in making menus and recipes over to creating something inclusive, that may help with the collective advancement of human technology.
             </h5>
             <p className='icon-holder'>
-            <a href='https://www.findingnorman.ca/' target='_blank' rel='noreferrer'><img src='portfolio.png' alt='https://github.com/foosasugaome' className='icon' /></a>
-                <a href='https://github.com/foosasugaome'  target='_blank' rel='noreferrer'><img src='gitlogo.png' alt='https://github.com/foosasugaome' className='icon' /></a>
-                <a href='https://www.linkedin.com/in/normanteodoro/' target='_blank' rel='noreferrer'><img src='linkedin.png' alt='https://github.com/foosasugaome' className='icon' /></a>                
+            <a href='https://akinodev.com' target='_blank' rel='noreferrer'><img src='portfolio.png' alt='akinodev.com' className='icon' /></a>
+                <a href='https://github.com/justin-aquino'  target='_blank' rel='noreferrer'><img src='gitlogo.png' alt='https://github.com/justin-aquino' className='icon' /></a>
+                <a href='https://www.linkedin.com/in/justinaquino-dev/' target='_blank' rel='noreferrer'><img src='linkedin.png' alt='https://www.linkedin.com/justinaquino-dev/' className='icon' /></a>                
                 </p>
           </div>
           </div>
