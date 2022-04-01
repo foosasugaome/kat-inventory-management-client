@@ -20,7 +20,13 @@ import Contact from './components/pages/Contact';
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState({
+    email: '',
+    firstname: '',
+    lastname: '',
+    manager: false,
+    username: ''
+  })
   const [users, setUsers] = useState([])
   // const [currentUserId, setCurrentUserId] = useState('')
 
@@ -40,8 +46,9 @@ function App() {
 
   const handleLogout = () => {
     if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
-    setCurrentUser(null)
-    
+
+    setCurrentUser(null)    
+
   }
 
   return (
@@ -49,9 +56,7 @@ function App() {
     <BrowserRouter>
     <Navigation handleLogout={handleLogout} isLogged={(currentUser)} currentUser={currentUser}/>
       <Layout>
-      <Routes>       
-
-       
+      <Routes>              
         <Route path='/' element={<Dashboard currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers} />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
@@ -64,8 +69,7 @@ function App() {
         <Route path="/register" element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} setUsers={setUsers} />} />
         <Route path="/login" element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path="*" element={<Error />} />     
-        </Routes>
-        
+        </Routes>        
       </Layout>
     </BrowserRouter>
     </>

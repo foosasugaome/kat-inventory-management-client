@@ -24,9 +24,11 @@ export default function EditForm ({form, setForm, submitForm}) {
 
                 <label htmlFor="unitCount">Unit Count: </label>
                 <input type="number" name="unitCount" id="unitCount" value={form.unitCount} onChange={(e) => {setForm({...form, unitCount: e.target.value})}}/>
-                
-                <input type="submit" value="Submit" />
+                <p>
+                <button type="submit" value="Submit">Submit</button>
+                </p>    
             </form>
-            </div></div>
+            </div>
+            </div>
     )
 }

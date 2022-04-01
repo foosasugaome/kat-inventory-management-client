@@ -1,9 +1,8 @@
 export default function InventoryItem ({ fetchedMedicine }) {
   return (
     <>
-      <div className='form-container'>
-        <h3>Showing more details of: {fetchedMedicine.genericName}</h3>
-
+      <div className='flex-container'>
+        <h3>Showing more details of: {fetchedMedicine.genericName}</h3>      
         <div className='card'>
           <p>Generic name : {fetchedMedicine.genericName}</p>
           <p>Manufacturer : {fetchedMedicine.manufacturerName}</p>
@@ -25,8 +24,7 @@ export default function InventoryItem ({ fetchedMedicine }) {
               : fetchedMedicine.usedFor}
           </p>
         </div>
-</div>
-        
+      </div>
     </>
   )
 }

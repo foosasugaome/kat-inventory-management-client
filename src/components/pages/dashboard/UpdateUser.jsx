@@ -5,11 +5,10 @@ export default function UpdateUser ({ currentUser, users, setUsers }) {
   const [form, setForm] = useState({ 
     firstname : currentUser.firstname,
     lastname: currentUser.lastname,
-    password:''
-   })
+    password: ''
+  })
   const [userId, setUserId] = useState('')
  
-
   const handleSubmit = async e => {
     e.preventDefault()
     
